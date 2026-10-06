@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stackly Skincare Clinic | Reveal the Beauty of Healthy Skin</title>
+  <meta name="description" content="Stackly Skincare Clinic offers personalized skincare treatments designed to restore, renew and reveal your natural radiance.">
+  <meta name="theme-color" content="#1a3a30">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Josefin+Sans:wght@300;400;500;600&family=Lobster+Two:ital,wght@0,400;0,700;1,400&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="pl__fx">
+      <i class="gfx__drop" style="--x:12%;--d:7s;--s:12px"></i><i class="gfx__drop" style="--x:30%;--d:9s;--s:9px;--dl:-3s"></i>
+      <i class="gfx__drop" style="--x:55%;--d:8s;--s:14px;--dl:-5s"></i><i class="gfx__drop" style="--x:78%;--d:10s;--s:10px;--dl:-1s"></i>
+      <b class="gfx__spark" style="--x:18%;--y:22%">✦</b><b class="gfx__spark" style="--x:80%;--y:30%;--dl:-1.4s">✧</b><b class="gfx__spark" style="--x:64%;--y:72%;--dl:-2.2s">✦</b>
+    </div>
+    <div class="pl__orb">
+      <svg viewBox="0 0 100 100"><circle class="pl__track" cx="50" cy="50" r="46"/><circle class="pl__ring" cx="50" cy="50" r="46"/></svg>
+      <b><span id="plNum">0</span><small>%</small></b>
+    </div>
+    <img src="Assests/logo-light.webp" alt="" width="352" height="92">
+    <div class="preloader__bar"><span></span></div>
+    <p class="pl__word" id="plWord">Cleansing</p>
+  </div>
+
+  <!-- Page transition curtain (plays when a main menu page is opened) -->
+  <div class="pt" id="pageTrans" aria-hidden="true">
+    <div class="pt__p pt__a"></div><div class="pt__p pt__b"></div>
+    <div class="pt__label"><small id="ptSmall">Welcome</small><b id="ptBig">Home</b><i></i></div>
+  </div>
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ 1. HEADER ============ -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#home" class="header__logo" aria-label="Stackly home">
+        <img src="Assests/logo.webp" alt="Stackly" width="352" height="92">
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link is-active">Home</a></li>
+          <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#services" class="nav__link">Service</a></li>
+          <li><a href="#blog" class="nav__link">Blog</a></li>
+          <li><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+        <a class="btn btn--dark nav__login-mobile" href="login.html">
+          <i class="fa-solid fa-user"></i> Login
+        </a>
+        <a class="btn btn--dark nav__signup-mobile" href="signup.html">Signup</a>
+        <div class="nav__social" aria-label="Social links">
+          <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--dark header__login" href="login.html"><i class="fa-solid fa-user"></i><span>Login</span></a>
+        <a class="btn btn--dark header__signup" href="signup.html"><span>Signup</span></a>
+        <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="hd-search" id="hdSearchBox" hidden>
+      <form role="search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="Search treatments, blog, contact…" aria-label="Search the site" autocomplete="off"><button class="btn btn--dark" type="submit">Go</button></form>
+      <div class="hd-suggest"><button type="button" data-q="facial">Facials</button><button type="button" data-q="acne">Acne care</button><button type="button" data-q="hydration">Hydration</button><button type="button" data-q="anti-ageing">Anti-ageing</button><button type="button" data-q="blog">Skin tips</button><button type="button" data-q="book">Book a visit</button></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 2. HERO ============ -->
+    <section class="hero" id="home">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="blob blob--1"></span>
+        <span class="blob blob--2"></span>
+        <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span><span class="bubble b4"></span>
+      </div>
+
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow" data-hero="fade"><i class="fa-solid fa-leaf"></i> Skincare Clinic &middot; Since 2014</span>
+          <h1 class="hero__title" aria-label="Reveal the Beauty of Healthy Skin">
+            <span class="line" aria-hidden="true"><span class="w">Reveal</span> <span class="w">the</span> <span class="w">Beauty</span> <span class="w">of</span></span>
+            <span class="line" aria-hidden="true"><span class="w w--peach">Healthy</span> <span class="w">Skin</span></span>
+          </h1>
+          <p class="hero__lead" data-hero="fade">Personalized skincare treatments designed to restore, renew and reveal your natural radiance.</p>
+          <div class="hero__cta" data-hero="fade">
+            <a href="404.html" class="btn btn--dark btn--lg magnetic"><i class="fa-solid fa-calendar-check"></i> Book Consultation</a>
+            <a href="404.html" class="btn btn--ghost btn--lg magnetic">Explore Treatments</a>
+          </div>
+          <div class="hero__proof" data-hero="fade">
+            <div class="avatars">
+              <img src="Assests/avatar-1.webp" alt="" width="400" height="400">
+              <img src="Assests/avatar-2.webp" alt="" width="400" height="400">
+              <img src="Assests/avatar-3.webp" alt="" width="400" height="400">
+              <img src="Assests/avatar-4.webp" alt="" width="400" height="400">
+            </div>
+            <p><span class="stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><br><strong>5,000+</strong> glowing clients</p>
+          </div>
+        </div>
+
+        <div class="hero__visual" id="heroVisual">
+          <div class="hero__ring" data-depth="14" aria-hidden="true">
+            <svg viewBox="0 0 120 120" class="ring-svg">
+              <defs><path id="circ" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+              <text><textPath href="#circ" textLength="286" lengthAdjust="spacing">Glow &#8226; Renew &#8226; Reveal &#8226; Restore &#8226;</textPath></text>
+            </svg>
+            <i class="fa-solid fa-spa"></i>
+          </div>
+          <div class="hero__arch" data-depth="6">
+            <img src="Assests/hero.webp" alt="Woman with glowing healthy skin" width="639" height="861" fetchpriority="high">
+          </div>
+          <div class="hero__small" data-depth="22">
+            <img src="Assests/sc10.webp" alt="Gentle skincare touch" width="665" height="685">
+          </div>
+          <div class="chip chip--a" data-depth="30">
+            <i class="fa-solid fa-shield-heart"></i>
+            <div><strong>Dermatologist</strong><span>approved care</span></div>
+          </div>
+          <div class="chip chip--b" data-depth="18">
+            <i class="fa-solid fa-star"></i>
+            <div><strong>4.9 / 5</strong><span>client rating</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <ul class="stats" aria-label="Clinic highlights">
+          <li><span class="stats__num"><b data-count="10">0</b>+</span><span class="stats__label">Years of<br>Experience</span></li>
+          <li><span class="stats__num"><b data-count="5">0</b>K+</span><span class="stats__label">Happy<br>Clients</span></li>
+          <li><span class="stats__num"><b data-count="20">0</b>+</span><span class="stats__label">Advanced<br>Treatments</span></li>
+          <li><span class="stats__num"><b data-count="98">0</b>%</span><span class="stats__label">Client<br>Satisfaction</span></li>
+        </ul>
+      </div>
+      <a href="#about" class="scroll-hint" aria-label="Scroll down"><i class="fa-solid fa-arrow-down"></i></a>
+    </section>
+
+    <!-- ============ 3. ABOUT / PHILOSOPHY ============ -->
+    <section class="about section" id="about">
+      <div class="container about__grid">
+        <div class="about__copy">
+          <span class="kicker" data-aos="fade-right"><i class="line-arrow"></i> Our Philosophy</span>
+          <h2 class="title title--xl split" data-aos="fade-up">Skincare, Personalized Around You</h2>
+          <p class="lead" data-aos="fade-up" data-aos-delay="100">Your skin changes with the seasons, your stress, your sleep. We start by listening, map what your skin needs today, and build care you can keep up with: precise clinical treatments, honest advice, and nothing you don't need.</p>
+          <ul class="ticks" data-aos="fade-up" data-aos-delay="150">
+            <li><i class="fa-solid fa-circle-check"></i> Skin analysis before every plan</li>
+            <li><i class="fa-solid fa-circle-check"></i> Gentle, clinically proven methods</li>
+            <li><i class="fa-solid fa-circle-check"></i> Honest advice, no upselling</li>
+          </ul>
+          <a href="404.html" class="link-arrow" data-aos="fade-up" data-aos-delay="200">Discover Our Story <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+
+        <div class="about__visual">
+          <div class="about__dash" aria-hidden="true"></div>
+          <div class="about__arch" data-speed="0.12">
+            <img src="Assests/about-main.webp" alt="Warm light and shadow on glowing skin" width="488" height="464" loading="lazy">
+          </div>
+          <div class="about__circle" data-speed="-0.18">
+            <img src="Assests/about-small.webp" alt="Profile of a woman with radiant skin" width="232" height="232" loading="lazy">
+          </div>
+          <div class="about__badge" data-speed="0.25">
+            <i class="fa-solid fa-award"></i>
+            <span><strong>10+ years</strong> of clinical care</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. SIGNATURE TREATMENTS ============ -->
+    <section class="services section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="title title--xl" data-aos="fade-up">Signature Treatments</h2>
+          <p class="section-head__note" data-aos="fade-up" data-aos-delay="100">Six treatments, each planned around your skin. Choose one to open it.</p>
+        </div>
+
+        <div class="tx-list" id="txList">
+          <article class="tx is-active tx--peach" tabindex="0" role="button" aria-expanded="true">
+            <img src="Assests/sc1.webp" alt="Advanced facial treatment" width="912" height="672" loading="lazy">
+            <span class="tx__label">Advanced Facial</span>
+            <div class="tx__body">
+              <span class="tx__no">01</span>
+              <h3>Advanced Facial</h3>
+              <p>Deep cleansing and gentle resurfacing for clear, even skin.</p>
+              <span class="tx__go"><button onclick="window.location.href='404.html';">
+  <i class="fa-solid fa-arrow-right"></i>
+</button></span>
+            </div>
+          </article>
+          <article class="tx tx--green" tabindex="0" role="button" aria-expanded="false">
+            <img src="Assests/sc4.webp" alt="Clear, balanced skin" width="520" height="550" loading="lazy">
+            <span class="tx__label">Acne Care</span>
+            <div class="tx__body">
+              <span class="tx__no">02</span>
+              <h3>Acne Care</h3>
+              <p>Calm breakouts, clear pores and prevent marks with targeted therapy.</p>
+              <span class="tx__go"><button onclick="window.location.href='404.html';">
+  <i class="fa-solid fa-arrow-right"></i>
+</button></span>
+            </div>
+          </article>
+          <article class="tx tx--peach" tabindex="0" role="button" aria-expanded="false">
+            <img src="Assests/sc6.webp" alt="Brightened complexion" width="590" height="650" loading="lazy">
+            <span class="tx__label">Skin Brightening</span>
+            <div class="tx__body">
+              <span class="tx__no">03</span>
+              <h3>Skin Brightening</h3>
+              <p>Restore an even, luminous tone with gentle brightening peels.</p>
+              <span class="tx__go"><button onclick="window.location.href='404.html';">
+  <i class="fa-solid fa-arrow-right"></i>
+</button></span>
+            </div>
+          </article>
+          <article class="tx tx--green" tabindex="0" role="button" aria-expanded="false">
+            <img src="Assests/sc7.webp" alt="Youthful, firm skin" width="660" height="600" loading="lazy">
+            <span class="tx__label">Anti-Aging</span>
+            <div class="tx__body">
+              <span class="tx__no">04</span>
+              <h3>Anti-Aging</h3>
+              <p>Firm, smooth and refresh with collagen-boosting treatments.</p>
+              <span class="tx__go"><button onclick="window.location.href='404.html';">
+  <i class="fa-solid fa-arrow-right"></i>
+</button></span>
+            </div>
+          </article>
+          <article class="tx tx--peach" tabindex="0" role="button" aria-expanded="false">
+            <img src="Assests/sc32.webp" alt="Even skin tone around the eyes" width="575" height="400" loading="lazy">
+            <span class="tx__label">Pigmentation Care</span>
+            <div class="tx__body">
+              <span class="tx__no">05</span>
+              <h3>Pigmentation Care</h3>
+              <p>Fade dark spots and uneven patches with a tailored, safe plan.</p>
+              <span class="tx__go"><button onclick="window.location.href='404.html';">
+  <i class="fa-solid fa-arrow-right"></i>
+</button></span>
+            </div>
+          </article>
+          <article class="tx tx--green" tabindex="0" role="button" aria-expanded="false">
+            <img src="Assests/sc9.webp" alt="Hydrating mask treatment" width="590" height="790" loading="lazy">
+            <span class="tx__label">Hydration Therapy</span>
+            <div class="tx__body">
+              <span class="tx__no">06</span>
+              <h3>Hydration Therapy</h3>
+              <p>Replenish moisture deep down for a soft, plump, healthy glow.</p>
+              <span class="tx__go"><button onclick="window.location.href='404.html';">
+  <i class="fa-solid fa-arrow-right"></i>
+</button></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. RESULTS (BEFORE / AFTER) ============ -->
+    <section class="results section section--dark" id="results">
+      <div class="results__glow" aria-hidden="true"></div>
+      <div class="container results__grid">
+        <div class="results__copy">
+          <span class="kicker kicker--light" data-aos="fade-right"><i class="line-arrow line-arrow--red"></i> Results</span>
+          <h2 class="title title--xl title--peach" data-aos="fade-up">Real Skin. Real Results.</h2>
+          <p class="small-note" data-aos="fade-up" data-aos-delay="80">Results may vary depending on individual skin conditions.</p>
+          <p class="drag-note" data-aos="fade-up" data-aos-delay="140">Drag the handle to see the difference across a full treatment plan.</p>
+          <ul class="mini-stats" data-aos="fade-up" data-aos-delay="200">
+            <li><i class="fa-solid fa-droplet"></i><strong><b data-count="92">0</b>%</strong><span>feel more hydrated</span></li>
+            <li><i class="fa-solid fa-wand-magic-sparkles"></i><strong><b data-count="4">0</b> wks</strong><span>to visible glow</span></li>
+            <li><i class="fa-solid fa-face-smile"></i><strong><b data-count="98">0</b>%</strong><span>would recommend</span></li>
+          </ul>
+        </div>
+
+        <div class="ba" id="ba" aria-label="Before and after comparison">
+          <img class="ba__img" src="Assests/after.webp" alt="Skin after treatment" width="520" height="730" loading="lazy" draggable="false">
+          <div class="ba__before">
+            <img class="ba__img" src="Assests/before.webp" alt="Skin before treatment" width="520" height="730" loading="lazy" draggable="false">
+          </div>
+          <span class="ba__tag ba__tag--l">Before</span>
+          <span class="ba__tag ba__tag--r">After</span>
+          <div class="ba__handle" id="baHandle" role="slider" tabindex="0" aria-label="Before and after slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <i class="fa-solid fa-angle-left"></i><i class="fa-solid fa-angle-right"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. WHY CHOOSE US ============ -->
+    <section class="why section" id="why">
+      <div class="why__screen">
+        <div class="container why__head">
+          <h2 class="title title--lg" data-aos="fade-up">Why choose us</h2>
+          <p class="why__lead" data-aos="fade-up" data-aos-delay="60">Healthy skin starts with being listened to. Here is what you can expect from every visit.</p>
+        </div>
+
+        <div class="container why__grid">
+          <div class="why__visual">
+            <div class="why__frame" data-aos="zoom-in" data-aos-delay="100">
+              <img src="Assests/why.webp" alt="Woman wrapped in soft linen with glowing skin" width="532" height="984" loading="lazy">
+              <div class="why__layers" aria-hidden="true">
+                <img class="why__layer" src="Assests/sc21.webp" alt="" width="532" height="984" loading="lazy" decoding="async">
+                <img class="why__layer" src="Assests/sc16.webp" alt="" width="532" height="984" loading="lazy" decoding="async">
+                <img class="why__layer" src="Assests/sc1.webp" alt="" width="532" height="984" loading="lazy" decoding="async">
+                <img class="why__layer" src="Assests/sc13.webp" alt="" width="532" height="984" loading="lazy" decoding="async">
+              </div>
+              <div class="why__float"><i class="fa-solid fa-heart-pulse"></i> <span>Skin-first care</span></div>
+              <div class="why__badge"><b>4.9 <i class="fa-solid fa-star"></i></b><span>Rated by 312 clients</span></div>
+            </div>
+          </div>
+
+          <div class="why__right">
+            <ul class="why__list">
+              <li class="why__item" tabindex="0" data-aos="fade-left">
+                <span class="why__icon"><i class="fa-solid fa-user-doctor"></i></span>
+                <div><h3>Expert Skin Specialists</h3><p>Trained clinicians who examine before they treat, and explain every step.</p>
+                  <div class="why__more"><div><span class="why__proof"><i class="fa-solid fa-clipboard-check"></i> Every visit starts with a 15-minute skin analysis.</span></div></div></div>
+              </li>
+              <li class="why__item" tabindex="0" data-aos="fade-left" data-aos-delay="100">
+                <span class="why__icon"><i class="fa-solid fa-table-cells-large"></i></span>
+                <div><h3>Personalized Treatment Plans</h3><p>A plan built around your skin type, goals, budget and schedule.</p>
+                  <div class="why__more"><div><span class="why__proof"><i class="fa-solid fa-calendar-check"></i> We review your plan with you every four weeks and adjust it.</span></div></div></div>
+              </li>
+              <li class="why__item" tabindex="0" data-aos="fade-left" data-aos-delay="200">
+                <span class="why__icon"><i class="fa-solid fa-microscope"></i></span>
+                <div><h3>Advanced Technology</h3><p>Clinically proven devices, tuned for visible results with minimal downtime.</p>
+                  <div class="why__more"><div><span class="why__proof"><i class="fa-solid fa-bolt"></i> Gentle settings, so most clients go straight back to their day.</span></div></div></div>
+              </li>
+              <li class="why__item" tabindex="0" data-aos="fade-left" data-aos-delay="300">
+                <span class="why__icon"><i class="fa-regular fa-gem"></i></span>
+                <div><h3>Premium Skincare Products</h3><p>Carefully chosen formulas so your results carry on at home.</p>
+                  <div class="why__more"><div><span class="why__proof"><i class="fa-solid fa-list-check"></i> You leave with a written morning and night routine.</span></div></div></div>
+              </li>
+            </ul>
+            <a class="btn btn--dark btn--lg magnetic why__cta" href="404.html" data-aos="fade-up">Book a free skin analysis</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="why__stats" data-aos="fade-up">
+          <div><b data-count="5000" data-suffix="+">5,000+</b><span>glowing clients</span></div>
+          <div><b data-count="12" data-suffix=" yrs">12 yrs</b><span>of clinical experience</span></div>
+          <div><b data-count="98" data-suffix="%">98%</b><span>would book again</span></div>
+          <div><b data-count="4.9" data-dec="1">4.9</b><span>average rating</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. RITUAL / PROCESS ============ -->
+    <section class="ritual section section--dark" id="ritual">
+      <div class="ritual__glow" id="ritualGlow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="ritual__head">
+          <h2 class="title title--xl title--white" data-aos="fade-up">More Than a Treatment.<br>A Ritual for Your Skin.</h2>
+          <p class="ritual__lead" data-aos="fade-up" data-aos-delay="100">Warm towels, quiet rooms and unhurried time. Each visit is paced to let your skin, and you, settle.</p>
+          <a href="404.html" class="btn btn--outline-light" data-aos="fade-up" data-aos-delay="150">Explore Our Clinic</a>
+          <!-- NEW: right-side info panel (no images) -->
+          <aside class="ritual__panel" data-aos="fade-left" data-aos-delay="150" aria-label="Your visit at a glance">
+            <svg class="rp__seal" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="rpSealPath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text><textPath href="#rpSealPath">WARM TOWELS ✦ QUIET ROOMS ✦ CALM CARE ✦</textPath></text><circle cx="60" cy="60" r="22"/><path d="M60 47c6 8 9 12 0 26-9-14-6-18 0-26z"/></svg>
+            <span class="rp__tag">Your visit at a glance</span>
+            <h3 class="rp__title">60 unhurried minutes</h3>
+            <ol class="rp__list">
+              <li data-aos="fade-up" data-aos-delay="200"><i class="fa-solid fa-mug-hot"></i><div><strong>Arrive &amp; settle</strong><span>Warm towel, herbal tea, a quiet moment.</span></div><em>10 min</em></li>
+              <li data-aos="fade-up" data-aos-delay="280"><i class="fa-solid fa-magnifying-glass"></i><div><strong>Skin analysis</strong><span>We listen, then map what your skin needs today.</span></div><em>15 min</em></li>
+              <li data-aos="fade-up" data-aos-delay="360"><i class="fa-solid fa-wand-magic-sparkles"></i><div><strong>Your treatment</strong><span>Precise, gentle clinical care.</span></div><em>25 min</em></li>
+              <li data-aos="fade-up" data-aos-delay="440"><i class="fa-solid fa-seedling"></i><div><strong>Glow plan</strong><span>A simple home routine you can keep.</span></div><em>10 min</em></li>
+            </ol>
+            <div class="rp__stats">
+              <div><b>4.9</b><small>Client rating</small></div>
+              <div><b>5,000+</b><small>Happy clients</small></div>
+              <div><b>10+</b><small>Years of care</small></div>
+            </div>
+          </aside>
+        </div>
+
+        <ol class="steps" id="steps">
+          <li class="step">
+            <div class="step__img"><img src="Assests/sc11.webp" alt="Soft, healthy skin" width="450" height="350" loading="lazy"><span class="step__icon"><i class="fa-solid fa-comments"></i></span></div>
+            <span class="step__no">01</span>
+            <h3>Consult</h3>
+            <p>We listen first and map your skin's needs.</p>
+          </li>
+          <li class="step">
+            <div class="step__img"><img src="Assests/sc12.webp" alt="Soft linen towel" width="665" height="480" loading="lazy"><span class="step__icon"><i class="fa-solid fa-droplet"></i></span></div>
+            <span class="step__no">02</span>
+            <h3>Cleanse</h3>
+            <p>Warm towels and a gentle reset for your skin.</p>
+          </li>
+          <li class="step">
+            <div class="step__img"><img src="Assests/sc13.webp" alt="Treatment mask" width="590" height="790" loading="lazy"><span class="step__icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span></div>
+            <span class="step__no">03</span>
+            <h3>Treat</h3>
+            <p>Precise, clinical care tailored to your plan.</p>
+          </li>
+          <li class="step">
+            <div class="step__img"><img src="Assests/sc14.webp" alt="Glowing skin after the ritual" width="520" height="550" loading="lazy"><span class="step__icon"><i class="fa-solid fa-sun"></i></span></div>
+            <span class="step__no">04</span>
+            <h3>Glow</h3>
+            <p>Leave rested, with a home routine that lasts.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 8. GALLERY MARQUEE ============ -->
+    <section class="gallery section" id="gallery">
+      <!-- floating dewdrops & sparkles (decorative) -->
+      <div class="gfx" aria-hidden="true">
+        <span class="gfx__orb gfx__orb--1"></span><span class="gfx__orb gfx__orb--2"></span><span class="gfx__orb gfx__orb--3"></span>
+        <i class="gfx__drop" style="--x:8%;--d:9s;--s:14px"></i><i class="gfx__drop" style="--x:22%;--d:12s;--s:9px;--dl:-4s"></i>
+        <i class="gfx__drop" style="--x:47%;--d:10s;--s:12px;--dl:-7s"></i><i class="gfx__drop" style="--x:71%;--d:13s;--s:10px;--dl:-2s"></i>
+        <i class="gfx__drop" style="--x:90%;--d:11s;--s:15px;--dl:-6s"></i>
+        <b class="gfx__spark" style="--x:15%;--y:18%">✦</b><b class="gfx__spark" style="--x:84%;--y:12%;--dl:-1.2s">✦</b><b class="gfx__spark" style="--x:60%;--y:46%;--dl:-2.4s">✧</b>
+      </div>
+
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker gal__kicker" data-aos="fade-up"><span class="line-arrow"></span> Skin Diaries · Real Glow</span>
+            <h2 class="title title--xl gal__title" data-aos="fade-up">The <span class="gal__shine">Glow</span> Gallery</h2>
+          </div>
+          <p class="section-head__note" data-aos="fade-up" data-aos-delay="100">A glimpse of the calm, the care and the radiance that happens here.</p>
+        </div>
+
+        <!-- glow stats -->
+        <ul class="gstats" data-aos="fade-up">
+          <li><b data-count="12000">0</b><span>Glowing faces</span></li>
+          <li><b data-count="98">0</b><span>% Happy skin</span></li>
+          <li><b data-count="25">0</b><span>Signature facials</span></li>
+          <li><b data-count="15">0</b><span>Years of care</span></li>
+        </ul>
+      </div>
+
+      <div class="marquee" data-dir="1">
+        <div class="marquee__track">
+  <figure class="g g--arch" onclick="window.location.href='404.html';">
+    <img src="Assests/sc15.webp" alt="Close-up of glowing skin" width="575" height="400" loading="lazy">
+    <figcaption><small>Brighten</small>Eye Radiance Ritual</figcaption>
+  </figure>
+
+  <figure class="g" onclick="window.location.href='404.html';">
+    <img src="Assests/sc16.webp" alt="Gentle hands on face" width="665" height="685" loading="lazy">
+    <figcaption><small>Touch</small>Sculpting Massage</figcaption>
+  </figure>
+
+  <figure class="g g--arch" onclick="window.location.href='404.html';">
+    <img src="Assests/sc17.webp" alt="Sunlit skin and shadows" width="660" height="600" loading="lazy">
+    <figcaption><small>Protect</small>Sun-Kissed Repair</figcaption>
+  </figure>
+
+  <figure class="g" onclick="window.location.href='404.html';">
+    <img src="Assests/sc18.webp" alt="Hydrated lips" width="450" height="350" loading="lazy">
+    <figcaption><small>Hydrate</small>Lip Dew Therapy</figcaption>
+  </figure>
+
+  <figure class="g g--arch" onclick="window.location.href='404.html';">
+    <img src="Assests/sc19.webp" alt="Radiant face" width="590" height="650" loading="lazy">
+    <figcaption><small>Glow</small>Signature HydraFacial</figcaption>
+  </figure>
+</div>
+      </div>
+
+      <!-- scrolling skincare words -->
+      <div class="gband" aria-hidden="true">
+        <div class="gband__track">
+          <span>Hydrate</span><i>✦</i><span>Renew</span><i>✦</i><span>Radiate</span><i>✦</i><span>Calm</span><i>✦</i><span>Restore</span><i>✦</i>
+          <span>Hydrate</span><i>✦</i><span>Renew</span><i>✦</i><span>Radiate</span><i>✦</i><span>Calm</span><i>✦</i><span>Restore</span><i>✦</i>
+        </div>
+      </div>
+
+      <div class="marquee" data-dir="-1">
+        <div class="marquee__track">
+  <button type="button" class="g" onclick="window.location.href='404.html';">
+    <img src="Assests/sc30.webp" alt="Facial mask treatment" width="590" height="790" loading="lazy">
+    <span><small>Renew</small>Botanical Clay Mask</span>
+  </button>
+
+  <button type="button" class="g g--arch" onclick="window.location.href='404.html';">
+    <img src="Assests/sc10.webp" alt="Soft linen" width="665" height="480" loading="lazy">
+    <span><small>Calm</small>Warm Linen Wrap</span>
+  </button>
+
+  <button type="button" class="g" onclick="window.location.href='404.html';">
+    <img src="Assests/sc21.webp" alt="Glowing cheek" width="520" height="550" loading="lazy">
+    <span><small>Radiate</small>Peach Glow Peel</span>
+  </button>
+
+  <button type="button" class="g g--arch" onclick="window.location.href='404.html';">
+    <img src="Assests/sc22.webp" alt="Warm light on skin" width="488" height="464" loading="lazy">
+    <span><small>Restore</small>Golden Hour Facial</span>
+  </button>
+
+  <button type="button" class="g" onclick="window.location.href='404.html';">
+    <img src="Assests/sc23.webp" alt="Linen wrap portrait" width="532" height="984" loading="lazy">
+    <span><small>Unwind</small>Spa Linen Retreat</span>
+  </button>
+</div>
+      </div>
+
+      <!-- NEW: glow moments collage -->
+      <div class="container">
+        <div class="gmoments">
+          <div class="gmoments__imgs">
+            <!-- swap these 3 images with your own new photos -->
+            <figure class="gm gm--a" data-aos="fade-right"><img src="Assests/sc24.webp" alt="Before glow" width="590" height="650" loading="lazy"><span class="gm__tag">Day 1</span></figure>
+            <figure class="gm gm--b" data-aos="fade-up" data-aos-delay="120"><img src="Assests/sc25.webp" alt="Mid glow" width="520" height="550" loading="lazy"><span class="gm__tag">Week 3</span></figure>
+            <figure class="gm gm--c" data-aos="fade-left" data-aos-delay="240"><img src="Assests/sc26.webp" alt="Full glow" width="488" height="464" loading="lazy"><span class="gm__tag">Glow ✦</span></figure>
+            <svg class="gseal" viewBox="0 0 120 120" aria-hidden="true">
+              <defs><path id="gsealPath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+              <text><textPath href="#gsealPath">DERMATOLOGIST ✦ APPROVED ✦ PURE GLOW ✦</textPath></text>
+              <circle cx="60" cy="60" r="22"/><path d="M60 47c6 8 9 12 0 26-9-14-6-18 0-26z"/>
+            </svg>
+          </div>
+          <div class="gmoments__copy" data-aos="fade-up">
+            <span class="kicker"><span class="line-arrow"></span> Glow Journey</span>
+            <h3 class="title title--lg">From tired to <em>luminous</em></h3>
+            <p class="lead">Every face tells a story. Hover the moments and watch skin go from dull to dewy — one gentle ritual at a time.</p>
+<ul class="gtags">
+  <li><button type="button" onclick="window.location.href='404.html';">Deep Hydration</button></li>
+  <li><button type="button" onclick="window.location.href='404.html';">Gentle Peels</button></li>
+  <li><button type="button" onclick="window.location.href='404.html';">Barrier Repair</button></li>
+  <li><button type="button" onclick="window.location.href='404.html';">Glow Boost</button></li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 9. TESTIMONIALS ============ -->
+    <section class="reviews section" id="reviews">
+      <!-- floating petals / stars (decorative) -->
+      <div class="rfx" aria-hidden="true">
+        <i style="--x:6%;--d:11s;--s:1.1rem">★</i><i style="--x:18%;--d:14s;--s:.8rem;--dl:-5s">✦</i><i style="--x:36%;--d:12s;--s:1rem;--dl:-8s">★</i>
+        <i style="--x:58%;--d:15s;--s:.9rem;--dl:-3s">✦</i><i style="--x:78%;--d:10s;--s:1.2rem;--dl:-6s">★</i><i style="--x:93%;--d:13s;--s:.8rem;--dl:-9s">✦</i>
+        <span class="rfx__blob rfx__blob--1"></span><span class="rfx__blob rfx__blob--2"></span>
+      </div>
+
+      <div class="container reviews__grid">
+        <div class="reviews__intro">
+          <span class="kicker" data-aos="fade-right"><i class="line-arrow"></i> Kind words</span>
+          <h2 class="title title--lg" data-aos="fade-up">Loved by <span class="rshine">5,000+</span> Clients</h2>
+
+          <!-- rating badge -->
+          <div class="rrate" data-aos="fade-up" data-aos-delay="60">
+            <b class="rrate__num"><span id="rateNum" data-rate="4.9">0.0</span></b>
+            <div>
+              <span class="rrate__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+              <small>Average client rating</small>
+            </div>
+          </div>
+
+          <!-- avatar thumbnails = quick navigation (swap images if you like) -->
+          <div class="rthumbs" id="revThumbs" data-aos="fade-up" data-aos-delay="120">
+            <button type="button" class="is-on" aria-label="Show review 1"><img src="Assests/avatar-sarah.webp" alt="" width="400" height="400"></button>
+            <button type="button" aria-label="Show review 2"><img src="Assests/child2.webp" alt="" width="400" height="400"></button>
+            <button type="button" aria-label="Show review 3"><img src="Assests/child4.webp" alt="" width="400" height="400"></button>
+            <button type="button" aria-label="Show review 4"><img src="Assests/compressed-image (3).webp" alt="" width="400" height="400"></button>
+          </div>
+
+          <div class="reviews__ctrl" data-aos="fade-up" data-aos-delay="180">
+            <button type="button" id="prevRev" aria-label="Previous review"><i class="fa-solid fa-arrow-left"></i></button>
+            <button type="button" id="nextRev" aria-label="Next review"><i class="fa-solid fa-arrow-right"></i></button>
+            <span class="reviews__count"><b id="revNow">01</b> / 04</span>
+          </div>
+        </div>
+
+        <div class="reviews__stage" id="revStage">
+          <span class="rglow" aria-hidden="true"></span>
+          <i class="fa-solid fa-quote-right reviews__quote" aria-hidden="true"></i>
+          <span class="rsparks" aria-hidden="true"><b>✦</b><b>✧</b><b>✦</b></span>
+          <blockquote class="rev is-active">
+            <p>"My skin has never felt calmer. They actually listened, built a plan I could follow, and never pushed products I didn't need."</p>
+            <footer><img src="Assests/avatar-sarah.webp" alt="" width="400" height="400"><div><strong>Ananya R.</strong><span>Advanced Facial</span></div><span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></footer>
+          </blockquote>
+          <blockquote class="rev">
+            <p>"Three months of pigmentation care and my tone is finally even. The clinic feels like a spa, but the results are real."</p>
+            <footer><img src="Assests/child2.webp" alt="" width="400" height="400"><div><strong>Meera S.</strong><span>Pigmentation Care</span></div><span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></footer>
+          </blockquote>
+          <blockquote class="rev">
+            <p>"Every step was explained before it was done. My breakouts cleared and I finally have a routine that is simple and lasts."</p>
+            <footer><img src="Assests/child4.webp" alt="" width="400" height="400"><div><strong>Priya K.</strong><span>Acne Care</span></div><span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></footer>
+          </blockquote>
+          <blockquote class="rev">
+            <p>"Hydration therapy changed my winter skin completely. Quiet rooms, warm towels, and a team that is never in a hurry."</p>
+            <footer><img src="Assests/compressed-image (3).webp" alt="" width="400" height="400"><div><strong>Divya M.</strong><span>Hydration Therapy</span></div><span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></footer>
+          </blockquote>
+          <span class="rprog" aria-hidden="true"><i></i></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 10. JOURNAL / BLOG ============ -->
+    <section class="blog section" id="blog">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="title title--xl" data-aos="fade-up">Skincare Journal</h2>
+          <a href="404.html" class="link-arrow" data-aos="fade-up" data-aos-delay="100">View all articles <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+
+        <div class="blog__grid">
+          <article class="post post--feature" data-aos="fade-up">
+            <a href="404.html" class="post__img"><img src="Assests/journal-1.webp" alt="Client receiving a facial treatment" width="912" height="672" loading="lazy"></a>
+            <span class="tag">Routine</span>
+            <h3><a href="404.html">The Three-Step Morning Routine That Actually Lasts</a></h3>
+            <p>Why cleanse, protect and moisturize still beats a ten-step shelf.</p>
+            <a href="404.html" class="link-arrow link-arrow--sm">Read article <i class="fa-solid fa-arrow-right-long"></i></a>
+          </article>
+
+          <div class="blog__side">
+            <article class="post post--row" data-aos="fade-left">
+              <a href="404.html" class="post__thumb"><img src="Assests/sc27.webp" alt="Soft linen texture" width="665" height="480" loading="lazy"></a>
+              <div><span class="tag">Science</span><h3><a href="404.html">Protecting Your Barrier</a></h3><p>Small habits for calmer skin all year.</p><a href="404.html" class="link-arrow link-arrow--sm">Read article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+            </article>
+            <article class="post post--row" data-aos="fade-left" data-aos-delay="100">
+              <a href="404.html" class="post__thumb"><img src="Assests/sc28.webp" alt="Woman during a consultation" width="590" height="650" loading="lazy"></a>
+              <div><span class="tag">Treatments</span><h3><a href="404.html">Your First Consultation</a></h3><p>What we ask and how your plan takes shape.</p><a href="404.html" class="link-arrow link-arrow--sm">Read article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+            </article>
+            <article class="post post--row" data-aos="fade-left" data-aos-delay="200">
+              <a href="404.html" class="post__thumb"><img src="Assests/detail-shadow.webp" alt="Sun-kissed skin" width="660" height="600" loading="lazy"></a>
+              <div><span class="tag">Sun care</span><h3><a href="404.html">Sunscreen, Explained Simply</a></h3><p>SPF, UVA, UVB and what actually matters.</p><a href="404.html" class="link-arrow link-arrow--sm">Read article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 11. CONTACT / BOOKING ============ -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <header class="bk__head">
+          <span class="kicker" data-aos="fade-right"><i class="line-arrow"></i> Contact</span>
+          <h2 class="title title--lg" data-aos="fade-up">Reserve Your Glow Ritual</h2>
+          <p class="lead" data-aos="fade-up" data-aos-delay="80">Pick what you need and when suits you. Your first consultation includes a full skin analysis.</p>
+        </header>
+
+        <div class="bk__grid">
+          <div class="bk__visit" data-aos="fade-right">
+            <figure class="bk__photo">
+              <img src="Assests/sc1.webp" alt="Client receiving a facial treatment" width="520" height="360" loading="lazy">
+              <span class="bk__live" id="liveStatus"><i></i><b>Open now</b></span>
+              <figcaption>
+                <strong>Visit us</strong>
+                <span>4517 Washington Ave. Manchester, Kentucky 4646</span>
+                <a href="404.html" target="_blank" rel="noopener">Get directions <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </figcaption>
+            </figure>
+
+            <div class="bk__reach">
+              <a href="404.html"><i class="fa-solid fa-phone"></i><span><b>Call us</b>(+91) 99223 66551</span></a>
+              <a href="mailto:info@thestackly.com"><i class="fa-solid fa-envelope"></i><span><b>Email us</b>info@thestackly.com</span></a>
+            </div>
+
+            <ul class="bk__hours" id="hours" aria-label="Opening hours">
+              <li data-d="1"><span>Monday</span><b>10am &ndash; 7pm</b></li>
+              <li data-d="2"><span>Tuesday</span><b>10am &ndash; 7pm</b></li>
+              <li data-d="3"><span>Wednesday</span><b>10am &ndash; 7pm</b></li>
+              <li data-d="4"><span>Thursday</span><b>10am &ndash; 7pm</b></li>
+              <li data-d="5"><span>Friday</span><b>10am &ndash; 7pm</b></li>
+              <li data-d="6"><span>Saturday</span><b>10am &ndash; 7pm</b></li>
+              <li data-d="0"><span>Sunday</span><b>Closed</b></li>
+            </ul>
+          </div>
+
+          <form class="bk__form" id="bookForm" novalidate data-aos="fade-left">
+            <div class="field field--bk bk__treat">
+              <span class="bk__lbl" id="treatLbl">What would you like to book?</span>
+              <select id="fTreat" name="treatment" required aria-labelledby="treatLbl">
+                <option value="" selected disabled hidden></option>
+                <option>Advanced Facial</option><option>Acne Care</option><option>Skin Brightening</option>
+                <option>Anti-Aging</option><option>Pigmentation Care</option><option>Hydration Therapy</option>
+              </select>
+              <div class="bk__chips" role="radiogroup" aria-labelledby="treatLbl">
+                <button type="button" class="bk__chip" role="radio" aria-checked="false">Advanced Facial</button>
+                <button type="button" class="bk__chip" role="radio" aria-checked="false">Acne Care</button>
+                <button type="button" class="bk__chip" role="radio" aria-checked="false">Skin Brightening</button>
+                <button type="button" class="bk__chip" role="radio" aria-checked="false">Anti-Aging</button>
+                <button type="button" class="bk__chip" role="radio" aria-checked="false">Pigmentation Care</button>
+                <button type="button" class="bk__chip" role="radio" aria-checked="false">Hydration Therapy</button>
+              </div>
+            </div>
+
+            <fieldset class="bk__slots">
+              <legend class="bk__lbl">Best time for you</legend>
+              <label><input type="radio" name="slot" value="Morning"><span><i class="fa-regular fa-sun"></i> Morning</span></label>
+              <label><input type="radio" name="slot" value="Afternoon"><span><i class="fa-solid fa-cloud-sun"></i> Afternoon</span></label>
+              <label><input type="radio" name="slot" value="Evening"><span><i class="fa-regular fa-moon"></i> Evening</span></label>
+            </fieldset>
+
+            <div class="bk__two">
+              <div class="field"><input type="text" id="fName" name="name" placeholder=" " required autocomplete="name"><label for="fName">Full name</label><i class="fa-solid fa-user"></i></div>
+              <div class="field"><input type="email" id="fEmail" name="email" placeholder=" " required autocomplete="email"><label for="fEmail">Email address</label><i class="fa-solid fa-envelope"></i></div>
+            </div>
+            <div class="field field--full"><textarea id="fMsg" name="message" rows="3" placeholder=" "></textarea><label for="fMsg">Tell us about your skin (optional)</label><i class="fa-solid fa-comment-dots"></i></div>
+
+            <button type="submit" class="btn btn--dark btn--lg form__submit"><i class="fa-solid fa-paper-plane"></i> Request Appointment</button>
+            <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER (CTA + footer) ============ -->
+  <footer class="footer" id="footer">
+    <div class="footer__bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer__cta">
+        <h2 class="footer__headline" id="footHead">Your Skin Deserves Exceptional Care.</h2>
+        <a href="404.html" class="btn btn--outline-peach btn--lg magnetic">Book Your Consultation <i class="fa-solid fa-arrow-right-long"></i></a>
+      </div>
+
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#home" class="header__logo footer__logo" aria-label="Stackly - back to top"><img src="Assests/logo-light.webp" alt="Stackly" width="352" height="92" loading="lazy"></a>
+          <p>Personalized skincare with professional care.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#blog">Blog</a></li><li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__contact">
+            <li><i class="fa-solid fa-house"></i> 4517 Washington Ave. Manchester, Kentucky 4646</li>
+            <li><i class="fa-solid fa-envelope"></i> info@thestackly.com<br>info1@gmail.com</li>
+            <li><i class="fa-solid fa-phone"></i> (+91) 99224-22334<br>(+91) 88112-77332</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Opening hours</h4>
+          <p class="footer__hours">Mon &ndash; Sat: 10am &ndash; 7pm<br>Sunday: Closed</p>
+          <div class="footer__social">
+            <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; <span id="year">2026</span> Stackly Skincare Clinic. All rights reserved.</span>
+        <a href="#home" class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Login modal -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-login></div>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="modal__close" type="button" aria-label="Close" data-close-login><i class="fa-solid fa-xmark"></i></button>
+      <img src="Assests/logo.webp" alt="Stackly" width="352" height="92" class="modal__logo">
+      <h3 id="loginTitle">Welcome back</h3>
+      <p>Log in to manage your appointments.</p>
+      <form id="loginForm" novalidate>
+        <div class="field"><input type="email" id="lEmail" placeholder=" " required><label for="lEmail">Email address</label><i class="fa-solid fa-envelope"></i></div>
+        <div class="field"><input type="password" id="lPass" placeholder=" " required><label for="lPass">Password</label><i class="fa-solid fa-lock"></i></div>
+        <button class="btn btn--dark btn--lg btn--block" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+        <p class="form__status" id="loginStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+const bookForm = document.getElementById('bookForm');
+
+if (bookForm) {
+  bookForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const treatment = document.getElementById('fTreat');
+    const name = document.getElementById('fName');
+    const email = document.getElementById('fEmail');
+    const slot = document.querySelector('input[name="slot"]:checked');
+
+    // Validation
+    if (!treatment.value) {
+      treatment.focus();
+      return;
+    }
+
+    if (!slot) {
+      return;
+    }
+
+    if (!name.value.trim()) {
+      name.focus();
+      return;
+    }
+
+    if (!email.value.trim() || !email.checkValidity()) {
+      email.focus();
+      return;
+    }
+
+    // All validation passed
+    window.location.href = '404.html';
+  });
+
+  // Reset form when returning to this page
+  window.addEventListener('pageshow', function () {
+    bookForm.reset();
+
+    // Reset treatment chips
+    document.querySelectorAll('.bk__chip').forEach(function (chip) {
+      chip.setAttribute('aria-checked', 'false');
+    });
+  });
+}
+</script>
+</body>
+</html>
