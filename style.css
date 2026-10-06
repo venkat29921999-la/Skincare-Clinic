@@ -1133,3 +1133,86 @@ html:not(.aos-ready) [data-aos] { opacity: 1 !important; transform: none !import
   .nav .nav__login-mobile, .nav .nav__signup-mobile { display: inline-flex; width: min(260px, 100%); justify-content: center; }
 }
 @media (min-width: 641px) and (max-width: 980px) { .nav .nav__signup-mobile { display: none; } .nav .nav__login-mobile { display: none; } }
+
+
+/* ---------- Results: journey timeline + what clients notice ---------- */
+.journey, .gains { display: grid; gap: 14px; width: 100%; max-width: 540px; margin-top: 6px; }
+.journey__title { font-family: var(--f-serif); font-weight: 400; font-size: 1.35rem; color: var(--peach); }
+.journey__steps { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; list-style: none; }
+.journey__steps::before { content: ""; position: absolute; left: 10px; right: 10px; top: 11px; height: 2px; background: color-mix(in srgb, var(--mist) 25%, transparent); }
+.journey__steps button { position: relative; display: grid; gap: 3px; justify-items: start; width: 100%; padding-top: 32px; text-align: left; color: var(--mist); transition: transform .4s var(--ease); }
+.journey__steps button:hover { transform: translateY(-3px); }
+.journey__steps button:focus-visible { outline: 2px solid var(--peach); outline-offset: 6px; border-radius: 8px; }
+.journey__steps button::before { content: ""; position: absolute; left: 0; top: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--green); border: 2px solid color-mix(in srgb, var(--peach) 65%, transparent); transition: background .4s, box-shadow .4s; }
+.journey__steps button.is-on::before { background: var(--peach); box-shadow: 0 0 0 6px color-mix(in srgb, var(--peach) 25%, transparent); }
+.journey__steps b { font-weight: 600; font-size: .92rem; transition: color .4s; }
+.journey__steps button.is-on b { color: var(--peach); }
+.journey__steps span { font-size: .76rem; line-height: 1.35; opacity: .82; }
+.journey__hint { font-size: .78rem; opacity: .7; }
+.gains ul { display: grid; gap: 12px; list-style: none; }
+.gains li { display: grid; grid-template-columns: 128px minmax(0, 1fr) 42px; align-items: center; gap: 12px; font-size: .86rem; }
+.gains .track { height: 8px; border-radius: 99px; background: rgba(255, 255, 255, .14); overflow: hidden; }
+.gains .track i { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--peach), #fff3ea); transition: width 1.5s var(--ease); }
+.gains.aos-animate .track i, .gains:not([data-aos]) .track i { width: var(--v); }
+.gains li:nth-child(2) .track i { transition-delay: .12s; } .gains li:nth-child(3) .track i { transition-delay: .24s; } .gains li:nth-child(4) .track i { transition-delay: .36s; }
+.gains b { text-align: right; font-weight: 600; color: var(--peach); }
+@media (max-width: 560px) {
+  .journey__steps { grid-template-columns: 1fr 1fr; row-gap: 18px; }
+  .journey__steps::before { display: none; }
+  .gains li { grid-template-columns: 104px minmax(0, 1fr) 38px; gap: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .gains .track i { transition: none; } }
+
+/* Fix: "Why choose us" heading overlapping its paragraph (the lead had a negative top margin) */
+.why__head { display: grid; gap: clamp(12px, 1.8vw, 20px); }
+.why__head .title { padding-bottom: .08em; }
+.why__head .why__lead { margin-top: 0; max-width: 46ch; line-height: 1.7; }
+
+
+/* Fix: empty gaps between the ritual heading, text and button (the tall right panel was stretching the left rows) */
+@media (min-width: 901px) {
+  .ritual__head { grid-template-rows: 1fr auto auto auto 1fr; row-gap: 0; align-items: start; }
+  .ritual__head > .title { grid-column: 1; grid-row: 2; }
+  .ritual__head > .ritual__lead { grid-column: 1; grid-row: 3; margin-top: 18px; }
+  .ritual__head > .btn { grid-column: 1; grid-row: 4; margin-top: 26px; }
+  .ritual__head > .ritual__panel { grid-column: 2; grid-row: 1 / -1; align-self: center; }
+}
+
+
+/* Reduce the empty space above and below the ritual section */
+.ritual.section { padding-block: clamp(44px, 6vw, 76px); }
+.ritual__head { margin-bottom: clamp(28px, 4vw, 44px); }
+@media (max-width: 900px) { .ritual__panel { margin-top: 24px; } }
+
+
+/* Extra content under the ritual paragraph */
+.ritual__more { color: color-mix(in srgb, var(--mist) 82%, transparent); max-width: 52ch; font-size: .95rem; line-height: 1.75; }
+.ritual__points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; max-width: 560px; margin: 0; padding: 0; list-style: none; }
+.ritual__points li { display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 16px; background: color-mix(in srgb, #fff 8%, transparent); border: 1px solid color-mix(in srgb, #fff 18%, transparent); font-size: .78rem; line-height: 1.4; color: color-mix(in srgb, var(--mist) 80%, transparent); transition: transform .4s var(--ease), border-color .3s; }
+.ritual__points li:hover { transform: translateY(-3px); border-color: var(--peach); }
+.ritual__points i { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--peach); color: var(--green); font-size: .85rem; }
+.ritual__points b { display: block; font-weight: 600; color: #fff; font-size: .88rem; margin-bottom: 2px; }
+@media (min-width: 901px) {
+  .ritual__head { grid-template-rows: 1fr auto auto auto auto auto 1fr; }
+  .ritual__head > .ritual__more { grid-column: 1; grid-row: 4; margin-top: 14px; }
+  .ritual__head > .ritual__points { grid-column: 1; grid-row: 5; margin-top: 22px; }
+  .ritual__head > .btn { grid-row: 6; }
+}
+@media (max-width: 480px) { .ritual__points { grid-template-columns: 1fr; } .ritual__points li { flex-direction: row; align-items: center; } }
+
+
+/* Fix: captions on the second gallery row (these cards are <button>s with a <span>, not <figure>s) */
+button.g { padding: 0; border: 0; background: none; cursor: pointer; font: inherit; display: block; }
+.g > span { position: absolute; left: 12px; right: 12px; bottom: 14px; z-index: 3; color: #fff; font-family: var(--f-script); font-size: 1.15rem; line-height: 1.15; text-align: center; transform: translateY(18px); opacity: 0; transition: transform .5s var(--ease), opacity .4s; pointer-events: none; }
+.g > span small { display: block; font-family: var(--f-body); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--peach); margin-bottom: 2px; }
+.g:hover > span, .g:focus-visible > span { transform: none; opacity: 1; }
+.g--arch > span { bottom: 18px; }
+@media (hover: none) { .g > span { opacity: 1; transform: none; } }
+
+
+/* Footer logo in the light colour used on the header Login button (it was dark on the green footer) */
+.footer__brand .footer__logo img { filter: brightness(0) invert(1); opacity: .95; }
+
+
+/* Footer description: wider so the longer text reads in about 3 lines */
+.footer__brand p { max-width: 36ch; line-height: 1.65; }

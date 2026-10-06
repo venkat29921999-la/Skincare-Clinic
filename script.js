@@ -1047,3 +1047,37 @@
     }, { threshold: .4 }).observe(frame);
   }
 })();
+
+/* =========================================================
+   RESULTS: week buttons move the before/after slider
+   ========================================================= */
+(() => {
+  const ba = document.querySelector("#ba"), handle = document.querySelector("#baHandle");
+  const btns = [...document.querySelectorAll(".journey__steps button")];
+  if (!ba || !handle || !btns.length) return;
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let raf, busy = false;
+  const put = (p) => { ba.style.setProperty("--pos", p + "%"); handle.setAttribute("aria-valuenow", Math.round(p)); };
+  const go = (to) => {
+    cancelAnimationFrame(raf);
+    if (still) { put(to); return; }
+    const from = parseFloat(handle.getAttribute("aria-valuenow")) || 50, t0 = performance.now(), d = 800;
+    busy = true;
+    const step = (t) => {
+      const q = Math.min((t - t0) / d, 1), e = 1 - Math.pow(1 - q, 3);
+      put(from + (to - from) * e);
+      if (q < 1) raf = requestAnimationFrame(step); else busy = false;
+    };
+    raf = requestAnimationFrame(step);
+  };
+  const mark = (i) => btns.forEach((b, k) => b.classList.toggle("is-on", k === i));
+  btns.forEach((b, i) => b.addEventListener("click", () => { mark(i); go(+b.dataset.pos); }));
+  /* dragging the slider by hand highlights the nearest week */
+  new MutationObserver(() => {
+    if (busy) return;
+    const p = parseFloat(handle.getAttribute("aria-valuenow"));
+    let best = 0, bd = Infinity;
+    btns.forEach((b, i) => { const d = Math.abs(+b.dataset.pos - p); if (d < bd) { bd = d; best = i; } });
+    mark(best);
+  }).observe(handle, { attributes: true, attributeFilter: ["aria-valuenow"] });
+})();

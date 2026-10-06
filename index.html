@@ -280,6 +280,28 @@
             <li><i class="fa-solid fa-wand-magic-sparkles"></i><strong><b data-count="4">0</b> wks</strong><span>to visible glow</span></li>
             <li><i class="fa-solid fa-face-smile"></i><strong><b data-count="98">0</b>%</strong><span>would recommend</span></li>
           </ul>
+          <!-- <div class="journey" data-aos="fade-up" data-aos-delay="240">
+            <h3 class="journey__title">Your 12-week journey</h3>
+            <ol class="journey__steps" aria-label="Pick a week to preview it on the slider">
+              <li><button type="button" data-pos="8"><b>Week 1</b><span>Skin analysis and a gentle reset</span></button></li>
+              <li><button type="button" data-pos="35"><b>Week 4</b><span>First visible glow</span></button></li>
+              <li><button type="button" data-pos="65"><b>Week 8</b><span>Even tone, smoother texture</span></button></li>
+              <li><button type="button" data-pos="92"><b>Week 12</b><span>Lasting, healthy radiance</span></button></li>
+            </ol>
+            <p class="journey__hint">Tap a week to move the slider.</p>
+          </div> -->
+
+          <div class="gains" data-aos="fade-up" data-aos-delay="300">
+            <h3 class="journey__title">What clients notice most</h3>
+            <ul>
+              <li><span>Hydration</span><div class="track"><i style="--v:92%"></i></div><b>92%</b></li>
+              <li><span>Even skin tone</span><div class="track"><i style="--v:86%"></i></div><b>86%</b></li>
+              <li><span>Smoother texture</span><div class="track"><i style="--v:81%"></i></div><b>81%</b></li>
+              <li><span>Fewer breakouts</span><div class="track"><i style="--v:78%"></i></div><b>78%</b></li>
+            </ul>
+          </div>
+
+          <a class="btn btn--outline-peach btn--lg magnetic" href="404.html" data-aos="fade-up" data-aos-delay="360">Start your journey <i class="fa-solid fa-arrow-right-long"></i></a>
         </div>
 
         <div class="ba" id="ba" aria-label="Before and after comparison">
@@ -364,6 +386,12 @@
         <div class="ritual__head">
           <h2 class="title title--xl title--white" data-aos="fade-up">More Than a Treatment.<br>A Ritual for Your Skin.</h2>
           <p class="ritual__lead" data-aos="fade-up" data-aos-delay="100">Warm towels, quiet rooms and unhurried time. Each visit is paced to let your skin, and you, settle.</p>
+          <p class="ritual__more" data-aos="fade-up" data-aos-delay="120">No rushing, no hard sell. Every visit begins with a conversation, and we adjust pressure, products and pace to how your skin feels that day, so you leave calm and your skin leaves clearer.</p>
+          <ul class="ritual__points" data-aos="fade-up" data-aos-delay="140">
+            <li><i class="fa-solid fa-spa"></i><span><b>Calm rooms</b>Soft light and low sound</span></li>
+            <li><i class="fa-solid fa-leaf"></i><span><b>Gentle products</b>Skin-safe, fragrance-aware</span></li>
+            <li><i class="fa-solid fa-user-clock"></i><span><b>One-to-one time</b>Never double-booked</span></li>
+          </ul>
           <a href="404.html" class="btn btn--outline-light" data-aos="fade-up" data-aos-delay="150">Explore Our Clinic</a>
           <!-- NEW: right-side info panel (no images) -->
           <aside class="ritual__panel" data-aos="fade-left" data-aos-delay="150" aria-label="Your visit at a glance">
@@ -444,30 +472,30 @@
 
       <div class="marquee" data-dir="1">
         <div class="marquee__track">
-  <figure class="g g--arch" onclick="window.location.href='404.html';">
+  <button type="button" class="g g--arch" onclick="window.location.href='404.html';">
     <img src="Assests/sc15.webp" alt="Close-up of glowing skin" width="575" height="400" loading="lazy">
-    <figcaption><small>Brighten</small>Eye Radiance Ritual</figcaption>
-  </figure>
+    <span><small>Brighten</small>Eye Radiance Ritual</span>
+  </button>
 
-  <figure class="g" onclick="window.location.href='404.html';">
+  <button type="button" class="g" onclick="window.location.href='404.html';">
     <img src="Assests/sc16.webp" alt="Gentle hands on face" width="665" height="685" loading="lazy">
-    <figcaption><small>Touch</small>Sculpting Massage</figcaption>
-  </figure>
+    <span><small>Touch</small>Sculpting Massage</span>
+  </button>
 
-  <figure class="g g--arch" onclick="window.location.href='404.html';">
+  <button type="button" class="g g--arch" onclick="window.location.href='404.html';">
     <img src="Assests/sc17.webp" alt="Sunlit skin and shadows" width="660" height="600" loading="lazy">
-    <figcaption><small>Protect</small>Sun-Kissed Repair</figcaption>
-  </figure>
+    <span><small>Protect</small>Sun-Kissed Repair</span>
+  </button>
 
-  <figure class="g" onclick="window.location.href='404.html';">
+  <button type="button" class="g" onclick="window.location.href='404.html';">
     <img src="Assests/sc18.webp" alt="Hydrated lips" width="450" height="350" loading="lazy">
-    <figcaption><small>Hydrate</small>Lip Dew Therapy</figcaption>
-  </figure>
+    <span><small>Hydrate</small>Lip Dew Therapy</span>
+  </button>
 
-  <figure class="g g--arch" onclick="window.location.href='404.html';">
+  <button type="button" class="g g--arch" onclick="window.location.href='404.html';">
     <img src="Assests/sc19.webp" alt="Radiant face" width="590" height="650" loading="lazy">
-    <figcaption><small>Glow</small>Signature HydraFacial</figcaption>
-  </figure>
+    <span><small>Glow</small>Signature HydraFacial</span>
+  </button>
 </div>
       </div>
 
@@ -571,7 +599,9 @@
 
           <div class="reviews__ctrl" data-aos="fade-up" data-aos-delay="180">
             <button type="button" id="prevRev" aria-label="Previous review"><i class="fa-solid fa-arrow-left"></i></button>
-            <button type="button" id="nextRev" aria-label="Next review"><i class="fa-solid fa-arrow-right"></i></button>
+            <button type="button" id="nextRev" aria-label="Next review"><button onclick="window.location.href='404.html';">
+  <i class="fa-solid fa-arrow-right"></i>
+</button></button>
             <span class="reviews__count"><b id="revNow">01</b> / 04</span>
           </div>
         </div>
@@ -724,12 +754,12 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <a href="#home" class="header__logo footer__logo" aria-label="Stackly - back to top"><img src="Assests/logo-light.webp" alt="Stackly" width="352" height="92" loading="lazy"></a>
-          <p>Personalized skincare with professional care.</p>
+          <p>Personalized skincare with professional care. We listen first, then plan gentle clinical care around your skin, with a simple routine for home.</p>
         </div>
         <div>
           <h4>Navigation</h4>
           <ul class="footer__links">
-            <li><a href="index.html">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#blog">Blog</a></li><li><a href="#contact">Contact</a></li>
+            <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#blog">Blog</a></li><li><a href="#contact">Contact</a></li>
           </ul>
         </div>
         <div>
