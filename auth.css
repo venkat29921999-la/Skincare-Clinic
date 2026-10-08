@@ -110,3 +110,6 @@ body.a-login,body.a-signup{font-family:"Josefin Sans",system-ui,sans-serif;color
 }
 @media (max-height:480px){.au-social{display:none}.au-or{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* FONT MATCH: signup heading uses the same script font as the home page headings (appended) */
+.a-signup .au-hero h2{font-family:"Lobster Two",cursive;font-weight:400;letter-spacing:0}
+.a-signup .au-hero h3{font-family:"Lobster Two",cursive;font-weight:400;letter-spacing:.5px}
