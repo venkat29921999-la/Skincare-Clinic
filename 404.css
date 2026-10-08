@@ -36,3 +36,8 @@ h1{font-family:"Lobster Two",Georgia,serif;font-weight:400;font-size:clamp(2rem,
 
 @media(max-width:480px){body{padding-top:84px}.btn{flex:1 1 100%}.actions{width:100%}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* Lenis smooth scroll (appended; nothing above changed) */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent], .lenis [data-lenis-prevent-wheel], .lenis [data-lenis-prevent-touch] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }

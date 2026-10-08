@@ -235,3 +235,8 @@ button.row{width:100%;text-align:left}
 .top h1{grid-row:2;grid-column:1/-1;font-size:clamp(2rem,9vw,2.5rem);line-height:1.05}
 .top h1 small{margin-top:4px;font-size:.82rem}
 }
+/* Lenis smooth scroll (appended; nothing above changed) */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent], .lenis [data-lenis-prevent-wheel], .lenis [data-lenis-prevent-touch] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }

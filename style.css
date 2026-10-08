@@ -5809,3 +5809,9 @@ html:not(.aos-ready) [data-svc]{opacity:1}
   .svc-page .svc-jr__ph { aspect-ratio: 1 / .82; margin-bottom: 14px; }
   .svc-page .svc-jr__in { padding-bottom: 22px; }
 }
+
+/* Lenis smooth scroll (appended; nothing above changed) */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent], .lenis [data-lenis-prevent-wheel], .lenis [data-lenis-prevent-touch] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }

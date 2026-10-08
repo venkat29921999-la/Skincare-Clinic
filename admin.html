@@ -174,4 +174,7 @@ document.addEventListener("submit",e=>{if(e.target.id!=="pf"){if(e.target.id!=="
 $("#view").addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g)return go(g.dataset.go);const b=e.target.closest("[data-book]");if(b){bk.unshift(["Next available",b.dataset.book,"Upcoming"]);toast(b.dataset.book+" added to My Bookings ✦")}});
 const start=(location.hash||"").slice(1);go(V[start]?start:"overview");badge();
 })();</script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+<script src="lenis-init.js"></script>
+<script src="site-fx.js"></script>
 </body></html>
