@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Stackly Skincare Clinic</title>
+  <meta name="description" content="Reserve your visit at Stackly Skincare Clinic. Call, email or send a message and we will take it from there.">
+  <meta name="theme-color" content="#1a3a30">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Josefin+Sans:wght@300;400;500;600&family=Lobster+Two:ital,wght@0,400;0,700;1,400&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="contact-page">
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="pl__fx">
+      <i class="gfx__drop" style="--x:12%;--d:7s;--s:12px"></i><i class="gfx__drop" style="--x:30%;--d:9s;--s:9px;--dl:-3s"></i>
+      <i class="gfx__drop" style="--x:55%;--d:8s;--s:14px;--dl:-5s"></i><i class="gfx__drop" style="--x:78%;--d:10s;--s:10px;--dl:-1s"></i>
+      <b class="gfx__spark" style="--x:18%;--y:22%">✦</b><b class="gfx__spark" style="--x:80%;--y:30%;--dl:-1.4s">✧</b><b class="gfx__spark" style="--x:64%;--y:72%;--dl:-2.2s">✦</b>
+    </div>
+    <div class="pl__orb">
+      <svg viewBox="0 0 100 100"><circle class="pl__track" cx="50" cy="50" r="46"/><circle class="pl__ring" cx="50" cy="50" r="46"/></svg>
+      <b><span id="plNum">0</span><small>%</small></b>
+    </div>
+    <img src="Assests/logo-light.webp" alt="" width="352" height="92">
+    <div class="preloader__bar"><span></span></div>
+    <p class="pl__word" id="plWord">Cleansing</p>
+  </div>
+
+  <!-- Page transition curtain (plays when a main menu page is opened) -->
+  <div class="pt" id="pageTrans" aria-hidden="true">
+    <div class="pt__p pt__a"></div><div class="pt__p pt__b"></div>
+    <div class="pt__label"><small id="ptSmall">Welcome</small><b id="ptBig">Home</b><i></i></div>
+  </div>
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ 1. HEADER ============ -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo" aria-label="Stackly home">
+        <img src="Assests/logo.webp" alt="Stackly" width="352" height="92">
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li><a href="service.html" class="nav__link">Service</a></li>
+          <li><a href="blog.html" class="nav__link">Blog</a></li>
+          <li><a href="contact.html" class="nav__link is-active" aria-current="page">Contact</a></li>
+        </ul>
+        <a class="btn btn--dark nav__login-mobile" href="login.html">
+          <i class="fa-solid fa-user"></i> Login
+        </a>
+        <a class="btn btn--dark nav__signup-mobile" href="signup.html">Signup</a>
+        <div class="nav__social" aria-label="Social links">
+          <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--dark header__login" href="login.html"><i class="fa-solid fa-user"></i><span>Login</span></a>
+        <a class="btn btn--dark header__signup" href="signup.html"><span>Signup</span></a>
+        <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="hd-search" id="hdSearchBox" hidden>
+      <form role="search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="Search treatments, blog, contact…" aria-label="Search the site" autocomplete="off"><button class="btn btn--dark" type="submit">Go</button></form>
+      <div class="hd-suggest"><button type="button" data-q="facial">Facials</button><button type="button" data-q="acne">Acne care</button><button type="button" data-q="hydration">Hydration</button><button type="button" data-q="anti-ageing">Anti-ageing</button><button type="button" data-q="blog">Skin tips</button><button type="button" data-q="book">Book a visit</button></div>
+    </div>
+  </header>
+
+  <main class="ct-main">
+
+    <!-- ============ C1. HERO ============ -->
+    <section class="ct-hero" id="ct-hero" aria-labelledby="ctTitle">
+      <div class="ct-hero__fx" aria-hidden="true">
+        <i class="ct-bub" style="--x:8%;--s:14px;--d:9s;--dl:-2s"></i><i class="ct-bub" style="--x:34%;--s:9px;--d:11s;--dl:-6s"></i>
+        <i class="ct-bub" style="--x:62%;--s:12px;--d:10s;--dl:-4s"></i><i class="ct-bub" style="--x:88%;--s:10px;--d:9s;--dl:-1s"></i>
+        <span class="ct-hero__glow"></span><span class="ct-hero__ring ct-hero__ring--1"></span><span class="ct-hero__ring ct-hero__ring--2"></span>
+      </div>
+      <div class="ct-arches">
+        <figure class="ct-float ct-arch ct-arch--a" data-depth="22" aria-hidden="true"><div class="ct-arch__in"><img src="Assests/ct-woman-hands.webp" alt="" width="253" height="316"></div></figure>
+        <figure class="ct-float ct-arch ct-arch--b" data-depth="-16" aria-hidden="true"><div class="ct-arch__in"><img src="Assests/ct-gold-serum-hands.webp" alt="" width="173" height="197"></div></figure>
+      </div>
+      <span class="ct-chip ct-chip--a" aria-hidden="true"><i class="fa-solid fa-leaf"></i> Unhurried visits</span>
+      <span class="ct-chip ct-chip--b" aria-hidden="true"><i class="fa-solid fa-spa"></i> Personalised care</span>
+      <div class="container">
+        <h1 class="ct-hero__title" id="ctTitle" aria-label="Let's Begin Your Skin Journey.">
+          <span class="ct-hero__row" aria-hidden="true"><span class="ct-w" style="--i:0">Let's</span> <span class="ct-w" style="--i:1">Begin</span> <span class="ct-w" style="--i:2">Your</span></span>
+          <span class="ct-hero__row" aria-hidden="true"><span class="ct-w" style="--i:3">Skin</span> <span class="ct-w ct-w--peach" style="--i:4">Journey.<svg class="ct-uline" viewBox="0 0 300 18" preserveAspectRatio="none"><path d="M3 12 C 60 2, 120 18, 180 8 S 270 6, 297 11"/></svg></span></span>
+        </h1>
+        <p class="ct-hero__lead">Tell us a little about your skin and we'll take it from there. Consultations are unhurried and free of pressure.</p>
+        <div class="ct-hero__btns">
+          <a href="404.html" class="btn btn--peach btn--lg magnetic ct-hero__cta">Reserve your visit <i class="fa-solid fa-arrow-down"></i></a>
+          <a href="404.html" class="btn btn--outline-light btn--lg ct-hero__ghost">Opening hours</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ C2. QUICK CONTACT CARDS ============ -->
+    <section class="ct-quick" aria-label="Contact details">
+      <div class="container ct-cards">
+        <article class="ct-card" data-ct="rise" data-tilt>
+          <span class="ct-card__ico"><i class="fa-solid fa-location-dot"></i></span>
+          <h3>Visit us</h3>
+          <p>4517 Washington Ave.<br>Manchester, Kentucky 4646</p>
+        </article>
+        <article class="ct-card" data-ct="rise" style="--d:.1s" data-tilt>
+          <span class="ct-card__ico"><i class="fa-solid fa-phone"></i></span>
+          <h3>Call us</h3>
+          <p><a href="404.html">(+91) 99223 66551</a><br><a href="404.html">(+91) 99224 22334</a></p>
+        </article>
+        <article class="ct-card" data-ct="rise" style="--d:.2s" data-tilt>
+          <span class="ct-card__ico"><i class="fa-solid fa-envelope"></i></span>
+          <h3>Email us</h3>
+          <p><a href="404.html">info@thestackly.com</a><br><a href="404.html">info1@gmail.com</a></p>
+        </article>
+        <article class="ct-card" data-ct="rise" style="--d:.3s" data-tilt>
+          <span class="ct-card__ico"><i class="fa-solid fa-clock"></i></span>
+          <h3>Opening hours</h3>
+          <p>Mon &ndash; Sat: 10am &ndash; 7pm<br>Sunday: Closed</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- shared full-width hand-shadow background behind the form AND the FAQ -->
+    <div class="ct-bgwrap">
+    <!-- ============ C3. RESERVE YOUR VISIT (form + map) ============ -->
+    <section class="ct-sec ct-reserve" id="ct-reserve" aria-labelledby="ctResT">
+      <div class="container ct-reserve__grid">
+        <div class="ct-glass" data-ct="left">
+          <h2 class="title ct-glass__t" id="ctResT">Reserve your visit</h2>
+          <p class="ct-glass__sub">Your email address will not be published.</p>
+
+          <form class="ct-form" id="ctForm" novalidate>
+            <div class="ct-f"><label for="ctFirst">Name<b>*</b></label><input id="ctFirst" name="first" type="text" autocomplete="given-name" required><small class="ct-err"></small></div>
+            <div class="ct-f"><label for="ctLast">Last Name<b>*</b></label><input id="ctLast" name="last" type="text" autocomplete="family-name" required><small class="ct-err"></small></div>
+            <div class="ct-f"><label for="ctPhone">Phone Number<b>*</b></label><input id="ctPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required><small class="ct-err"></small></div>
+            <div class="ct-f"><label for="ctMail">Email Address<b>*</b></label><input id="ctMail" name="email" type="email" autocomplete="email" required><small class="ct-err"></small></div>
+            <div class="ct-f ct-f--full"><label for="ctMsg">Comment<b>*</b></label><textarea id="ctMsg" name="message" rows="5" maxlength="500" required></textarea><span class="ct-count" id="ctCount" aria-hidden="true">0 / 500</span><small class="ct-err"></small></div>
+            <p class="ct-note">We'll only use your info to respond to your inquiry.</p>
+            <button type="submit" class="btn btn--dark btn--lg ct-submit magnetic"><span class="ct-submit__t">Submit message</span> <i class="fa-solid fa-angle-right"></i></button>
+            <p class="ct-status" id="ctStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="ct-support" data-ct="right">
+          <h2 class="title title--lg ct-support__t">Global Skincare<br>Support Network</h2>
+          <p class="ct-support__p">Our team supports clients with personalised guidance, trusted formulas and professional care, wherever you are.</p>
+          <div class="ct-map" id="ctMap">
+            <iframe title="Stackly clinic location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=4517+Washington+Ave,+Manchester,+Kentucky&amp;output=embed"></iframe>
+          </div>
+          <a class="btn btn--outline-light ct-dir" href="404.html" target="_blank" rel="noopener">Get directions <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ C6. FAQ ============ -->
+    <section class="ct-sec ct-faq" id="ct-faq" aria-labelledby="ctFaqT">
+      <div class="container">
+        <h2 class="title title--xl" id="ctFaqT" data-ct="rise">What would you like to explore?</h2>
+        <p class="ct-faq__intro" data-ct="rise" style="--d:.1s">Choose a treatment or book a first consultation. Here are quick answers to the questions we hear most.</p>
+        <div class="ct-faq__grid">
+          <figure class="ct-faq__img" data-ct="iris">
+            <img src="Assests/ct-aloe-photo.webp" alt="Green skincare jar resting on an aloe leaf with a drop of gel" width="348" height="464" loading="lazy">
+          </figure>
+          <div class="ct-acc" id="ctAcc">
+            <div class="ct-acc__item" data-ct="right">
+              <button class="ct-acc__btn" type="button" aria-expanded="false">What treatments do you offer?<span class="ct-plus" aria-hidden="true"></span></button>
+              <div class="ct-acc__panel"><div><p>Advanced Facial, Acne Care, Skin Brightening, Anti-Aging, Pigmentation Care and Hydration Therapy. Your consultation helps us choose what suits you.</p></div></div>
+            </div>
+            <div class="ct-acc__item" data-ct="right" style="--d:.06s">
+              <button class="ct-acc__btn" type="button" aria-expanded="false">How do you tailor care for each person?<span class="ct-plus" aria-hidden="true"></span></button>
+              <div class="ct-acc__panel"><div><p>We begin with a skin analysis and a conversation about your skin, routine and goals, then build a plan around you.</p></div></div>
+            </div>
+            <div class="ct-acc__item" data-ct="right" style="--d:.12s">
+              <button class="ct-acc__btn" type="button" aria-expanded="false">Do I need to know which treatment I want?<span class="ct-plus" aria-hidden="true"></span></button>
+              <div class="ct-acc__panel"><div><p>Not at all. Tell us you're unsure and we'll help you decide during your consultation.</p></div></div>
+            </div>
+            <div class="ct-acc__item" data-ct="right" style="--d:.18s">
+              <button class="ct-acc__btn" type="button" aria-expanded="false">How long does a visit take?<span class="ct-plus" aria-hidden="true"></span></button>
+              <div class="ct-acc__panel"><div><p>Visits are unhurried. We'll confirm the time needed for your chosen treatment when we reply to your request.</p></div></div>
+            </div>
+            <div class="ct-acc__item" data-ct="right" style="--d:.24s">
+              <button class="ct-acc__btn" type="button" aria-expanded="false">What makes Stackly different?<span class="ct-plus" aria-hidden="true"></span></button>
+              <div class="ct-acc__panel"><div><p>We listen first, explain every step, and never push products or treatments you don't need.</p></div></div>
+            </div>
+            <div class="ct-acc__item" data-ct="right" style="--d:.3s">
+              <button class="ct-acc__btn" type="button" aria-expanded="false">Do you offer support after my treatment?<span class="ct-plus" aria-hidden="true"></span></button>
+              <div class="ct-acc__panel"><div><p>Yes. Message or call us any time with questions about your plan or your home routine.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </div>
+
+    <!-- ============ C4. APPOINTMENT PROCESS ============ -->
+    <section class="ct-band" id="ct-steps" aria-labelledby="ctStepsT">
+      <div class="container">
+        <span class="ct-pill" data-ct="pop">Appointment process</span>
+        <h2 class="title title--xl ct-band__t" id="ctStepsT" data-ct="rise">Four calm steps</h2>
+        <ol class="ct-steps" id="ctSteps" data-ct="line">
+          <li class="ct-step is-on"><span class="ct-step__n">1</span><h3>Choose Treatment</h3><p>Pick what interests you, or tell us you're unsure.</p></li>
+          <li class="ct-step"><span class="ct-step__n">2</span><h3>Select Date</h3><p>Choose a day and time that suits your week.</p></li>
+          <li class="ct-step"><span class="ct-step__n">3</span><h3>Consultation</h3><p>We listen, analyze your skin and explain your options.</p></li>
+          <li class="ct-step"><span class="ct-step__n">4</span><h3>Personalized Care</h3><p>You receive a plan and treatment shaped around you.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ C5. WHAT TO EXPECT ============ -->
+    <section class="ct-sec ct-expect" id="ct-expect" aria-labelledby="ctExpT">
+      <div class="container ct-split">
+        <div class="ct-media">
+          <div class="ct-collage">
+            <figure class="ct-ph ct-ph--tall" data-ct="curtain"><img src="Assests/ct-clinic-reception.webp" alt="Bright reception with a marble desk and warm lighting" width="308" height="316" loading="lazy"></figure>
+            <figure class="ct-ph" data-ct="curtain" style="--d:.15s"><img src="Assests/ct-consultation.webp" alt="Therapist talking through a skin plan with a client" width="308" height="218" loading="lazy"></figure>
+            <figure class="ct-ph" data-ct="curtain" style="--d:.3s"><img src="Assests/ct-clinic-chairs.webp" alt="Calm waiting area with two cream armchairs" width="308" height="218" loading="lazy"></figure>
+          </div>
+          <div class="ct-stamp" aria-hidden="true">
+            <svg viewBox="0 0 120 120"><defs><path id="ctCirc" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#ctCirc" textLength="286" lengthAdjust="spacing">Skin analysis included &#8226; No pressure &#8226;</textPath></text></svg>
+            <i class="fa-solid fa-spa"></i>
+          </div>
+        </div>
+        <div class="ct-expect__copy">
+          <span class="kicker" data-ct="rise"><i class="line-arrow"></i> When you arrive</span>
+          <h2 class="title title--xl" id="ctExpT" data-ct="rise" style="--d:.08s">A quiet space, made for you</h2>
+          <p class="lead" data-ct="rise" style="--d:.16s">Your first visit is about listening, not selling. Here is what you can expect from the moment you walk in.</p>
+          <ul class="ct-ticks">
+            <li data-ct="left" style="--d:.2s"><i class="fa-solid fa-circle-check"></i> A calm welcome and time to settle in</li>
+            <li data-ct="left" style="--d:.3s"><i class="fa-solid fa-circle-check"></i> A gentle skin analysis explained in plain language</li>
+            <li data-ct="left" style="--d:.4s"><i class="fa-solid fa-circle-check"></i> Honest options, with no upselling</li>
+            <li data-ct="left" style="--d:.5s"><i class="fa-solid fa-circle-check"></i> A plan and a simple routine to take home</li>
+          </ul>
+          <a href="404.html" class="btn btn--dark btn--lg magnetic" data-ct="rise" style="--d:.55s">Book your consultation <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ C5b. CARE TEAM ============ -->
+    <section class="ct-sec ct-care" id="ct-care" aria-labelledby="ctCareT">
+      <div class="container ct-split">
+        <div>
+          <span class="kicker" data-ct="rise"><i class="line-arrow"></i> Our care team</span>
+          <h2 class="title title--xl" id="ctCareT" data-ct="rise" style="--d:.08s">Gentle hands, careful eyes</h2>
+          <p class="lead" data-ct="rise" style="--d:.16s">Every visit is led by our care team. We explain each step before we begin and adjust to how your skin responds on the day.</p>
+          <ul class="ct-ticks">
+            <li data-ct="left" style="--d:.2s"><i class="fa-solid fa-circle-check"></i> Your skin is assessed before anything is applied</li>
+            <li data-ct="left" style="--d:.3s"><i class="fa-solid fa-circle-check"></i> Treatments are paced to what feels comfortable</li>
+            <li data-ct="left" style="--d:.4s"><i class="fa-solid fa-circle-check"></i> Formulas are explained, never pushed</li>
+          </ul>
+          <a href="404.html" class="btn btn--dark btn--lg magnetic" data-ct="rise" style="--d:.45s">Reserve your visit <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+        <div class="ct-trio">
+          <figure class="ct-ph ct-trio__a" data-ct="rise"><img src="Assests/ct-specialist.webp" alt="Specialist in a white coat examining a sample" width="308" height="218" loading="lazy"><figcaption>Assessed with care</figcaption></figure>
+          <figure class="ct-ph ct-trio__b" data-ct="rise" style="--d:.15s"><img src="Assests/ct-treatment.webp" alt="Client receiving a gentle facial treatment" width="308" height="184" loading="lazy"><figcaption>Unhurried treatments</figcaption></figure>
+          <figure class="ct-ph ct-trio__c" data-ct="rise" style="--d:.3s"><img src="Assests/ct-products.webp" alt="Range of gentle skincare products" width="308" height="218" loading="lazy"><figcaption>Formulas we trust</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ C7. HOURS (live) ============ -->
+    <section class="ct-sec ct-hours" id="ct-hours" aria-labelledby="ctHrsT">
+      <div class="container ct-hours__grid">
+        <div class="ct-clock" data-ct="pop">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="ct-clock__track" cx="60" cy="60" r="52"/><circle class="ct-clock__ring" id="ctRing" cx="60" cy="60" r="52"/></svg>
+          <div class="ct-clock__txt"><b id="ctNow">Open now</b><span id="ctUntil">until 7pm</span></div>
+        </div>
+        <div>
+          <span class="kicker" data-ct="rise"><i class="line-arrow"></i> Opening hours</span>
+          <h2 class="title title--lg" id="ctHrsT" data-ct="rise" style="--d:.08s">Come by when it suits you</h2>
+          <ul class="ct-days" id="ctDays" aria-label="Weekly opening hours">
+            <li data-d="1"><span>Monday</span><b>10am &ndash; 7pm</b></li>
+            <li data-d="2"><span>Tuesday</span><b>10am &ndash; 7pm</b></li>
+            <li data-d="3"><span>Wednesday</span><b>10am &ndash; 7pm</b></li>
+            <li data-d="4"><span>Thursday</span><b>10am &ndash; 7pm</b></li>
+            <li data-d="5"><span>Friday</span><b>10am &ndash; 7pm</b></li>
+            <li data-d="6"><span>Saturday</span><b>10am &ndash; 7pm</b></li>
+            <li data-d="0"><span>Sunday</span><b>Closed</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ C8. ASK US ABOUT (ingredients) ============ -->
+    <section class="ct-sec ct-ask" id="ct-ask" aria-labelledby="ctAskT">
+      <div class="ct-mq" aria-hidden="true"><div class="ct-mq__track"><span>Hyaluronic acid</span><span>Retinal</span><span>Coconut oil</span><span>Macadamia oil</span><span>Sunflower oil</span><span>Aloe vera</span></div></div>
+      <div class="container">
+        <h2 class="title title--xl" id="ctAskT" data-ct="rise">Ask us about</h2>
+        <div class="ct-topics">
+          <a class="ct-topic" href="404.html" data-ct="rise">
+            <img src="Assests/ct-retinal-benefits.webp" alt="Diagram of what retinal can help with" width="120" height="94" loading="lazy">
+            <div><h3>Retinal</h3><p>Smoother texture and a brighter, more even tone. Ask if it suits your skin.</p><span class="ct-topic__go">Ask us <i class="fa-solid fa-arrow-right-long"></i></span></div>
+          </a>
+          <a class="ct-topic" href="404.html" data-ct="rise" style="--d:.12s">
+            <img src="Assests/ct-natural-oils.webp" alt="Coconut, macadamia and sunflower oils" width="121" height="94" loading="lazy">
+            <div><h3>Plant oils</h3><p>Coconut, macadamia and sunflower oils for a nourished, balanced barrier.</p><span class="ct-topic__go">Ask us <i class="fa-solid fa-arrow-right-long"></i></span></div>
+          </a>
+          <a class="ct-topic" href="404.html" data-ct="rise" style="--d:.24s">
+            <img src="Assests/ct-healthy-skin.webp" alt="Woman with healthy glowing skin" width="114" height="144" loading="lazy">
+            <div><h3>Healthy skin</h3><p>A simple routine you can keep up, shaped around your skin.</p><span class="ct-topic__go">Ask us <i class="fa-solid fa-arrow-right-long"></i></span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- ============ FOOTER (CTA + footer) ============ -->
+  <footer class="footer" id="footer">
+    <div class="footer__bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer__cta">
+        <h2 class="footer__headline" id="footHead">Your Skin Deserves Exceptional Care.</h2>
+        <a href="404.html" class="btn btn--outline-peach btn--lg magnetic">Book Your Consultation <i class="fa-solid fa-arrow-right-long"></i></a>
+      </div>
+
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="header__logo footer__logo" aria-label="Stackly - back to top"><img src="Assests/logo-light.webp" alt="Stackly" width="352" height="92" loading="lazy"></a>
+          <p>Personalized skincare with professional care. We listen first, then plan gentle clinical care around your skin, with a simple routine for home.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Services</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__contact">
+            <li><i class="fa-solid fa-house"></i> 4517 Washington Ave. Manchester, Kentucky 4646</li>
+            <li><i class="fa-solid fa-envelope"></i> info@thestackly.com<br>info1@gmail.com</li>
+            <li><i class="fa-solid fa-phone"></i> (+91) 99224-22334<br>(+91) 88112-77332</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Opening hours</h4>
+          <p class="footer__hours">Mon &ndash; Sat: 10am &ndash; 7pm<br>Sunday: Closed</p>
+          <div class="footer__social">
+            <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; <span id="year">2026</span> Stackly Skincare Clinic. All rights reserved.</span>
+        <a href="#ct-hero" class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Login modal -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-login></div>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="modal__close" type="button" aria-label="Close" data-close-login><i class="fa-solid fa-xmark"></i></button>
+      <img src="Assests/logo.webp" alt="Stackly" width="352" height="92" class="modal__logo">
+      <h3 id="loginTitle">Welcome back</h3>
+      <p>Log in to manage your appointments.</p>
+      <form id="loginForm" novalidate>
+        <div class="field"><input type="email" id="lEmail" placeholder=" " required><label for="lEmail">Email address</label><i class="fa-solid fa-envelope"></i></div>
+        <div class="field"><input type="password" id="lPass" placeholder=" " required><label for="lPass">Password</label><i class="fa-solid fa-lock"></i></div>
+        <button class="btn btn--dark btn--lg btn--block" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+        <p class="form__status" id="loginStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Inert placeholders: script.js (shared with index.html) looks these up on load. Keeps the shared script error-free here. -->
+  <div hidden aria-hidden="true" data-index-stubs>
+    <div id="txList"></div>
+    <div id="ba"><span id="baHandle" aria-valuenow="50"></span></div>
+    <div id="revStage"><div class="rev is-active"></div></div><span id="revNow"></span><button id="nextRev" type="button"></button><button id="prevRev" type="button"></button>
+    <form id="bookForm"><input id="fName"><input id="fEmail"><select id="fTreat"></select><p id="formStatus"></p></form>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

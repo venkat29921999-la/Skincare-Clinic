@@ -1,3 +1,42 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Lobster+Two:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="app.css"><title>Sign up · Stackly Skincare Clinic</title></head><body class="auth2"><div class="blob" style="width:300px;height:300px;background:#f2b99a;opacity:.45;left:-90px;top:8%"></div><div class="blob" style="width:260px;height:260px;background:#7fb39b;opacity:.35;right:-70px;bottom:6%;animation-delay:-5s"></div>
-<a class="back" href="index.html">← Back to home</a>
-<main class="shell2"><section class="visual" aria-hidden="true"><img src="Assests/about-main.webp" alt="" width="488" height="464"><span class="vchip c1">✦ 5,000+ glowing clients</span><span class="vchip c2">★ 4.9 rating</span><div class="vq"><h2>Reveal your <em>healthy</em> skin</h2><p>Book visits, follow your routine and chat with your care team.</p></div></section><form class="panel" id="authForm" data-mode="signup" novalidate><img class="lg a" src="Assests/logo.webp" alt="Stackly" width="352" height="92"><h1 class="a" style="--i:1">Create account</h1><p class="sub a" style="--i:1">Join Stackly in under a minute.</p><p class="lbl a" style="--i:2">Create account as</p><div class="roles a" style="--i:3"><label class="rc"><input type="radio" name="role" value="user" checked><span><i>☺</i><b>User</b><small>Book visits &amp; track my skin</small></span></label><label class="rc"><input type="radio" name="role" value="admin"><span><i>◈</i><b>Admin</b><small>Manage clients &amp; clinic</small></span></label></div><div class="fld a" style="--i:4"><input type="text" name="name" id="n" placeholder=" " autocomplete="name"><label for="n">Full name</label></div><div class="fld a" style="--i:5"><input type="email" name="email" id="e" placeholder=" " autocomplete="email"><label for="e">Email address</label></div><div class="two"><div class="fld a" style="--i:6"><input type="password" name="pwd" id="p" placeholder=" " autocomplete="new-password"><label for="p">Password</label><button type="button" class="eye">Show</button></div><div class="fld a" style="--i:7"><input type="password" name="pwd2" id="p2" placeholder=" " autocomplete="new-password"><label for="p2">Confirm password</label><button type="button" class="eye">Show</button></div></div><p class="msg" id="msg" role="status" aria-live="polite"></p><button class="btn a" style="--i:8" type="submit">Sign up →</button><p class="alt a" style="--i:9">Already registered? <a href="login.html">Login</a></p></form></main><script src="auth.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Lobster+Two:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="auth.css">
+<title>Sign up · Stackly Skincare Clinic</title>
+</head>
+<body class="a-signup">
+<main class="au-stage">
+  <section class="au-hero">
+    <a class="au-brand" href="index.html" aria-label="Stackly - back to home"><img src="Assests/logo.webp" alt="Stackly" width="352" height="92"></a>
+    <h2>SIGN <span>UP</span></h2>
+    <h3>FIND YOUR OWN WAY</h3>
+    <p>Schedule your skin visits in just a few clicks. Create your account and get started today.</p>
+  </section>
+
+  <div class="au-side">
+    <form class="au-card" id="authForm" data-mode="signup" novalidate>
+      <h1>signup</h1>
+      <div class="au-roles" role="radiogroup" aria-label="Create account as">
+        <label><input type="radio" name="role" value="user" checked><span>Client</span></label>
+        <label><input type="radio" name="role" value="admin"><span>Admin</span></label>
+      </div>
+      <div class="au-fld"><input type="text" name="name" placeholder="Full Name" aria-label="Full name" autocomplete="name"></div>
+      <div class="au-fld"><input type="email" name="email" placeholder="Email Address" aria-label="Email address" autocomplete="email"></div>
+      <div class="au-fld"><input type="password" name="pwd" placeholder="Password" aria-label="Password" autocomplete="new-password"><button type="button" class="au-eye">Show</button></div>
+      <div class="au-fld"><input type="password" name="pwd2" placeholder="Confirm Password" aria-label="Confirm password" autocomplete="new-password"><button type="button" class="au-eye">Show</button></div>
+      <p class="au-msg" id="msg" role="status" aria-live="polite"></p>
+      <button class="au-btn" type="submit">Sign Up</button>
+      <a class="au-back" href="index.html">← Back to Home</a>
+      <p class="au-alt">Already registered? <a href="login.html">Login</a></p>
+    </form>
+  </div>
+</main>
+<script src="auth.js"></script>
+</body>
+</html>

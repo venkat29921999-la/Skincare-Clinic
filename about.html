@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us | Stackly Skincare Clinic</title>
+  <meta name="description" content="Meet the team, the philosophy and the science behind Stackly Skincare Clinic: a decade of listening to skin.">
+  <meta name="theme-color" content="#1a3a30">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Josefin+Sans:wght@300;400;500;600&family=Lobster+Two:ital,wght@0,400;0,700;1,400&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="about-page">
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="pl__fx">
+      <i class="gfx__drop" style="--x:12%;--d:7s;--s:12px"></i><i class="gfx__drop" style="--x:30%;--d:9s;--s:9px;--dl:-3s"></i>
+      <i class="gfx__drop" style="--x:55%;--d:8s;--s:14px;--dl:-5s"></i><i class="gfx__drop" style="--x:78%;--d:10s;--s:10px;--dl:-1s"></i>
+      <b class="gfx__spark" style="--x:18%;--y:22%">✦</b><b class="gfx__spark" style="--x:80%;--y:30%;--dl:-1.4s">✧</b><b class="gfx__spark" style="--x:64%;--y:72%;--dl:-2.2s">✦</b>
+    </div>
+    <div class="pl__orb">
+      <svg viewBox="0 0 100 100"><circle class="pl__track" cx="50" cy="50" r="46"/><circle class="pl__ring" cx="50" cy="50" r="46"/></svg>
+      <b><span id="plNum">0</span><small>%</small></b>
+    </div>
+    <img src="Assests/logo-light.webp" alt="" width="352" height="92">
+    <div class="preloader__bar"><span></span></div>
+    <p class="pl__word" id="plWord">Cleansing</p>
+  </div>
+
+  <!-- Page transition curtain (plays when a main menu page is opened) -->
+  <div class="pt" id="pageTrans" aria-hidden="true">
+    <div class="pt__p pt__a"></div><div class="pt__p pt__b"></div>
+    <div class="pt__label"><small id="ptSmall">Welcome</small><b id="ptBig">Home</b><i></i></div>
+  </div>
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ 1. HEADER ============ -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo" aria-label="Stackly home">
+        <img src="Assests/logo.webp" alt="Stackly" width="352" height="92">
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="about.html" class="nav__link is-active" aria-current="page">About</a></li>
+          <li><a href="service.html" class="nav__link">Service</a></li>
+          <li><a href="blog.html" class="nav__link">Blog</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+        <a class="btn btn--dark nav__login-mobile" href="login.html">
+          <i class="fa-solid fa-user"></i> Login
+        </a>
+        <a class="btn btn--dark nav__signup-mobile" href="signup.html">Signup</a>
+        <div class="nav__social" aria-label="Social links">
+          <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--dark header__login" href="login.html"><i class="fa-solid fa-user"></i><span>Login</span></a>
+        <a class="btn btn--dark header__signup" href="signup.html"><span>Signup</span></a>
+        <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="hd-search" id="hdSearchBox" hidden>
+      <form role="search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="Search treatments, blog, contact…" aria-label="Search the site" autocomplete="off"><button class="btn btn--dark" type="submit">Go</button></form>
+      <div class="hd-suggest"><button type="button" data-q="facial">Facials</button><button type="button" data-q="acne">Acne care</button><button type="button" data-q="hydration">Hydration</button><button type="button" data-q="anti-ageing">Anti-ageing</button><button type="button" data-q="blog">Skin tips</button><button type="button" data-q="book">Book a visit</button></div>
+    </div>
+  </header>
+
+  <main class="about-page-main">
+
+    <!-- ============ A1. HERO ============ -->
+    <section class="ah" id="a-hero" aria-labelledby="ahTitle">
+      <div class="ah__bg" aria-hidden="true"><span class="ah__glow"></span></div>
+      <div class="container ah__grid">
+        <div class="ah__copy">
+          <h1 class="ah__title" id="ahTitle" aria-label="Where Science Meets Skin.">
+            <span class="ah__row" aria-hidden="true"><span class="ah__w" style="--i:0">Where</span> <span class="ah__w ah__w--peach" style="--i:1">Science</span> <span class="ah__w ah__w--out" style="--i:2" data-text="Meets">Meets</span></span>
+            <span class="ah__row" aria-hidden="true"><span class="ah__w" style="--i:3">Skin.</span></span>
+          </h1>
+          <p class="ah__lead">Clinical expertise and gentle, personal care, together under one roof.</p>
+          <a href="404.html" class="btn btn--peach ah__cta magnetic">Our story <i class="fa-solid fa-arrow-down"></i></a>
+        </div>
+
+        <div class="ah__visual" id="ahVisual">
+          <svg class="ah__star ah__star--1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 8 16 11 24 12 16 13 13 16 12 24 11 16 8 13 0 12 8 11 11 8 12 0Z"/></svg>
+          <svg class="ah__star ah__star--2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 8 16 11 24 12 16 13 13 16 12 24 11 16 8 13 0 12 8 11 11 8 12 0Z"/></svg>
+          <svg class="ah__star ah__star--3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 8 16 11 24 12 16 13 13 16 12 24 11 16 8 13 0 12 8 11 11 8 12 0Z"/></svg>
+          <div class="ah__rings" aria-hidden="true"><i></i><i></i></div>
+          <div class="ah__arch">
+            <img src="Assests/about-hero.webp" alt="Close view of a woman's glowing, healthy neck and jawline" width="792" height="1086" fetchpriority="high">
+            <span class="ah__beam" aria-hidden="true"></span>
+            <div class="ah__lbls" aria-hidden="true">
+              <span class="ah__lbl">Personal code<br>for your skin</span>
+              <span class="ah__dots"><b></b></span>
+              <span class="ah__lbl">Science-backed<br>efficacy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ A2. OUR STORY ============ -->
+    <section class="as section" id="a-story">
+      <div class="container as__grid">
+        <div class="as__visual" data-rv="story">
+          <div class="as__dash" aria-hidden="true"></div>
+          <div class="as__arch" data-speed="0.1"><img src="Assests/about-main.webp" alt="Warm light and linen on glowing skin" width="488" height="464" loading="lazy"></div>
+          <div class="as__circle">
+            <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48"/></svg>
+            <img src="Assests/about-story-circle.webp" alt="Close view of an eye and sunlit cheek" width="339" height="342" loading="lazy">
+          </div>
+        </div>
+        <div class="as__copy">
+          <span class="kicker" data-aos="fade-right"><i class="line-arrow"></i> Our story</span>
+          <h2 class="title title--xl title--peach">A decade of listening to skin</h2>
+          <p class="as__p" data-rv="line">Stackly began as a single consulting room with one belief: skin care should start with <span class="mk">understanding</span>, not a shelf of products. A dermatology-trained clinician and a skin therapist joined forces to bring analysis and treatment together.</p>
+          <p class="as__p" data-rv="line">Word spread through our clients. The room became a studio, the studio a team, and the approach stayed the same: <span class="mk">study the skin, explain the plan, treat with care.</span></p>
+          <ul class="as__stats" data-rv="stats">
+            <li><b class="as__num" data-to="2016" data-sep="0">2016</b><span>Our first consulting room</span></li>
+            <li><b class="as__num" data-to="2020" data-sep="0">2020</b><span>Advanced technology added</span></li>
+            <li><b class="as__num" data-to="5" data-suffix="K+">5K+</b><span>Clients cared for</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ A3. PHILOSOPHY ============ -->
+    <section class="ap" id="a-philosophy" aria-labelledby="apTitle">
+      <div class="ap__ripples" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="ap__spot" aria-hidden="true"></div>
+      <div class="container ap__in">
+        <span class="kicker kicker--light"><i class="line-arrow"></i> Our philosophy</span>
+        <h2 class="ap__title" id="apTitle" data-rv="philo">
+          <span class="ap__l1">Healthy skin is not about <span class="ap__strike">perfection.</span></span>
+          <span class="ap__l2">It is about <span class="ap__shine">confidence.</span></span>
+        </h2>
+        <p class="ap__p" data-rv="fade">We don't chase flawless. We help you understand your skin, treat what truly matters, and leave feeling comfortable in it.</p>
+      </div>
+    </section>
+
+    <!-- ============ A4. MISSION & VISION ============ -->
+    <section class="am section" id="a-mv">
+      <div class="container">
+        <h2 class="title title--xl am__head">Mission &amp; Vision</h2>
+        <div class="am__grid">
+          <article class="am__card am__card--m" data-tilt data-rv="open" style="--bg:url('Assests/our_mission_clean_background.webp')">
+            <div class="am__glare" aria-hidden="true"></div>
+            <div class="am__txt">
+              <h3>Our Mission</h3>
+              <p>To deliver safe, effective and personalized skin care, guided by science and delivered with respect for every client.</p>
+              <ul><li>Evidence before trend</li><li>A plan you can follow</li><li>Respect at every visit</li></ul>
+            </div>
+          </article>
+          <article class="am__card am__card--v" data-tilt data-rv="open" style="--bg:url('Assests/our_vision_clean_background.webp');--d:.18s">
+            <div class="am__glare" aria-hidden="true"></div>
+            <div class="am__txt">
+              <h3>Our Vision</h3>
+              <p>A world where healthy skin is within everyone's reach, and every person feels confident in their own skin.</p>
+              <ul><li>Care that is within reach</li><li>Skin literacy for everyone</li><li>Confidence that lasts</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ A5. EXPERTS ============ -->
+    <section class="at section" id="a-team">
+      <div class="container">
+        <h2 class="title title--xl">Meet our experts</h2>
+        <div class="at__grid">
+          <article class="at__card" data-rv="grow" style="--i:0">
+            <div class="at__photo"><img src="Assests/about-expert-1.webp" alt="Dr. Ananya Rao applying cream to her cheek" width="450" height="438" loading="lazy"></div>
+            <div class="at__body">
+              <h3>Dr. Ananya Rao</h3>
+              <p class="at__role">Consultant Dermatologist</p>
+              <p class="at__focus">Acne, scars &amp; clinical peels</p>
+              <p class="at__bio">Leads our clinical team with 12 years of experience in medical skin care and treatment planning.</p>
+            </div>
+          </article>
+          <article class="at__card at__card--mid" data-rv="grow" style="--i:1">
+            <div class="at__photo"><img src="Assests/about-expert-2.webp" alt="Kavya Menon holding a jar of cream" width="441" height="438" loading="lazy"></div>
+            <div class="at__body">
+              <h3>Kavya Menon</h3>
+              <p class="at__role">Senior Skin Therapist</p>
+              <p class="at__focus">Facials &amp; hydration therapy</p>
+              <p class="at__bio">Designs restorative facial programs for sensitive, dry and stressed skin.</p>
+            </div>
+          </article>
+          <article class="at__card" data-rv="grow" style="--i:2">
+            <div class="at__photo"><img src="Assests/about-expert-3.webp" alt="Dr. Rohan Iyer smiling with a jar of cream" width="447" height="438" loading="lazy"></div>
+            <div class="at__body">
+              <h3>Dr. Rohan Iyer</h3>
+              <p class="at__role">Aesthetic Physician</p>
+              <p class="at__focus">Anti-aging &amp; pigmentation</p>
+              <p class="at__bio">Focuses on collagen-supporting treatments and even-toned, natural-looking results.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ A6. OUR APPROACH ============ -->
+    <section class="aa section" id="a-approach" aria-labelledby="aaTitle">
+      <div class="container">
+        <h2 class="title title--xl title--peach" id="aaTitle">Our approach</h2>
+        <div class="aa__track" id="aaTrack">
+          <svg class="aa__svg" viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true">
+            <path class="aa__base" d="M30 70 C 200 20, 330 20, 420 60 S 640 130, 800 100 S 1040 40, 1170 70"/>
+            <path class="aa__draw" id="aaPath" d="M30 70 C 200 20, 330 20, 420 60 S 640 130, 800 100 S 1040 40, 1170 70"/>
+          </svg>
+          <ol class="aa__steps">
+            <li class="aa__step" data-at="0"><span class="aa__node">01</span><h3>Consult</h3><p>We listen to your concerns, history and goals.</p></li>
+            <li class="aa__step" data-at=".34"><span class="aa__node">02</span><h3>Analyze</h3><p>Digital skin analysis reveals what is happening beneath the surface.</p></li>
+            <li class="aa__step" data-at=".67"><span class="aa__node">03</span><h3>Personalize</h3><p>A plan shaped around your skin, schedule and budget.</p></li>
+            <li class="aa__step" data-at="1"><span class="aa__node">04</span><h3>Transform</h3><p>Treatments and follow-up that build visible, lasting change.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ A7. INSIDE THE CLINIC ============ -->
+    <section class="ac section" id="a-clinic">
+      <div class="container">
+        <h2 class="title title--xl">Inside the clinic</h2>
+        <div class="ac__grid" id="acGrid">
+          <figure class="ac__tile" data-rv="shutter" style="--i:0"><img src="Assests/about-clinic-2.webp" alt="Bright reception with a marble desk" width="616" height="632" loading="lazy"><figcaption>Clinic interiors</figcaption></figure>
+          <figure class="ac__tile" data-rv="shutter" style="--i:1"><img src="Assests/about-clinic-4.webp" alt="Clinician reviewing skin with a handheld device" width="616" height="436" loading="lazy"><figcaption>Consultation spaces</figcaption></figure>
+          <figure class="ac__tile" data-rv="shutter" style="--i:2"><img src="Assests/about-clinic-1.webp" alt="Treatment bed with towel and eucalyptus" width="616" height="436" loading="lazy"><figcaption>Treatment rooms</figcaption></figure>
+          <figure class="ac__tile" data-rv="shutter" style="--i:3"><img src="Assests/about-clinic-5.webp" alt="Cream being applied to the cheek" width="616" height="436" loading="lazy"><figcaption>Skincare products</figcaption></figure>
+          <figure class="ac__tile" data-rv="shutter" style="--i:4"><img src="Assests/about-clinic-3.webp" alt="Therapist performing a facial treatment" width="616" height="368" loading="lazy"><figcaption>Treatment rooms</figcaption></figure>
+          <figure class="ac__tile" data-rv="shutter" style="--i:5"><img src="Assests/about-clinic-6.webp" alt="Two people in a consultation" width="616" height="436" loading="lazy"><figcaption>Consultation spaces</figcaption></figure>
+          <figure class="ac__tile" data-rv="shutter" style="--i:6"><img src="Assests/about-clinic-7.webp" alt="Two cream armchairs and a side table" width="616" height="436" loading="lazy"><figcaption>Clinic interiors</figcaption></figure>
+          <figure class="ac__tile" data-rv="shutter" style="--i:7"><img src="Assests/about-clinic-8.webp" alt="Skincare bottles on a wooden tray" width="616" height="436" loading="lazy"><figcaption>Skincare products</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ A8. UNDER THE SURFACE (new) ============ -->
+    <section class="al section" id="a-layers" aria-labelledby="alTitle">
+      <div class="container">
+        <span class="kicker kicker--light"><i class="line-arrow"></i> The science of skin</span>
+        <h2 class="title title--xl title--white" id="alTitle">Under the surface</h2>
+        <p class="al__lead">Great care starts below what the eye can see. Pick a layer to learn what we look at, and how we care for it.</p>
+        <div class="al__wrap">
+          <div class="al__fig" id="alFig">
+            <div class="al__img" id="alImg">
+              <img src="Assests/about-layers.webp" alt="Illustration of skin in cross-section: epidermis, dermis with hair follicle, sweat gland and blood vessels, and the fatty hypodermis below" width="800" height="680" loading="lazy" decoding="async">
+              <span class="al__spot" aria-hidden="true"></span>
+              <span class="al__tag" aria-hidden="true">Epidermis</span>
+            </div>
+            <svg viewBox="0 0 400 340" role="img" aria-label="Cross-section of skin showing epidermis, dermis and hypodermis">
+              <defs>
+                <linearGradient id="alG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8dccb"/><stop offset="1" stop-color="#efaf93"/></linearGradient>
+                <linearGradient id="alG2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9b59a"/><stop offset="1" stop-color="#c98b73"/></linearGradient>
+                <linearGradient id="alG3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb39b"/><stop offset="1" stop-color="#3e9479"/></linearGradient>
+                <clipPath id="alClip"><rect x="20" y="20" width="360" height="300" rx="26"/></clipPath>
+              </defs>
+              <g clip-path="url(#alClip)">
+                <g class="al__ly" data-i="2"><path d="M20 230 Q 80 214 140 230 T 260 230 T 380 230 V320 H20Z" fill="url(#alG3)"/>
+                  <g fill="#fff" fill-opacity=".28"><circle cx="70" cy="272" r="20"/><circle cx="125" cy="288" r="15"/><circle cx="190" cy="270" r="22"/><circle cx="255" cy="290" r="16"/><circle cx="320" cy="272" r="21"/></g></g>
+                <g class="al__ly" data-i="1"><path d="M20 110 Q 80 96 140 110 T 260 110 T 380 110 V236 Q 320 220 260 236 T 140 236 T 20 236Z" fill="url(#alG2)"/>
+                  <g class="al__fib" fill="none" stroke="#fbe9de" stroke-width="2.2" stroke-linecap="round" opacity=".75"><path d="M44 150 q 18 -18 36 0 t 36 0"/><path d="M170 176 q 18 -18 36 0 t 36 0"/><path d="M270 138 q 18 -18 36 0 t 36 0"/><path d="M70 200 q 18 -18 36 0 t 36 0"/><path d="M230 210 q 18 -18 36 0 t 36 0"/></g></g>
+                <g class="al__ly is-on" data-i="0"><path d="M20 52 Q 80 40 140 52 T 260 52 T 380 52 V116 Q 320 102 260 116 T 140 116 T 20 116Z" fill="url(#alG1)"/>
+                  <g fill="#fff" fill-opacity=".55"><circle class="al__dr" cx="90" cy="92" r="4"/><circle class="al__dr" cx="200" cy="84" r="3" style="animation-delay:-1.4s"/><circle class="al__dr" cx="305" cy="96" r="4" style="animation-delay:-2.6s"/></g></g>
+                <rect class="al__scan" x="20" y="20" width="360" height="3" rx="2"/>
+              </g>
+            </svg>
+          </div>
+          <div class="al__panel">
+            <div class="al__tabs" role="tablist" aria-label="Skin layers">
+              <button class="is-on" role="tab" aria-selected="true" data-i="0" id="alT0" aria-controls="alP0">Epidermis</button>
+              <button role="tab" aria-selected="false" data-i="1" id="alT1" aria-controls="alP1">Dermis</button>
+              <button role="tab" aria-selected="false" data-i="2" id="alT2" aria-controls="alP2">Hypodermis</button>
+            </div>
+            <div class="al__pane is-on" role="tabpanel" id="alP0" aria-labelledby="alT0">
+              <h3>The outer shield</h3>
+              <p>Holds moisture in and keeps irritants out. When this barrier is calm, everything else works better.</p>
+              <dl><dt>We check</dt><dd>Hydration, barrier strength, surface texture</dd><dt>We care with</dt><dd>HydraFacial, gentle exfoliation, daily SPF</dd></dl>
+            </div>
+            <div class="al__pane" role="tabpanel" id="alP1" aria-labelledby="alT1" hidden>
+              <h3>Where firmness lives</h3>
+              <p>Collagen and elastin keep skin firm and even. Scars, pigment and fine lines are shaped here.</p>
+              <dl><dt>We check</dt><dd>Elasticity, pigment depth, scar and pore detail</dd><dt>We care with</dt><dd>Clinical peels, collagen-supporting therapy, laser care</dd></dl>
+            </div>
+            <div class="al__pane" role="tabpanel" id="alP2" aria-labelledby="alT2" hidden>
+              <h3>The cushion beneath</h3>
+              <p>Supports contour and feeds the skin through a network of tiny vessels.</p>
+              <dl><dt>We check</dt><dd>Circulation, tension, facial contour</dd><dt>We care with</dt><dd>Sculpting massage, lifestyle and sleep guidance</dd></dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ A9. BEFORE YOUR VISIT / FAQ (new) ============ -->
+    <section class="aq section" id="a-faq" aria-labelledby="aqTitle">
+      <div class="container aq__grid">
+        <div class="aq__side">
+          <span class="kicker"><i class="line-arrow"></i> Before your visit</span>
+          <h2 class="title title--xl" id="aqTitle">Questions we hear first</h2>
+          <div class="aq__card">
+            <span class="aq__pulse" aria-hidden="true"><i class="fa-solid fa-comment-dots"></i></span>
+            <p>Still curious? Our care team replies within one working day.</p>
+            <a class="btn btn--dark" href="404.html">Talk to us</a>
+          </div>
+        </div>
+        <div class="aq__list" id="aqList">
+          <div class="aq__item is-open">
+            <button class="aq__q" aria-expanded="true"><span>What happens in my first consultation?</span><i aria-hidden="true"></i></button>
+            <div class="aq__a"><div><p>We start by listening, then run a gentle digital skin analysis and talk through your goals and routine. You leave with a clear plan and realistic timelines. No treatment is done on day one unless you want it.</p></div></div>
+          </div>
+          <div class="aq__item">
+            <button class="aq__q" aria-expanded="false"><span>Do I need to prepare my skin?</span><i aria-hidden="true"></i></button>
+            <div class="aq__a"><div><p>Arrive with a clean face and tell us about any medicines or active products you use. We may ask you to pause strong actives a few days before certain treatments.</p></div></div>
+          </div>
+          <div class="aq__item">
+            <button class="aq__q" aria-expanded="false"><span>Are treatments painful?</span><i aria-hidden="true"></i></button>
+            <div class="aq__a"><div><p>Most clients describe warmth or a light tingle. For treatments that need extra comfort we explain the options first, and you can pause at any time.</p></div></div>
+          </div>
+          <div class="aq__item">
+            <button class="aq__q" aria-expanded="false"><span>How soon will I see results?</span><i aria-hidden="true"></i></button>
+            <div class="aq__a"><div><p>Hydration treatments often show a glow the same day. Pigmentation and texture take longer, usually a few weeks of consistent care. We will give you an honest timeline for your skin.</p></div></div>
+          </div>
+          <div class="aq__item">
+            <button class="aq__q" aria-expanded="false"><span>Is there any downtime?</span><i aria-hidden="true"></i></button>
+            <div class="aq__a"><div><p>Most facials have none. Peels can bring light flaking for a couple of days, and we will tell you exactly what to expect and how to care for your skin afterwards.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Clinic lightbox -->
+  <div class="alb" id="alb" aria-hidden="true">
+    <button class="alb__x" type="button" aria-label="Close image" data-alb-close><i class="fa-solid fa-xmark"></i></button>
+    <button class="alb__n alb__n--p" type="button" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+    <figure><img src="" alt=""><figcaption></figcaption></figure>
+    <button class="alb__n alb__n--n" type="button" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+
+  <!-- ============ FOOTER (CTA + footer) ============ -->
+  <footer class="footer" id="footer">
+    <div class="footer__bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer__cta">
+        <h2 class="footer__headline" id="footHead">Your Skin Deserves Exceptional Care.</h2>
+        <a href="404.html" class="btn btn--outline-peach btn--lg magnetic">Book Your Consultation <i class="fa-solid fa-arrow-right-long"></i></a>
+      </div>
+
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="header__logo footer__logo" aria-label="Stackly - back to top"><img src="Assests/logo-light.webp" alt="Stackly" width="352" height="92" loading="lazy"></a>
+          <p>Personalized skincare with professional care. We listen first, then plan gentle clinical care around your skin, with a simple routine for home.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Services</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__contact">
+            <li><i class="fa-solid fa-house"></i> 4517 Washington Ave. Manchester, Kentucky 4646</li>
+            <li><i class="fa-solid fa-envelope"></i> info@thestackly.com<br>info1@gmail.com</li>
+            <li><i class="fa-solid fa-phone"></i> (+91) 99224-22334<br>(+91) 88112-77332</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Opening hours</h4>
+          <p class="footer__hours">Mon &ndash; Sat: 10am &ndash; 7pm<br>Sunday: Closed</p>
+          <div class="footer__social">
+            <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; <span id="year">2026</span> Stackly Skincare Clinic. All rights reserved.</span>
+        <a href="#a-hero" class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Login modal -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-login></div>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="modal__close" type="button" aria-label="Close" data-close-login><i class="fa-solid fa-xmark"></i></button>
+      <img src="Assests/logo.webp" alt="Stackly" width="352" height="92" class="modal__logo">
+      <h3 id="loginTitle">Welcome back</h3>
+      <p>Log in to manage your appointments.</p>
+      <form id="loginForm" novalidate>
+        <div class="field"><input type="email" id="lEmail" placeholder=" " required><label for="lEmail">Email address</label><i class="fa-solid fa-envelope"></i></div>
+        <div class="field"><input type="password" id="lPass" placeholder=" " required><label for="lPass">Password</label><i class="fa-solid fa-lock"></i></div>
+        <button class="btn btn--dark btn--lg btn--block" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+        <p class="form__status" id="loginStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Inert placeholders: script.js (shared with index.html) looks these up on load. Keeps the shared script error-free here. -->
+  <div hidden aria-hidden="true" data-index-stubs>
+    <div id="txList"></div>
+    <div id="ba"><span id="baHandle" aria-valuenow="50"></span></div>
+    <div id="revStage"><div class="rev is-active"></div></div><span id="revNow"></span><button id="nextRev" type="button"></button><button id="prevRev" type="button"></button>
+    <form id="bookForm"><input id="fName"><input id="fEmail"><select id="fTreat"></select><p id="formStatus"></p></form>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

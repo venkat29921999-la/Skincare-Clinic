@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services | Stackly Skincare Clinic</title>
+  <meta name="description" content="Facials, acne care, pigmentation, anti-aging and hydration treatments at Stackly Skincare Clinic.">
+  <meta name="theme-color" content="#1a3a30">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Josefin+Sans:wght@300;400;500;600&family=Lobster+Two:ital,wght@0,400;0,700;1,400&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="about-page svc-page">
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="pl__fx">
+      <i class="gfx__drop" style="--x:12%;--d:7s;--s:12px"></i><i class="gfx__drop" style="--x:30%;--d:9s;--s:9px;--dl:-3s"></i>
+      <i class="gfx__drop" style="--x:55%;--d:8s;--s:14px;--dl:-5s"></i><i class="gfx__drop" style="--x:78%;--d:10s;--s:10px;--dl:-1s"></i>
+      <b class="gfx__spark" style="--x:18%;--y:22%">✦</b><b class="gfx__spark" style="--x:80%;--y:30%;--dl:-1.4s">✧</b><b class="gfx__spark" style="--x:64%;--y:72%;--dl:-2.2s">✦</b>
+    </div>
+    <div class="pl__orb">
+      <svg viewBox="0 0 100 100"><circle class="pl__track" cx="50" cy="50" r="46"/><circle class="pl__ring" cx="50" cy="50" r="46"/></svg>
+      <b><span id="plNum">0</span><small>%</small></b>
+    </div>
+    <img src="Assests/logo-light.webp" alt="" width="352" height="92">
+    <div class="preloader__bar"><span></span></div>
+    <p class="pl__word" id="plWord">Cleansing</p>
+  </div>
+
+  <!-- Page transition curtain (plays when a main menu page is opened) -->
+  <div class="pt" id="pageTrans" aria-hidden="true">
+    <div class="pt__p pt__a"></div><div class="pt__p pt__b"></div>
+    <div class="pt__label"><small id="ptSmall">Welcome</small><b id="ptBig">Home</b><i></i></div>
+  </div>
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ 1. HEADER ============ -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo" aria-label="Stackly home">
+        <img src="Assests/logo.webp" alt="Stackly" width="352" height="92">
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li><a href="service.html" class="nav__link is-active" aria-current="page">Service</a></li>
+          <li><a href="blog.html" class="nav__link">Blog</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+        <a class="btn btn--dark nav__login-mobile" href="login.html">
+          <i class="fa-solid fa-user"></i> Login
+        </a>
+        <a class="btn btn--dark nav__signup-mobile" href="signup.html">Signup</a>
+        <div class="nav__social" aria-label="Social links">
+          <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--dark header__login" href="login.html"><i class="fa-solid fa-user"></i><span>Login</span></a>
+        <a class="btn btn--dark header__signup" href="signup.html"><span>Signup</span></a>
+        <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="hd-search" id="hdSearchBox" hidden>
+      <form role="search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="Search treatments, blog, contact…" aria-label="Search the site" autocomplete="off"><button class="btn btn--dark" type="submit">Go</button></form>
+      <div class="hd-suggest"><button type="button" data-q="facial">Facials</button><button type="button" data-q="acne">Acne care</button><button type="button" data-q="hydration">Hydration</button><button type="button" data-q="anti-ageing">Anti-ageing</button><button type="button" data-q="blog">Skin tips</button><button type="button" data-q="book">Book a visit</button></div>
+    </div>
+  </header>
+
+  <main class="svc-page-main">
+    <section class="svc-hero" id="svc-top">
+      <span class="svc-blob svc-blob--1"></span><span class="svc-blob svc-blob--2"></span>
+      <div class="container svc-hero__grid">
+        <div>
+          <h1 class="svc-hero__t" aria-label="Advanced Care for Beautiful, Healthy Skin."><span aria-hidden="true"><b style="--i:0">Advanced</b> <b style="--i:1">Care</b> <b style="--i:2">for</b><br><b style="--i:3">Beautiful,</b> <b style="--i:4">Healthy</b> <b style="--i:5">Skin.</b></span></h1>
+          <p class="svc-hero__p">Medical-grade treatments, chosen with you after a full skin assessment.</p>
+          <a href="404.html" class="btn btn--peach magnetic">Book Consultation</a>
+        </div>
+        <div class="svc-hero__img"><img src="Assests/svc-hero.webp" alt="Hands holding a golden skin serum" width="630" height="934" fetchpriority="high"><i class="svc-ring"></i></div>
+      </div>
+      <nav class="container svc-pills" aria-label="Treatment categories">
+        <a href="#svc-facial" class="is-on">Facials</a><a href="#svc-acne">Acne</a><a href="#svc-hydra">Hydration</a><a href="#svc-aging">Anti-Aging</a><a href="#svc-pig">Pigmentation</a>
+      </nav>
+    </section>
+
+    <section class="svc-sec" id="svc-facial"><div class="container">
+      <h2 class="title title--xl" data-svc="rise">Facial treatments</h2>
+      <div class="svc-arches">
+        <article class="svc-arch" data-svc="flip" style="--i:0"><div class="svc-arch__ph"><img src="Assests/svc-facial-1.webp" alt="Facial massage with a soft headband" width="752" height="472" loading="lazy"></div><h3>Signature Glow Facial</h3><p>Deep cleansing, exfoliation and a mask chosen for your skin.</p><ul><li>Clearer, brighter tone</li><li>Smoother texture</li></ul><span>60 min</span><a class="btn btn--dark" href="404.html">Book</a></article>
+        <article class="svc-arch" data-svc="flip" style="--i:1"><div class="svc-arch__ph"><img src="Assests/svc-facial-2.webp" alt="Hydrafacial treatment device" width="752" height="472" loading="lazy"><span class="svc-arch__logo" aria-hidden="true"><b>Hydrafacial<sup>&reg;</sup></b><small>How is it different?</small></span></div><h3>Hydra Facial</h3><p>Cleansing, extraction and serum infusion in one visit.</p><ul><li>Instant hydration</li><li>Refined pores</li></ul><span>50 min</span><a class="btn btn--dark" href="404.html">Book</a></article>
+        <article class="svc-arch" data-svc="flip" style="--i:2"><div class="svc-arch__ph"><img src="Assests/svc-facial-3.webp" alt="Relaxing face massage" width="752" height="472" loading="lazy"></div><h3>Calming Facial</h3><p>A gentle treatment for reactive, sensitive skin.</p><ul><li>Less redness</li><li>Stronger barrier</li></ul><span>45 min</span><a class="btn btn--dark" href="404.html">Book</a></article>
+      </div></div></section>
+
+    <section class="svc-cta" id="svc-cta" data-svc="band" aria-labelledby="svcCtaT">
+      <div class="svc-cta__fx" aria-hidden="true"><b style="--x:12%;--d:9s;--s:18px">&#10022;</b><b style="--x:28%;--d:12s;--s:12px;--dl:-4s">&#10023;</b><b style="--x:46%;--d:10s;--s:16px;--dl:-7s">&#10022;</b><b style="--x:64%;--d:13s;--s:11px;--dl:-2s">&#10023;</b><b style="--x:80%;--d:9.5s;--s:20px;--dl:-5s">&#10022;</b><b style="--x:92%;--d:11s;--s:13px;--dl:-8s">&#10023;</b></div>
+      <div class="container">
+        <h2 class="svc-cta__t" id="svcCtaT" aria-label="Ready to Give Your Skin the Care It Deserves?"><span aria-hidden="true"><b style="--i:0">Ready</b> <b style="--i:1">to</b> <b style="--i:2">Give</b> <b style="--i:3">Your</b> <b style="--i:4">Skin</b> <b style="--i:5">the</b> <b style="--i:6">Care</b><br><b style="--i:7">It</b> <b style="--i:8">Deserves?</b></span></h2>
+        <div class="svc-cta__btn"><i class="svc-cta__ring" aria-hidden="true"></i><a href="404.html" class="btn svc-cta__b magnetic">Book Consultation</a></div>
+        <i class="svc-cta__line" aria-hidden="true"></i>
+        <div class="svc-cta__foot"><span>Stackly</span><span>Skincare clinic &middot; Book a consultation</span></div>
+      </div>
+    </section>
+
+    <section class="svc-sec svc-acne" id="svc-acne"><div class="container svc-acne__grid">
+      <div>
+        <h2 class="title title--xl" data-svc="rise" aria-label="Acne &amp; skin care"><span aria-hidden="true"><b style="--i:0">Acne</b> <b style="--i:1">&amp;</b> <b style="--i:2">skin</b> <b style="--i:3">care</b></span></h2>
+        <p class="svc-lead" data-svc="rise">Active acne and the marks it leaves need different treatments. We calm breakouts first, then treat scars once skin is stable.</p>
+        <div class="svc-acne__media" data-svc="show">
+          <i class="svc-acne__glow" aria-hidden="true"></i>
+          <figure class="svc-acne__fig"><img src="Assests/svc-acne.webp" alt="Cream applied on acne-prone skin" width="927" height="561" loading="lazy"></figure>
+          <svg class="svc-stars" viewBox="0 0 120 130" aria-hidden="true"><g transform="translate(40 50) scale(3)"><path class="s1" d="M12 0C13 8 16 11 24 12 16 13 13 16 12 24 11 16 8 13 0 12 8 11 11 8 12 0Z"/></g><g transform="translate(30 10) scale(1.2)"><path class="s2" d="M12 0C13 8 16 11 24 12 16 13 13 16 12 24 11 16 8 13 0 12 8 11 11 8 12 0Z"/></g><g transform="translate(8 36) scale(.6)"><path class="s3" d="M12 0C13 8 16 11 24 12 16 13 13 16 12 24 11 16 8 13 0 12 8 11 11 8 12 0Z"/></g></svg><b class="svc-sp" style="--x:18px;--y:-6%;--dl:0s" aria-hidden="true">&#10022;</b><b class="svc-sp" style="--x:64px;--y:18%;--dl:-1ss" aria-hidden="true">&#10022;</b><b class="svc-sp" style="--x:30px;--y:52%;--dl:-2ss" aria-hidden="true">&#10022;</b><b class="svc-sp" style="--x:80px;--y:64%;--dl:-.6ss" aria-hidden="true">&#10022;</b><b class="svc-sp" style="--x:-4px;--y:-14%;--dl:-1.6ss" aria-hidden="true">&#10022;</b>
+        </div>
+      </div>
+      <ul class="svc-list">
+        <li data-svc="draw" style="--i:0"><h3>Medical peels</h3><p>Salicylic and mandelic acids clear pores and calm active breakouts. A course of 4 to 6 sessions is typical.</p></li>
+        <li data-svc="draw" style="--i:1"><h3>Light therapy</h3><p>Blue and red light reduce acne bacteria and inflammation without downtime.</p></li>
+        <li data-svc="draw" style="--i:2"><h3>Microneedling</h3><p>Stimulates collagen to soften atrophic (pitted) scars. Results build over several sessions.</p></li>
+        <li data-svc="draw" style="--i:3"><h3>Fractional laser</h3><p>For deeper, established scars. We assess scar type first so the settings match.</p></li>
+        <li data-svc="draw" style="--i:4"><h3>Prescription home care</h3><p>Retinoids and topicals, prescribed by our dermatologist, keep results in place.</p></li>
+      </ul></div></section>
+
+    <section class="svc-sec svc-pg" id="svc-pig"><div class="container">
+      <h2 class="title title--xl" data-svc="rise">Brightening &amp; pigmentation</h2>
+      <p class="svc-lead" data-svc="rise">Even, luminous skin takes the right plan. Explore each treatment and see which one fits your skin.</p>
+      <div class="svc-pg__row" id="svcPg" data-svc="show">
+        <article class="svc-pg__t" tabindex="0" style="--i:0">
+          <img src="Assests/svc-bright-1.webp" alt="Brightening peel mask on the face" width="570" height="625" loading="lazy">
+          <i class="svc-pg__spots" aria-hidden="true"></i><i class="svc-pg__scan" aria-hidden="true"></i>
+          <span class="svc-pg__no">01</span><span class="svc-pg__chip"><i class="fa-regular fa-clock"></i> 40 min</span>
+          <div class="svc-pg__panel"><h3>Brightening Peel</h3>
+            <div class="svc-pg__more"><div><p>Lifts dullness and evens tone. 40 minutes, minimal downtime.</p><p class="svc-pg__best"><b>Best for:</b> Dull, tired-looking skin</p><ul><li>Fades dull, uneven patches</li><li>Smoother, fresher surface</li></ul><a class="svc-pg__book" href="404.html">Book this treatment <i class="fa-solid fa-arrow-right-long"></i></a></div></div></div>
+          <i class="svc-pg__bar" aria-hidden="true"></i>
+        </article>
+        <article class="svc-pg__t" tabindex="0" style="--i:1">
+          <img src="Assests/svc-bright-2.webp" alt="Serum droppers over the face" width="570" height="625" loading="lazy">
+          <i class="svc-pg__spots" aria-hidden="true"></i><i class="svc-pg__scan" aria-hidden="true"></i>
+          <span class="svc-pg__no">02</span><span class="svc-pg__chip"><i class="fa-regular fa-clock"></i> 3 to 6 months</span>
+          <div class="svc-pg__panel"><h3>Melasma Program</h3>
+            <div class="svc-pg__more"><div><p>Layered treatments with sun-care guidance. Typically 3 to 6 months.</p><p class="svc-pg__best"><b>Best for:</b> Stubborn, patchy pigment</p><ul><li>Gentle, layered treatments</li><li>Daily SPF plan included</li></ul><a class="svc-pg__book" href="404.html">Book this treatment <i class="fa-solid fa-arrow-right-long"></i></a></div></div></div>
+          <i class="svc-pg__bar" aria-hidden="true"></i>
+        </article>
+        <article class="svc-pg__t" tabindex="0" style="--i:2">
+          <img src="Assests/svc-bright-3.webp" alt="Serum applied to the cheek" width="570" height="625" loading="lazy">
+          <i class="svc-pg__spots" aria-hidden="true"></i><i class="svc-pg__scan" aria-hidden="true"></i>
+          <span class="svc-pg__no">03</span><span class="svc-pg__chip"><i class="fa-regular fa-clock"></i> 30 min</span>
+          <div class="svc-pg__panel"><h3>Dark Spot Correction</h3>
+            <div class="svc-pg__more"><div><p>Targets sun spots and post-acne marks. 30 minutes.</p><p class="svc-pg__best"><b>Best for:</b> Sun spots and acne marks</p><ul><li>Targets individual marks</li><li>Quick 30-minute visit</li></ul><a class="svc-pg__book" href="404.html">Book this treatment <i class="fa-solid fa-arrow-right-long"></i></a></div></div></div>
+          <i class="svc-pg__bar" aria-hidden="true"></i>
+        </article>
+      </div>
+      <ul class="svc-pg__chips">
+        <li data-svc="rise" style="--i:0"><i class="fa-solid fa-sun"></i> Sun-care guidance included</li>
+        <li data-svc="rise" style="--i:1"><i class="fa-solid fa-user-doctor"></i> Dermatologist-led plans</li>
+        <li data-svc="rise" style="--i:2"><i class="fa-solid fa-camera"></i> Progress photos every visit</li>
+      </ul>
+    </div></section>
+
+    <section class="svc-sec svc-ag" id="svc-aging"><svg class="svc-ag__wave" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true"><path d="M0 200C200 100 400 300 600 200S1000 100 1200 200"/><path d="M0 400C200 300 400 500 600 400S1000 300 1200 400"/></svg>
+      <div class="container svc-ag__grid">
+        <div class="svc-ag__copy">
+          <span class="kicker kicker--light" data-svc="rise"><i class="line-arrow"></i> Prevention &amp; correction</span>
+          <h2 class="title title--xl title--peach" data-svc="rise">Anti-aging</h2>
+          <p class="svc-lead svc-lead--l" data-svc="rise">Prevention and correction, planned around how your face moves and ages. We favor gradual, natural-looking change.</p>
+          <div class="svc-ag__tabs" id="svcAg" role="tablist" aria-label="Anti-aging treatments">
+        <div class="svc-ag__tab" role="tab" tabindex="0" data-k="Collagen Induction" data-g="85" data-i="fa-dna" style="--i:0">
+          <span class="svc-ag__ic"><i class="fa-solid fa-dna"></i></span>
+          <span class="svc-ag__tx"><h3>Collagen Induction</h3><p>Microneedling with growth-factor serums for firmer skin.</p></span>
+          <span class="svc-ag__more"><span><small>Treatment focus</small><span class="svc-ag__m" style="--v:85"><em>Firmness</em><b></b></span><span class="svc-ag__m" style="--v:70"><em>Texture</em><b></b></span><span class="svc-ag__m" style="--v:55"><em>Glow</em><b></b></span></span></span>
+        </div>
+        <div class="svc-ag__tab" role="tab" tabindex="0" data-k="Radiofrequency" data-g="80" data-i="fa-wave-square" style="--i:1">
+          <span class="svc-ag__ic"><i class="fa-solid fa-wave-square"></i></span>
+          <span class="svc-ag__tx"><h3>Radiofrequency</h3><p>Warms deeper layers to lift and smooth.</p></span>
+          <span class="svc-ag__more"><span><small>Treatment focus</small><span class="svc-ag__m" style="--v:80"><em>Firmness</em><b></b></span><span class="svc-ag__m" style="--v:60"><em>Texture</em><b></b></span><span class="svc-ag__m" style="--v:40"><em>Glow</em><b></b></span></span></span>
+        </div>
+        <div class="svc-ag__tab" role="tab" tabindex="0" data-k="Skin Boosters" data-g="90" data-i="fa-droplet" style="--i:2">
+          <span class="svc-ag__ic"><i class="fa-solid fa-droplet"></i></span>
+          <span class="svc-ag__tx"><h3>Skin Boosters</h3><p>Micro-injected hydration for glow and elasticity.</p></span>
+          <span class="svc-ag__more"><span><small>Treatment focus</small><span class="svc-ag__m" style="--v:90"><em>Hydration</em><b></b></span><span class="svc-ag__m" style="--v:60"><em>Elasticity</em><b></b></span><span class="svc-ag__m" style="--v:85"><em>Glow</em><b></b></span></span></span>
+        </div>
+          </div>
+        </div>
+        <div class="svc-ag__vis" id="svcAgVis" data-svc="show">
+          <i class="svc-ag__orb" aria-hidden="true"><b></b><b></b><b></b></i>
+          <i class="svc-ag__pulse" aria-hidden="true"></i><i class="svc-ag__pulse" style="animation-delay:-2s" aria-hidden="true"></i>
+          <div class="svc-ag__arch"><img src="Assests/svc-linen.webp" alt="Portrait of a woman with radiant, smooth skin" width="330" height="636" loading="lazy"><span class="svc-ag__glint" aria-hidden="true"></span></div>
+          <span class="svc-ag__chip" id="svcAgChip"><i class="fa-solid fa-dna"></i> Collagen Induction</span>
+          <div class="svc-ag__inset"><img src="Assests/svc-retinal.webp" alt="How retinal helps skin" width="616" height="496" loading="lazy"></div>
+          <div class="svc-ag__gauge" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" class="bg"/><circle cx="50" cy="50" r="40" class="fg" id="svcAgRing"/></svg><b><span id="svcAgNum">0</span><small>%</small></b><em>focus</em></div>
+        </div>
+      </div></section>
+
+    <section class="svc-sec svc-hydra" id="svc-hydra"><div class="container svc-rel"><div class="svc-orbs" aria-hidden="true"><img src="Assests/svc-barrier.webp" alt="" width="240" height="262" loading="lazy"><img src="Assests/svc-heart.webp" alt="" width="240" height="262" loading="lazy"></div>
+      <h2 class="title title--xl" data-svc="rise">Hydration &amp; skin repair</h2>
+      <p class="svc-lead" data-svc="rise">Restore a stressed barrier and bring back softness.</p>
+      <div class="svc-wave" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 30 Q150 0 300 30 T600 30 T900 30 T1200 30 V60H0Z"/></svg></div>
+      <div class="svc-drops">
+        <article data-svc="rise" style="--i:0"><h3>Hydration Infusion</h3><p>Hyaluronic acid delivered deep for plumper skin. 45 min.</p></article>
+        <article data-svc="rise" style="--i:1"><h3>LED Repair Therapy</h3><p>Calms inflammation and supports healing. 30 min.</p></article>
+        <article data-svc="rise" style="--i:2"><h3>Barrier Restore Mask</h3><p>A soothing treatment after sun, weather or other treatment. 40 min.</p></article>
+      </div></div></section>
+
+    <section class="svc-sec svc-rs" id="svc-results" aria-labelledby="svcRsT"><i class="svc-rs__ring" aria-hidden="true"></i>
+      <div class="container svc-rs__g">
+        <div class="svc-rs__copy">
+          <span class="kicker" data-svc="rise"><i class="line-arrow"></i> Progress you can see</span>
+          <h2 class="title title--xl" id="svcRsT" data-svc="rise">Real results, real care</h2>
+          <p class="svc-lead" data-svc="rise">Skin changes gradually. We photograph progress at every visit so you can see what is working, and adjust the plan together.</p>
+          <ol class="svc-rs__steps" id="svcRs"><li class="svc-rs__s" tabindex="0" style="--i:0"><span class="svc-rs__n">01</span><div><h3>Baseline</h3><p>We photograph your skin in the same light, so every change can be compared fairly.</p></div></li><li class="svc-rs__s" tabindex="0" style="--i:1"><span class="svc-rs__n">02</span><div><h3>Check-in</h3><p>At each visit we take new photos and look at them with you, side by side.</p></div></li><li class="svc-rs__s" tabindex="0" style="--i:2"><span class="svc-rs__n">03</span><div><h3>Adjust</h3><p>We fine-tune the plan together, so your care keeps matching your skin.</p></div></li></ol>
+          <a class="btn btn--dark magnetic" href="404.html">Start your plan</a>
+        </div>
+        <div class="svc-rs__stage" id="svcRsStage" data-svc="show">
+          <figure class="svc-rs__card" data-pos="0"><i class="svc-rs__tape"></i><div class="svc-rs__ph"><img src="Assests/svc-g12.webp" alt="Consultation at the clinic" loading="lazy"></div><figcaption><span>Visit 01</span><b>Baseline &amp; assessment</b></figcaption></figure><figure class="svc-rs__card" data-pos="1"><i class="svc-rs__tape"></i><div class="svc-rs__ph"><img src="Assests/svc-x2.webp" alt="Facial treatment in progress" loading="lazy"></div><figcaption><span>Visit 02</span><b>Treatment &amp; check-in</b></figcaption></figure><figure class="svc-rs__card" data-pos="2"><i class="svc-rs__tape"></i><div class="svc-rs__ph"><img src="Assests/svc-ba1.webp" alt="Face before and after care" loading="lazy"></div><figcaption><span>Visit 03</span><b>Review &amp; adjust</b></figcaption></figure>
+          <svg class="svc-rs__badge" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="svcRsC" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs><text><textPath href="#svcRsC">PROGRESS PHOTOS &#183; EVERY VISIT &#183; REAL CARE &#183; </textPath></text><path d="M60 46c1 9 5 13 14 14-9 1-13 5-14 14-1-9-5-13-14-14 9-1 13-5 14-14z"/></svg>
+          <b class="svc-rs__sp" style="--x:-4%;--y:12%" aria-hidden="true">&#10022;</b><b class="svc-rs__sp" style="--x:96%;--y:70%;--dl:-1.5s" aria-hidden="true">&#10023;</b><b class="svc-rs__sp" style="--x:8%;--y:92%;--dl:-3s" aria-hidden="true">&#10022;</b>
+        </div>
+      </div></section>
+
+   
+
+   
+    <section class="svc-sec svc-find" id="svc-find"><img class="svc-find__img" src="Assests/svc-linen.webp" alt="" width="330" height="636" loading="lazy"><div class="container">
+      <h2 class="title title--xl title--white" data-svc="rise">What is your main concern?</h2>
+      <div class="svc-chips" role="tablist"><button class="is-on" data-k="0">Breakouts</button><button data-k="1">Dark spots</button><button data-k="2">Fine lines</button><button data-k="3">Dry, tight skin</button></div>
+      <div class="svc-res" aria-live="polite"><h3 id="svcRt">Medical peels + Light therapy</h3><p id="svcRp">Clear pores and calm inflammation first, scars after.</p><a class="btn btn--peach" id="svcRa" href="404.html">See treatments</a></div>
+      <ul class="svc-stats"><li><b data-to="5" data-s="K+">5K+</b><span>Clients cared for</span></li><li><b data-to="12" data-s=" yrs">12</b><span>Clinical experience</span></li><li><b data-to="20" data-s="+">20+</b><span>Treatments offered</span></li></ul>
+    </div></section>
+
+
+ <section class="svc-sec svc-jr" id="svc-steps" aria-labelledby="svcJrT"><div class="container">
+      <h2 class="title title--xl" id="svcJrT" data-svc="rise">How your treatment works</h2>
+      <p class="svc-lead" data-svc="rise">Four simple steps, from your first conversation to results that last. Scroll to follow the journey.</p>
+      <div class="svc-jr__wrap" id="svcJr" data-svc="show">
+        <div class="svc-jr__track" aria-hidden="true">
+          <svg class="svc-jr__bg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60Q75 15 150 60T300 60T450 60T600 60T750 60T900 60T1050 60T1200 60"/></svg>
+          <svg class="svc-jr__fg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path id="svcJrP" d="M0 60Q75 15 150 60T300 60T450 60T600 60T750 60T900 60T1050 60T1200 60"/></svg>
+          <i class="svc-jr__orb" id="svcJrO"></i>
+        </div>
+        <i class="svc-jr__vline" aria-hidden="true"></i>
+        <ol class="svc-jr__list"><li class="svc-jr__c" style="--i:0"><span class="svc-jr__dot">01</span><div class="svc-jr__in"><div class="svc-jr__ph"><img src="Assests/svc-g12.webp" alt="Consultation at the clinic" loading="lazy"></div><span class="svc-jr__tag">Step 1 &middot; Consultation</span><h3>Assess</h3><p>A full skin assessment and honest conversation.</p></div></li><li class="svc-jr__c" style="--i:1"><span class="svc-jr__dot">02</span><div class="svc-jr__in"><div class="svc-jr__ph"><img src="Assests/svc-g13.webp" alt="Skincare products chosen for you" loading="lazy"></div><span class="svc-jr__tag">Step 2 &middot; Your roadmap</span><h3>Plan</h3><p>A step-by-step plan with clear timelines.</p></div></li><li class="svc-jr__c" style="--i:2"><span class="svc-jr__dot">03</span><div class="svc-jr__in"><div class="svc-jr__ph"><img src="Assests/svc-x2.webp" alt="Facial treatment in progress" loading="lazy"></div><span class="svc-jr__tag">Step 3 &middot; In clinic</span><h3>Treat</h3><p>Gentle, medical-grade care in our studio.</p></div></li><li class="svc-jr__c" style="--i:3"><span class="svc-jr__dot">04</span><div class="svc-jr__in"><div class="svc-jr__ph"><img src="Assests/svc-g10.webp" alt="Applying home care cream" loading="lazy"></div><span class="svc-jr__tag">Step 4 &middot; Ongoing</span><h3>Maintain</h3><p>Home care and follow-ups to keep results.</p></div></li></ol>
+      </div>
+    </div></section>
+
+  </main>
+
+
+  <!-- ============ FOOTER (CTA + footer) ============ -->
+  <footer class="footer" id="footer">
+    <div class="footer__bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer__cta">
+        <h2 class="footer__headline" id="footHead">Your Skin Deserves Exceptional Care.</h2>
+        <a href="404.html" class="btn btn--outline-peach btn--lg magnetic">Book Your Consultation <i class="fa-solid fa-arrow-right-long"></i></a>
+      </div>
+
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="header__logo footer__logo" aria-label="Stackly - back to top"><img src="Assests/logo-light.webp" alt="Stackly" width="352" height="92" loading="lazy"></a>
+          <p>Personalized skincare with professional care. We listen first, then plan gentle clinical care around your skin, with a simple routine for home.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Services</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__contact">
+            <li><i class="fa-solid fa-house"></i> 4517 Washington Ave. Manchester, Kentucky 4646</li>
+            <li><i class="fa-solid fa-envelope"></i> info@thestackly.com<br>info1@gmail.com</li>
+            <li><i class="fa-solid fa-phone"></i> (+91) 99224-22334<br>(+91) 88112-77332</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Opening hours</h4>
+          <p class="footer__hours">Mon &ndash; Sat: 10am &ndash; 7pm<br>Sunday: Closed</p>
+          <div class="footer__social">
+            <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; <span id="year">2026</span> Stackly Skincare Clinic. All rights reserved.</span>
+        <a href="#svc-top" class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Login modal -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-login></div>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="modal__close" type="button" aria-label="Close" data-close-login><i class="fa-solid fa-xmark"></i></button>
+      <img src="Assests/logo.webp" alt="Stackly" width="352" height="92" class="modal__logo">
+      <h3 id="loginTitle">Welcome back</h3>
+      <p>Log in to manage your appointments.</p>
+      <form id="loginForm" novalidate>
+        <div class="field"><input type="email" id="lEmail" placeholder=" " required><label for="lEmail">Email address</label><i class="fa-solid fa-envelope"></i></div>
+        <div class="field"><input type="password" id="lPass" placeholder=" " required><label for="lPass">Password</label><i class="fa-solid fa-lock"></i></div>
+        <button class="btn btn--dark btn--lg btn--block" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+        <p class="form__status" id="loginStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Inert placeholders: script.js (shared with index.html) looks these up on load. Keeps the shared script error-free here. -->
+  <div hidden aria-hidden="true" data-index-stubs>
+    <div id="txList"></div>
+    <div id="ba"><span id="baHandle" aria-valuenow="50"></span></div>
+    <div id="revStage"><div class="rev is-active"></div></div><span id="revNow"></span><button id="nextRev" type="button"></button><button id="prevRev" type="button"></button>
+    <form id="bookForm"><input id="fName"><input id="fEmail"><select id="fTreat"></select><p id="formStatus"></p></form>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

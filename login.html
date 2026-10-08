@@ -1,3 +1,53 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Lobster+Two:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="app.css"><title>Login · Stackly Skincare Clinic</title></head><body class="auth2"><div class="blob" style="width:300px;height:300px;background:#f2b99a;opacity:.45;left:-90px;top:8%"></div><div class="blob" style="width:260px;height:260px;background:#7fb39b;opacity:.35;right:-70px;bottom:6%;animation-delay:-5s"></div>
-<a class="back" href="index.html">← Back to home</a>
-<main class="shell2"><section class="visual" aria-hidden="true"><img src="Assests/about-main.webp" alt="" width="488" height="464"><span class="vchip c1">✦ 5,000+ glowing clients</span><span class="vchip c2">★ 4.9 rating</span><div class="vq"><h2>Reveal your <em>healthy</em> skin</h2><p>Book visits, follow your routine and chat with your care team.</p></div></section><form class="panel" id="authForm" data-mode="login" novalidate><img class="lg a" src="Assests/logo.webp" alt="Stackly" width="352" height="92"><h1 class="a" style="--i:1">Welcome back</h1><p class="sub a" style="--i:1">Log in to continue to your dashboard.</p><p class="lbl a" style="--i:2">Sign in as</p><div class="roles a" style="--i:3"><label class="rc"><input type="radio" name="role" value="user" checked><span><i>☺</i><b>User</b><small>Book visits &amp; track my skin</small></span></label><label class="rc"><input type="radio" name="role" value="admin"><span><i>◈</i><b>Admin</b><small>Manage clients &amp; clinic</small></span></label></div><div class="fld a" style="--i:4"><input type="email" name="email" id="e" placeholder=" " autocomplete="email"><label for="e">Email address</label></div><div class="fld a" style="--i:5"><input type="password" name="pwd" id="p" placeholder=" " autocomplete="current-password"><label for="p">Password</label><button type="button" class="eye">Show</button></div><p class="msg" id="msg" role="status" aria-live="polite"></p><button class="btn a" style="--i:8" type="submit">Login →</button><p class="alt a" style="--i:9">New here? <a href="signup.html">Create an account</a></p></form></main><script src="auth.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Lobster+Two:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="auth.css">
+<title>Login · Stackly Skincare Clinic</title>
+</head>
+<body class="a-login">
+<main class="au-stage">
+  <a class="au-brand" href="index.html" aria-label="Stackly - back to home"><img src="Assests/logo.webp" alt="Stackly" width="352" height="92"></a>
+  <img class="au-hands" src="Assests/login-hands.webp" alt="">
+
+  <form class="au-card" id="authForm" data-mode="login" novalidate>
+    <h1>Login to your account</h1>
+    <div class="au-roles" role="radiogroup" aria-label="Sign in as">
+        <label><input type="radio" name="role" value="user" checked><span>Client</span></label>
+        <label><input type="radio" name="role" value="admin"><span>Admin</span></label>
+      </div>
+
+    <div class="au-grp">
+      <div class="au-fld"><input type="email" name="email" placeholder="Email Address" aria-label="Email address" autocomplete="email"></div>
+      <div class="au-fld"><input type="password" name="pwd" placeholder="Password" aria-label="Password" autocomplete="current-password"><button type="button" class="au-eye">Show</button></div>
+      <div class="au-row">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+        <a href="404.html" id="forgot">Forgot password</a>
+      </div>
+    </div>
+
+    <div class="au-grp">
+      <p class="au-msg" id="msg" role="status" aria-live="polite"></p>
+      <button class="au-btn" type="submit">Log In</button>
+      <a class="au-back" href="index.html">← Back to Home</a>
+    </div>
+
+    <div class="au-grp">
+      <div class="au-or">Instant Login</div>
+      <div class="au-social">
+        <button type="button" class="au-soc" data-soc="Google" onclick="window.location.href='404.html'"><i>G</i>Continue with Google</button>
+<button type="button" class="au-soc fb" data-soc="Facebook" onclick="window.location.href='404.html'"><i>f</i>Continue with Facebook</button>
+</div>
+    </div>
+
+    <p class="au-alt">Don't have an account? <a href="signup.html">Sign up</a></p>
+  </form>
+</main>
+<script src="auth.js"></script>
+</body>
+</html>

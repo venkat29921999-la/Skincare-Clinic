@@ -1,0 +1,112 @@
+/* Stackly auth pages - fixed one-screen layout (no page scroll). Classes prefixed au- */
+:root{--g1:#2c4a3d;--g3:#5f8f72;--g4:#1f4538;--line:rgba(255,255,255,.4);
+ --fh:clamp(36px,5.8vh,46px);--gap:clamp(7px,1.7vh,16px)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden}
+body.a-login,body.a-signup{font-family:"Josefin Sans",system-ui,sans-serif;color:#fff;background:#1d3a2f}
+.au-stage{position:relative;height:100vh;height:100dvh;isolation:isolate;overflow:hidden}
+.au-bg{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.au-brand{position:absolute;display:block;z-index:3;border-radius:6px;cursor:pointer;transition:opacity .2s,transform .2s}
+.au-brand img{display:block;height:clamp(26px,4vh,34px);width:auto;filter:brightness(0) invert(1)}
+.au-brand:hover{opacity:.85}
+.au-brand:focus-visible{outline:2px solid #fff;outline-offset:4px}
+
+.au-card{position:relative;z-index:2;width:min(100%,440px);max-height:100%;overflow-y:auto;scrollbar-width:none;padding:clamp(14px,3.4vh,34px) clamp(18px,2.2vw,30px) clamp(12px,2.6vh,24px);border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.05);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.au-card::-webkit-scrollbar{display:none}
+.au-card h1{font-family:"Lobster Two",cursive;font-weight:400;font-size:clamp(24px,4.8vh,40px);margin:0 0 var(--gap);line-height:1.15;color:#fff}
+.au-roles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 var(--gap)}
+.au-roles label{cursor:pointer;position:relative}
+.au-roles input{position:absolute;opacity:0;pointer-events:none}
+.au-roles span{display:block;text-align:center;padding:clamp(6px,1.2vh,10px) 6px;border:1px solid var(--line);border-radius:10px;font-size:clamp(12px,1.9vh,14px);transition:.2s}
+.au-roles input:checked+span{background:var(--g3);border-color:var(--g3);box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.au-roles input:focus-visible+span{outline:2px solid #fff;outline-offset:2px}
+.au-fld{position:relative;margin:0 0 var(--gap)}
+.au-fld input{width:100%;height:var(--fh);padding:0 54px 0 14px;border:0;border-radius:8px;color:#fff;font:400 14px "Josefin Sans",sans-serif;background:rgba(255,255,255,.1);box-shadow:inset 0 2px 5px rgba(0,0,0,.28),0 1px 0 rgba(255,255,255,.06)}
+.au-fld input::placeholder{color:rgba(255,255,255,.85)}
+.au-fld input:focus{outline:2px solid rgba(255,255,255,.55);background:rgba(255,255,255,.15)}
+.au-fld input:-webkit-autofill,.au-fld input:-webkit-autofill:focus{-webkit-text-fill-color:#fff;caret-color:#fff;box-shadow:inset 0 0 0 100px #3b5b4c;transition:background-color 9999s}
+.au-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:#fff;opacity:.8;font:400 12px "Josefin Sans",sans-serif;padding:8px;cursor:pointer}
+.au-eye:hover{opacity:1}
+.au-row{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11px;color:#fff;margin:calc(var(--gap) * -.3) 0 var(--gap);padding:0;background:none}
+.au-row label{display:flex;align-items:center;gap:6px;cursor:pointer;color:#fff}
+.au-row input{accent-color:var(--g3);margin:0}
+.au-row a{color:#fff;text-decoration:none;opacity:.85}
+.au-row a:hover,.au-alt a:hover{text-decoration:underline}
+.au-msg{min-height:14px;margin:0 0 6px;font-size:12px;line-height:1.2;color:#ffd0c4;text-align:center}
+.au-msg.ok{color:#c8f3d8}
+.au-btn{display:block;width:100%;height:var(--fh);border:1px solid rgba(255,255,255,.28);border-radius:6px;background:var(--g4);color:#fff;font:400 20px "Lobster Two",cursive;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.15);transition:transform .15s,filter .15s}
+.au-btn:hover{filter:brightness(1.15)}.au-btn:active{transform:translateY(1px)}
+.au-back{position:static;display:inline-flex;align-items:center;gap:6px;margin-top:var(--gap);padding:clamp(5px,.9vh,7px) 16px;border-radius:8px;background:var(--g3);color:#fff;font-size:13px;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,.3)}
+.au-back:hover{filter:brightness(1.12)}
+.au-or{display:flex;align-items:center;gap:12px;margin:var(--gap) 0 calc(var(--gap) * .8);font-size:12px;font-weight:600;letter-spacing:.5px}
+.au-or:before,.au-or:after{content:"";flex:1;height:1px;background:var(--line)}
+.au-social{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.au-soc{display:flex;align-items:center;justify-content:center;gap:8px;height:clamp(28px,4.4vh,34px);border:1px solid var(--line);border-radius:20px;background:transparent;color:#fff;font:400 11px "Josefin Sans",sans-serif;cursor:pointer}
+.au-soc:hover{background:rgba(255,255,255,.1)}
+.au-soc i{display:grid;place-items:center;width:16px;height:16px;border-radius:50%;font:700 11px Arial,sans-serif;font-style:normal;background:#fff;color:#ea4335}
+.au-soc.fb i{background:#1877f2;color:#fff}
+.au-alt{text-align:center;font-size:12px;margin:var(--gap) 0 0;font-weight:600;color:#fff}
+.au-alt a{color:#9fd3b0;text-decoration:none}
+
+.au-grp{display:flex;flex-direction:column;gap:var(--gap)}
+.au-grp>*{margin-top:0;margin-bottom:0}
+.au-msg:empty{display:none}
+.au-grp .au-back{align-self:flex-start}
+
+/* LOGIN */
+.a-login .au-stage{display:flex;align-items:center;padding:clamp(56px,9vh,72px) 5vw 16px;background:#1f4538 url(Assests/login-bg.webp) right center/cover no-repeat}
+.a-login .au-brand{top:clamp(14px,3vh,26px);right:5vw}
+.a-login .au-card{margin-left:2vw}
+.a-login .au-hands{position:absolute;z-index:1;right:2vw;bottom:-8%;height:100%;width:auto;max-width:56%;object-fit:contain;object-position:bottom right;filter:drop-shadow(0 20px 30px rgba(0,0,0,.25))}
+@media (min-width:901px){
+ .a-login .au-stage{padding:8vh 5vw 6vh 4vw}
+ .a-login .au-card{width:clamp(380px,40vw,580px);margin-left:0;align-self:stretch;max-height:none;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(18px,4.5vh,44px) clamp(24px,3.2vw,48px)}
+ .a-login .au-card>*{margin-top:0;margin-bottom:0}
+ .a-login .au-grp{gap:clamp(10px,2.4vh,22px)}
+ .a-login .au-card h1{font-size:clamp(30px,6vh,52px)}
+ .a-login .au-roles span{padding:clamp(8px,1.6vh,13px) 6px;font-size:clamp(13px,2vh,15px)}
+ .a-login .au-fld input{height:clamp(40px,6.8vh,58px);font-size:15px}
+ .a-login .au-btn{height:clamp(42px,7vh,60px);font-size:clamp(20px,3vh,25px)}
+ .a-login .au-back{font-size:14px;padding:clamp(6px,1.2vh,9px) 20px}
+ .a-login .au-soc{height:clamp(32px,5.2vh,44px);font-size:12px}
+ .a-login .au-or,.a-login .au-alt,.a-login .au-row{font-size:clamp(12px,1.9vh,14px)}
+ .a-login .au-msg{font-size:13px}
+}
+
+/* SIGNUP */
+.a-signup{background:#1b4a3c}
+.a-signup .au-stage{display:grid;grid-template-columns:1fr 1fr}
+.a-signup .au-hero{position:relative;padding:34px 6vw 40px;display:flex;flex-direction:column;justify-content:center;gap:10px;background:#113c27 url(Assests/signup-leaves.webp) right top/cover no-repeat}
+.a-signup .au-hero .au-brand{top:clamp(16px,4vh,30px);left:6vw}
+.a-signup .au-hero h2{margin:clamp(30px,7vh,60px) 0 0;font:700 clamp(46px,min(8vw,13vh),96px)/.95 "Josefin Sans",sans-serif;letter-spacing:-1px;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.3)}
+.a-signup .au-hero h2 span{color:#a9b468}
+.a-signup .au-hero h3{margin:0;font:700 clamp(16px,min(2.2vw,3.6vh),24px) "Josefin Sans",sans-serif;letter-spacing:.5px;color:#fff}
+.a-signup .au-hero p{margin:6px 0 0;max-width:360px;font-size:12px;line-height:1.9;letter-spacing:1.2px;color:#fff}
+.a-signup .au-side{display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vh,40px) 5vw;min-height:0;
+ background:linear-gradient(90deg,#113c27 0,#184632 6%,transparent 16%),radial-gradient(90% 70% at 70% 20%,#2f6b56,#1f5646 55%,#1b4a3c)}
+.a-signup .au-card{width:min(100%,430px)}
+.a-signup .au-card h1{font-size:clamp(28px,5.2vh,46px)}
+.a-signup .au-btn{width:62%;margin:4px auto 0;background:var(--g3);font-size:17px;border-radius:20px;height:clamp(34px,5.2vh,40px)}
+.a-signup .au-back{background:var(--g4);font-size:11px;padding:6px 14px}
+
+/* MOBILE / TABLET */
+@media (max-width:900px){
+ .a-login .au-stage{justify-content:center;padding:clamp(54px,9vh,76px) 16px 14px}
+ .a-login .au-brand{top:clamp(12px,2.5vh,22px);right:auto;left:50%;transform:translateX(-50%)}
+ .a-login .au-card{margin:0;background:rgba(36,61,51,.78)}
+ .a-login .au-hands{height:42%;right:0;opacity:.35;max-width:70%}
+ .a-signup .au-stage{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+ .a-signup .au-hero{padding:clamp(54px,9vh,72px) 24px 14px;gap:6px}
+ .a-signup .au-hero .au-brand{left:24px;top:clamp(12px,2.5vh,22px)}
+ .a-signup .au-hero h2{margin:0;font-size:clamp(38px,7.5vh,64px)}
+ .a-signup .au-side{padding:12px 16px 14px;background:radial-gradient(120% 80% at 70% 0,#2f6b56,#1f5646 55%,#1b4a3c)}
+ .a-signup .au-card{background:rgba(24,72,58,.6)}
+}
+@media (max-width:900px) and (max-height:780px){.a-signup .au-hero p{display:none}}
+@media (max-width:420px){
+ .au-card{border-radius:18px}
+ .a-signup .au-btn{width:80%}
+ .au-social{grid-template-columns:1fr}
+}
+@media (max-height:480px){.au-social{display:none}.au-or{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
