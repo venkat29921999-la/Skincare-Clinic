@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Skincare Journal | Stackly Skincare Clinic</title>
+  <meta name="description" content="Expert insights, practical routines and modern skincare knowledge from the Stackly Skincare Clinic team.">
+  <meta name="theme-color" content="#1a3a30">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Josefin+Sans:wght@300;400;500;600&family=Lobster+Two:ital,wght@0,400;0,700;1,400&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('jn-js')</script>
+</head>
+<body class="jn-page">
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="pl__fx">
+      <i class="gfx__drop" style="--x:12%;--d:7s;--s:12px"></i><i class="gfx__drop" style="--x:30%;--d:9s;--s:9px;--dl:-3s"></i>
+      <i class="gfx__drop" style="--x:55%;--d:8s;--s:14px;--dl:-5s"></i><i class="gfx__drop" style="--x:78%;--d:10s;--s:10px;--dl:-1s"></i>
+      <b class="gfx__spark" style="--x:18%;--y:22%">✦</b><b class="gfx__spark" style="--x:80%;--y:30%;--dl:-1.4s">✧</b><b class="gfx__spark" style="--x:64%;--y:72%;--dl:-2.2s">✦</b>
+    </div>
+    <div class="pl__orb">
+      <svg viewBox="0 0 100 100"><circle class="pl__track" cx="50" cy="50" r="46"/><circle class="pl__ring" cx="50" cy="50" r="46"/></svg>
+      <b><span id="plNum">0</span><small>%</small></b>
+    </div>
+    <img src="Assests/logo-light.webp" alt="" width="352" height="92">
+    <div class="preloader__bar"><span></span></div>
+    <p class="pl__word" id="plWord">Cleansing</p>
+  </div>
+
+  <!-- Page transition curtain (plays when a main menu page is opened) -->
+  <div class="pt" id="pageTrans" aria-hidden="true">
+    <div class="pt__p pt__a"></div><div class="pt__p pt__b"></div>
+    <div class="pt__label"><small id="ptSmall">Welcome</small><b id="ptBig">Home</b><i></i></div>
+  </div>
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ 1. HEADER ============ -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo" aria-label="Stackly home">
+        <img src="Assests/logo.webp" alt="Stackly" width="352" height="92">
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li><a href="service.html" class="nav__link">Service</a></li>
+          <li><a href="blog.html" class="nav__link is-active" aria-current="page">Blog</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+        <a class="btn btn--dark nav__login-mobile" href="login.html">
+          <i class="fa-solid fa-user"></i> Login
+        </a>
+        <a class="btn btn--dark nav__signup-mobile" href="signup.html">Signup</a>
+        <div class="nav__social" aria-label="Social links">
+          <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--dark header__login" href="login.html"><i class="fa-solid fa-user"></i><span>Login</span></a>
+        <a class="btn btn--dark header__signup" href="signup.html"><span>Signup</span></a>
+        <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="hd-search" id="hdSearchBox" hidden>
+      <form role="search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="Search treatments, blog, contact…" aria-label="Search the site" autocomplete="off"><button class="btn btn--dark" type="submit">Go</button></form>
+      <div class="hd-suggest"><button type="button" data-q="facial">Facials</button><button type="button" data-q="acne">Acne care</button><button type="button" data-q="hydration">Hydration</button><button type="button" data-q="anti-ageing">Anti-ageing</button><button type="button" data-q="blog">Skin tips</button><button type="button" data-q="book">Book a visit</button></div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ 1. HERO ============ -->
+    <section class="jn-hero" id="top">
+      <div class="jn-hero__bg" aria-hidden="true"><img src="Assests/blog-hero.webp" data-fb="Assests/sc10.webp" alt="" width="1344" height="799" fetchpriority="high"></div>
+      <div class="jn-bubs" aria-hidden="true"><i style="--x:6%;--s:16px;--d:11s;--dl:-0s"></i><i style="--x:15%;--s:10px;--d:13s;--dl:-4s"></i><i style="--x:27%;--s:22px;--d:15s;--dl:-7s"></i><i style="--x:41%;--s:12px;--d:12s;--dl:-2s"></i><i style="--x:56%;--s:18px;--d:14s;--dl:-9s"></i><i style="--x:68%;--s:9px;--d:10s;--dl:-5s"></i><i style="--x:79%;--s:24px;--d:16s;--dl:-1s"></i><i style="--x:90%;--s:13px;--d:12s;--dl:-8s"></i></div>
+      <div class="jn-hero__in">
+        <span class="jn-pill">Journal · October 2026</span>
+        <h1 class="jn-hero__title">The Skincare Journal</h1>
+        <p class="jn-hero__lead">Expert insights, practical routines and modern <strong>skincare knowledge.</strong></p>
+      </div>
+      <div class="jn-cats" data-jn="cats"><div class="container jn-cats__in"><a class="jn-chip" style="--i:0" href="404.html">Skincare tips</a><a class="jn-chip" style="--i:1" href="404.html">Acne &amp; pigmentation</a><a class="jn-chip" style="--i:2" href="404.html">Anti-aging &amp; wellness</a><a class="jn-chip" style="--i:3" href="404.html">Expert advice</a></div></div>
+    </section>
+
+    <!-- ============ 2. FEATURED ARTICLE ============ -->
+    <section class="jn-feat" id="featured">
+      <div class="container">
+        <article class="jn-feat__card" data-jn>
+          <figure class="jn-feat__fig">
+            <img src="Assests/blog-featured.webp" data-fb="Assests/hero.webp" alt="Woman with calm, healthy skin" width="900" height="900" loading="lazy">
+            <span class="jn-scan" aria-hidden="true"></span>
+            <span class="jn-hot" style="--x:38%;--y:30%" aria-hidden="true"><span>Barrier · intact</span></span>
+            <span class="jn-hot" style="--x:56%;--y:52%;--dl:.7s" aria-hidden="true"><span>Hydration · 82%</span></span>
+            <span class="jn-hot" style="--x:44%;--y:66%;--dl:1.4s" aria-hidden="true"><span>Glow · rising</span></span>
+            <figcaption class="jn-feat__word" aria-hidden="true"><span>HEALTHY</span><b>SKIN</b></figcaption>
+          </figure>
+          <div class="jn-feat__body">
+            <span class="jn-pill">Featured · Routines</span>
+            <h2 class="jn-feat__title title">The Barrier-First Routine: Why Healthy Skin Starts With Less</h2>
+            <p>Most irritated skin doesn’t need another active. It needs a stronger barrier. Our dermatologist explains how to rebuild one, and when to add more.</p>
+            <div class="jn-take"><h3>Key takeaways</h3>
+              <ul><li style="--i:0">Protect the barrier before you treat anything</li><li style="--i:1">Add one new product at a time</li><li style="--i:2">Judge any change after four to six weeks</li></ul>
+              <span class="jn-take__bar" aria-hidden="true"></span></div>
+            <div class="jn-by"><span class="jn-av"><img src="Assests/team-ananya.webp" data-fb="Assests/avatar-1.webp" alt="Dr. Ananya Rao" width="96" height="96" loading="lazy"></span><div><b>Dr. Ananya Rao</b><small>12 Oct 2026 · 8 min read</small></div><a href="404.html" class="link-arrow link-arrow--sm">Read article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 3. LATEST ARTICLES ============ -->
+    <section class="jn-latest" id="latest">
+      <div class="container">
+        <div class="jn-head" data-jn><span class="jn-pill">Latest articles</span><h2 class="title">Fresh from the clinic</h2></div>
+        <div class="jn-cards">
+          <article class="jn-card" data-jn style="--i:0"><div class="jn-card__in">
+            <a href="404.html" class="jn-card__img" tabindex="-1" aria-hidden="true"><img src="Assests/blog-a1.webp" data-fb="Assests/sc27.webp" alt="Ingredient label and botanical ingredients" width="600" height="490" loading="lazy"></a>
+            <div class="jn-card__txt"><span class="jn-pill">Ingredients</span><h3>How to Read an Ingredient Label Without a Chemistry Degree</h3><p>What the order means and which words to trust.</p><span class="jn-card__meta">5 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+          </div></article>
+          <article class="jn-card" data-jn style="--i:1"><div class="jn-card__in">
+            <a href="404.html" class="jn-card__img" tabindex="-1" aria-hidden="true"><img src="Assests/blog-a2.webp" data-fb="Assests/detail-shadow.webp" alt="Sun-kissed skin" width="600" height="490" loading="lazy"></a>
+            <div class="jn-card__txt"><span class="jn-pill">Sun care</span><h3>SPF in Winter: Yes, Really</h3><p>Why UV doesn’t take the season off.</p><span class="jn-card__meta">23 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+          </div></article>
+          <article class="jn-card" data-jn style="--i:2"><div class="jn-card__in">
+            <a href="404.html" class="jn-card__img" tabindex="-1" aria-hidden="true"><img src="Assests/blog-a3.webp" data-fb="Assests/sc6.webp" alt="Glowing, even skin" width="600" height="490" loading="lazy"></a>
+            <div class="jn-card__txt"><span class="jn-pill">Ingredients</span><h3>Retinol, Slowly: A Four-Week Starter Plan</h3><p>A gentle schedule that keeps irritation low.</p><span class="jn-card__meta">29 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+          </div></article>
+          <article class="jn-card" data-jn style="--i:3"><div class="jn-card__in">
+            <a href="404.html" class="jn-card__img" tabindex="-1" aria-hidden="true"><img src="Assests/blog-a4.webp" data-fb="Assests/sc1.webp" alt="Client receiving a facial" width="600" height="490" loading="lazy"></a>
+            <div class="jn-card__txt"><span class="jn-pill">Treatments</span><h3>Your First Facial: What Actually Happens</h3><p>From consultation to aftercare, step by step.</p><span class="jn-card__meta">19 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+          </div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. SKINCARE TIPS ============ -->
+    <section class="jn-tips" id="tips">
+      <span class="jn-tips__blob jn-tips__blob--1" aria-hidden="true"></span><span class="jn-tips__blob jn-tips__blob--2" aria-hidden="true"></span>
+      <div class="container">
+        <div class="jn-head" data-jn><span class="jn-pill">Skincare tips</span><h2 class="title">Small habits, big difference</h2><p>Short, practical reads. Pick a topic.</p></div>
+        <div class="jn-filter" id="jnFilter" role="group" aria-label="Filter tips by topic" data-jn>
+          <span class="jn-filter__ink" aria-hidden="true"></span>
+          <button type="button" class="is-on" data-f="all" aria-pressed="true">All</button><button type="button" data-f="cleansing" aria-pressed="false">Cleansing</button><button type="button" data-f="sun" aria-pressed="false">Sun care</button><button type="button" data-f="routines" aria-pressed="false">Routines</button><button type="button" data-f="ingredients" aria-pressed="false">Ingredients</button>
+        </div>
+        <p class="jn-count" aria-live="polite">Showing <b id="jnCount">8</b> quick reads</p>
+        <div class="jn-tipgrid" id="jnTips" data-jn>
+          <a class="jn-tip" data-cat="cleansing" href="404.html"><span class="jn-tip__img"><img src="Assests/blog-t1.webp" data-fb="Assests/sc11.webp" alt="" width="300" height="300" loading="lazy"></span><span class="jn-tip__txt"><span class="jn-pill">Cleansing</span><h3>Do You Need to Double Cleanse?</h3><p>Only when you wear SPF or makeup.</p><small>3 min read</small><span class="jn-tip__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></span></a>
+          <a class="jn-tip" data-cat="cleansing" href="404.html"><span class="jn-tip__img"><img src="Assests/blog-t2.webp" data-fb="Assests/sc18.webp" alt="" width="300" height="300" loading="lazy"></span><span class="jn-tip__txt"><span class="jn-pill">Cleansing</span><h3>Why Your Cleanser Shouldn’t Squeak</h3><p>Tight skin isn’t clean skin.</p><small>3 min read</small><span class="jn-tip__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></span></a>
+          <a class="jn-tip" data-cat="sun" href="404.html"><span class="jn-tip__img"><img src="Assests/blog-t3.webp" data-fb="Assests/detail-shadow.webp" alt="" width="300" height="300" loading="lazy"></span><span class="jn-tip__txt"><span class="jn-pill">Sun care</span><h3>Sunscreen, Explained Simply</h3><p>SPF, UVA, UVB and what actually matters.</p><small>4 min read</small><span class="jn-tip__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></span></a>
+          <a class="jn-tip" data-cat="sun" href="404.html"><span class="jn-tip__img"><img src="Assests/blog-t4.webp" data-fb="Assests/sc17.webp" alt="" width="300" height="300" loading="lazy"></span><span class="jn-tip__txt"><span class="jn-pill">Sun care</span><h3>How Much SPF Is Enough?</h3><p>Two fingers for the face, every morning.</p><small>3 min read</small><span class="jn-tip__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></span></a>
+          <a class="jn-tip" data-cat="routines" href="404.html"><span class="jn-tip__img"><img src="Assests/blog-t5.webp" data-fb="Assests/sc12.webp" alt="" width="300" height="300" loading="lazy"></span><span class="jn-tip__txt"><span class="jn-pill">Routines</span><h3>The Three-Step Morning Routine</h3><p>Cleanse, protect, moisturize. That’s it.</p><small>3 min read</small><span class="jn-tip__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></span></a>
+          <a class="jn-tip" data-cat="routines" href="404.html"><span class="jn-tip__img"><img src="Assests/blog-t6.webp" data-fb="Assests/sc13.webp" alt="" width="300" height="300" loading="lazy"></span><span class="jn-tip__txt"><span class="jn-pill">Routines</span><h3>A Night Routine for Tired Skin</h3><p>Less layering, more recovery.</p><small>4 min read</small><span class="jn-tip__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></span></a>
+          <a class="jn-tip" data-cat="ingredients" href="404.html"><span class="jn-tip__img"><img src="Assests/blog-t7.webp" data-fb="Assests/sc9.webp" alt="" width="300" height="300" loading="lazy"></span><span class="jn-tip__txt"><span class="jn-pill">Ingredients</span><h3>Niacinamide, Without the Hype</h3><p>What it does well and who should skip it.</p><small>4 min read</small><span class="jn-tip__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></span></a>
+          <a class="jn-tip" data-cat="ingredients" href="404.html"><span class="jn-tip__img"><img src="Assests/blog-t8.webp" data-fb="Assests/sc30.webp" alt="" width="300" height="300" loading="lazy"></span><span class="jn-tip__txt"><span class="jn-pill">Ingredients</span><h3>Vitamin C: Morning or Night?</h3><p>Timing, strength and storage tips.</p><small>3 min read</small><span class="jn-tip__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. EXPERT ADVICE ============ -->
+    <section class="jn-expert" id="expert">
+      <div class="container">
+        <div class="jn-head" data-jn><span class="jn-pill">Expert advice</span><h2 class="title">Words from our specialists</h2></div>
+        <div class="jn-xp" id="jnXp" data-jn>
+          <span class="jn-xp__bg" aria-hidden="true"></span>
+          <div class="jn-xp__q"><span class="jn-pill" id="jnRole">Consultant Dermatologist</span><blockquote class="jn-quote" id="jnQuote" aria-live="polite">“Skin rarely needs more products. It needs fewer, used consistently.”</blockquote></div>
+          <div class="jn-sp" role="group" aria-label="Choose a specialist">
+          <button type="button" data-q="Skin rarely needs more products. It needs fewer, used consistently." data-role="Consultant Dermatologist" aria-pressed="false"><span class="jn-sp__av"><img src="Assests/team-ananya.webp" data-fb="Assests/avatar-1.webp" alt="" width="96" height="96" loading="lazy"></span><span><b>Dr. Ananya Rao</b><small>Consultant Dermatologist</small></span></button>
+          <button type="button" data-q="A calm routine you can keep beats a perfect one you drop in a week." data-role="Senior Skin Therapist" aria-pressed="false"><span class="jn-sp__av"><img src="Assests/team-kavya.webp" data-fb="Assests/avatar-2.webp" alt="" width="96" height="96" loading="lazy"></span><span><b>Kavya Menon</b><small>Senior Skin Therapist</small></span></button>
+          <button type="button" data-q="The best results look like your skin on its best day, never like a treatment." data-role="Aesthetic Physician" aria-pressed="false"><span class="jn-sp__av"><img src="Assests/team-rohan.webp" data-fb="Assests/avatar-3.webp" alt="" width="96" height="96" loading="lazy"></span><span><b>Dr. Rohan Iyer</b><small>Aesthetic Physician</small></span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ============ 6. INGREDIENT SPOTLIGHT ============ -->
+    <section class="jx-ing" id="ingredients">
+      <div class="container">
+        <div class="jx-head" data-jx><span class="jx-tag"><i class="fa-solid fa-droplet"></i> Ingredient spotlight</span><h2 class="title">Meet the actives, one by one</h2><p>Hover, tap or use the arrow keys to open a card.</p></div>
+        <div class="jx-acc" id="jxAcc" data-jx role="group" aria-label="Ingredient spotlight">
+          <article class="jx-pan is-open" tabindex="0" role="button" aria-expanded="true" style="--c1:#d9e6df;--c2:#f1f6f3">
+            <span class="jx-pan__no" aria-hidden="true">01</span><span class="jx-pan__side" aria-hidden="true">Hyaluronic acid</span>
+            <div class="jx-pan__body"><span class="jx-tag">Hydration</span><h3>Hyaluronic acid</h3><p>A water magnet that holds many times its weight in moisture, so skin looks plumper and feels softer.</p><ul><li><i class="fa-solid fa-circle-check"></i> Best for dry, dehydrated skin</li><li><i class="fa-solid fa-circle-check"></i> Apply on damp skin, morning and night</li></ul><a href="404.html" class="link-arrow link-arrow--sm">Read the guide <i class="fa-solid fa-arrow-right-long"></i></a></div>
+            <img class="jx-pan__img jx-pan__img--cut is-float" src="Assests/blog-ing-hyaluronic.webp" alt="Hyaluronic acid serum held in open hands" width="400" height="537" loading="lazy">
+          </article>
+          <article class="jx-pan" tabindex="0" role="button" aria-expanded="false" style="--c1:#f4dc9c;--c2:#fbf0cf">
+            <span class="jx-pan__no" aria-hidden="true">02</span><span class="jx-pan__side" aria-hidden="true">Vitamin C</span>
+            <div class="jx-pan__body"><span class="jx-tag">Brightening</span><h3>Vitamin C</h3><p>An antioxidant that helps fade dullness and uneven tone while defending skin from daily pollution.</p><ul><li><i class="fa-solid fa-circle-check"></i> Best for dull, uneven tone</li><li><i class="fa-solid fa-circle-check"></i> Use in the morning, under SPF</li></ul><a href="404.html" class="link-arrow link-arrow--sm">Read the guide <i class="fa-solid fa-arrow-right-long"></i></a></div>
+            <img class="jx-pan__img jx-pan__img--cut2" src="Assests/blog-ing-vitc.webp" alt="Golden vitamin C serum between two hands" width="346" height="394" loading="lazy">
+          </article>
+          <article class="jx-pan" tabindex="0" role="button" aria-expanded="false" style="--c1:#f0d9c4;--c2:#f9eee3">
+            <span class="jx-pan__no" aria-hidden="true">03</span><span class="jx-pan__side" aria-hidden="true">Botanical oils</span>
+            <div class="jx-pan__body"><span class="jx-tag">Nourishment</span><h3>Botanical oils</h3><p>Coconut, argan and sunflower oils seal in moisture and soften rough, flaky patches overnight.</p><ul><li><i class="fa-solid fa-circle-check"></i> Best for dry, mature skin</li><li><i class="fa-solid fa-circle-check"></i> Last step of your evening routine</li></ul><a href="404.html" class="link-arrow link-arrow--sm">Read the guide <i class="fa-solid fa-arrow-right-long"></i></a></div>
+            <img class="jx-pan__img jx-pan__img--pic" src="Assests/blog-ing-oils.webp" alt="Coconut, argan and sunflower oils" width="363" height="282" loading="lazy">
+          </article>
+          <article class="jx-pan" tabindex="0" role="button" aria-expanded="false" style="--c1:#efc9b6;--c2:#f8e6dc">
+            <span class="jx-pan__no" aria-hidden="true">04</span><span class="jx-pan__side" aria-hidden="true">Barrier care</span>
+            <div class="jx-pan__body"><span class="jx-tag">Repair</span><h3>Barrier care</h3><p>Ceramides and soothing botanicals rebuild a stressed barrier so skin feels calm and comfortable again.</p><ul><li><i class="fa-solid fa-circle-check"></i> Best for sensitive, reactive skin</li><li><i class="fa-solid fa-circle-check"></i> Daily, morning and night</li></ul><a href="404.html" class="link-arrow link-arrow--sm">Read the guide <i class="fa-solid fa-arrow-right-long"></i></a></div>
+            <img class="jx-pan__img jx-pan__img--arch" src="Assests/blog-ing-barrier.webp" alt="Woman with calm, healthy skin wrapped in linen" width="354" height="621" loading="lazy">
+          </article>
+        </div>
+        <div class="jx-bar" id="jxBar" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <!-- ============ 7. MYTH OR FACT ============ -->
+    <section class="jx-myth" id="myths">
+      <div class="container">
+        <div class="jx-head" data-jx><span class="jx-tag"><i class="fa-solid fa-circle-question"></i> Myth or fact</span><h2 class="title">Skincare myths, flipped</h2><p>Tap or hover a card to reveal the truth.</p></div>
+        <div class="jx-cards" data-jxs>
+          <button class="jx-card" type="button" aria-pressed="false" style="--i:0"><span class="jx-card__in">
+            <span class="jx-card__f"><img src="Assests/blog-myth-1.webp" alt="" width="357" height="393" loading="lazy"><span class="jx-stamp">Myth</span><b>More products means better skin.</b><small><i class="fa-solid fa-arrow-right-long"></i> Flip for the fact</small></span>
+            <span class="jx-card__b"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><h3>Fewer, simpler steps win.</h3><p>Protect the barrier first and add one new product at a time. Judge it after four to six weeks.</p><small>Fact</small></span>
+          </span></button>
+          <button class="jx-card" type="button" aria-pressed="false" style="--i:1"><span class="jx-card__in">
+            <span class="jx-card__f"><img src="Assests/blog-myth-2.webp" alt="" width="375" height="365" loading="lazy"><span class="jx-stamp">Myth</span><b>Oily skin doesn’t need moisturiser.</b><small><i class="fa-solid fa-arrow-right-long"></i> Flip for the fact</small></span>
+            <span class="jx-card__b"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><h3>Every skin type needs hydration.</h3><p>Skipping moisturiser can leave skin dehydrated and shiny. A light gel formula does the job.</p><small>Fact</small></span>
+          </span></button>
+          <button class="jx-card" type="button" aria-pressed="false" style="--i:2"><span class="jx-card__in">
+            <span class="jx-card__f"><img src="Assests/blog-myth-3.webp" alt="" width="368" height="365" loading="lazy"><span class="jx-stamp">Myth</span><b>You only need SPF on sunny days.</b><small><i class="fa-solid fa-arrow-right-long"></i> Flip for the fact</small></span>
+            <span class="jx-card__b"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><h3>UV doesn’t take the season off.</h3><p>UVA rays pass through clouds and windows. Two fingers of sunscreen, every morning.</p><small>Fact</small></span>
+          </span></button>
+          <button class="jx-card" type="button" aria-pressed="false" style="--i:3"><span class="jx-card__in">
+            <span class="jx-card__f"><img src="Assests/blog-myth-4.webp" alt="" width="372" height="365" loading="lazy"><span class="jx-stamp">Myth</span><b>Tingling means it’s working.</b><small><i class="fa-solid fa-arrow-right-long"></i> Flip for the fact</small></span>
+            <span class="jx-card__b"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><h3>Stinging is usually irritation.</h3><p>Good care feels comfortable. If skin burns or stings, stop and ask our team.</p><small>Fact</small></span>
+          </span></button>
+        </div>
+      </div>
+    </section>
+    <!-- ============ 8. DAILY RITUAL ============ -->
+    <section class="jx-rt" id="jxRt">
+      <div class="container">
+        <div class="jx-head" data-jx><span class="jx-tag"><i class="fa-solid fa-sun"></i> Daily ritual</span><h2 class="title">Your routine, step by step</h2><p>Scroll to follow the routine, or tap any step.</p></div>
+        <div class="jx-rt__grid">
+          <div class="jx-rt__vis" data-jx>
+            <div class="jx-rt__frame">
+              <img class="is-on" src="Assests/blog-step-1.webp" alt="Fresh, healthy skin after cleansing" width="720" height="900" loading="lazy">
+              <img src="Assests/blog-step-2.webp" alt="Glowing skin after a vitamin serum" width="720" height="900" loading="lazy">
+              <img src="Assests/blog-step-3.webp" alt="Cream applied to the cheek for a weekly boost" width="720" height="900" loading="lazy">
+              <img src="Assests/blog-step-4.webp" alt="Sun-kissed skin protected with sunscreen" width="720" height="900" loading="lazy">
+            </div>
+            <div class="jx-rt__badge" aria-hidden="true"><b>01</b><small>of 04</small></div>
+          </div>
+          <div class="jx-rt__list" data-jx>
+            <span class="jx-rt__fill" aria-hidden="true"></span>
+            <div class="jx-step is-on" tabindex="0" role="button"><small>Step 01 · Morning &amp; night</small><h3>Cleanse gently</h3><p>Lift away oil, SPF and pollution with a mild, pH-balanced cleanser. Skip hot water and harsh scrubs.</p><em><i class="fa-solid fa-clock"></i> About 60 seconds, lukewarm water</em></div>
+            <div class="jx-step" tabindex="0" role="button"><small>Step 02 · Targeted care</small><h3>Treat with an active serum</h3><p>Apply your serum to clean, damp skin: vitamin C by day, retinol or peptides at night.</p><em><i class="fa-solid fa-flask"></i> Introduce one new active at a time</em></div>
+            <div class="jx-step" tabindex="0" role="button"><small>Step 03 · Once or twice a week</small><h3>Mask and repair</h3><p>Under-eye patches and calming masks give a concentrated boost when skin looks tired or stressed.</p><em><i class="fa-solid fa-hourglass-half"></i> 10 to 15 minutes is plenty</em></div>
+            <div class="jx-step" tabindex="0" role="button"><small>Step 04 · Every morning</small><h3>Hydrate and protect</h3><p>Seal everything in with a barrier-friendly moisturiser, then finish with SPF 30 or higher.</p><em><i class="fa-solid fa-shield-heart"></i> Two finger lengths of sunscreen</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 9. CONSULTATION ============ -->
+    <section class="jx-cta" id="jxCta">
+      <div class="container">
+        <div class="jx-cta__grid">
+          <div class="jx-cta__txt">
+            <div class="jx-head" data-jx style="margin-bottom:0"><span class="jx-tag"><i class="fa-solid fa-calendar-check"></i> Book a visit</span><h2 class="title">Care that shows, guided by specialists</h2></div>
+            <p data-jx>Start with a free first assessment. A dermatology specialist studies your skin, listens to your goals and builds a plan around you.</p>
+            <div class="jx-stats" data-jx>
+              <div class="jx-stat"><b data-count="12" data-suffix="+">0</b><span>Years of clinical care</span></div>
+              <div class="jx-stat"><b data-count="8500" data-suffix="+">0</b><span>Treatments delivered</span></div>
+              <div class="jx-stat"><b data-count="96" data-suffix="%">0</b><span>Patients happy with results</span></div>
+              <div class="jx-stat"><b data-count="15">0</b><span>Skin specialists</span></div>
+            </div>
+            <a href="404.html" class="jx-btn" data-jx><span>Book a consultation</span><i class="fa-solid fa-arrow-right-long"></i></a>
+          </div>
+          <div class="jx-cta__vis" data-jx>
+            <span class="jx-cta__badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Free first assessment</span>
+            <div class="jx-cta__card"><img src="Assests/blog-consult.webp" alt="Specialist reviewing a skin plan with a patient" width="616" height="436" loading="lazy"></div>
+            <div class="jx-ba"><img src="Assests/blog-ba.webp" alt="Skin before and after the right care" width="303" height="336" loading="lazy"><span>Before / After</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER (CTA + footer) ============ -->
+  <footer class="footer" id="footer">
+    <div class="footer__bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer__cta">
+        <h2 class="footer__headline" id="footHead">Your Skin Deserves Exceptional Care.</h2>
+        <a href="404.html" class="btn btn--outline-peach btn--lg magnetic">Book Your Consultation <i class="fa-solid fa-arrow-right-long"></i></a>
+      </div>
+
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="header__logo footer__logo" aria-label="Stackly - back to top"><img src="Assests/logo-light.webp" alt="Stackly" width="352" height="92" loading="lazy"></a>
+          <p>Personalized skincare with professional care. We listen first, then plan gentle clinical care around your skin, with a simple routine for home.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Services</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__contact">
+            <li><i class="fa-solid fa-house"></i> 4517 Washington Ave. Manchester, Kentucky 4646</li>
+            <li><i class="fa-solid fa-envelope"></i> info@thestackly.com<br>info1@gmail.com</li>
+            <li><i class="fa-solid fa-phone"></i> (+91) 99224-22334<br>(+91) 88112-77332</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Opening hours</h4>
+          <p class="footer__hours">Mon &ndash; Sat: 10am &ndash; 7pm<br>Sunday: Closed</p>
+          <div class="footer__social">
+            <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; <span id="year">2026</span> Stackly Skincare Clinic. All rights reserved.</span>
+        <a href="#top" class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Login modal -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-login></div>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="modal__close" type="button" aria-label="Close" data-close-login><i class="fa-solid fa-xmark"></i></button>
+      <img src="Assests/logo.webp" alt="Stackly" width="352" height="92" class="modal__logo">
+      <h3 id="loginTitle">Welcome back</h3>
+      <p>Log in to manage your appointments.</p>
+      <form id="loginForm" novalidate>
+        <div class="field"><input type="email" id="lEmail" placeholder=" " required><label for="lEmail">Email address</label><i class="fa-solid fa-envelope"></i></div>
+        <div class="field"><input type="password" id="lPass" placeholder=" " required><label for="lPass">Password</label><i class="fa-solid fa-lock"></i></div>
+        <button class="btn btn--dark btn--lg btn--block" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+        <p class="form__status" id="loginStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+  <script src="lenis-init.js"></script>
+  <script src="lenis-fx.js"></script>
+  <script src="lenis-more.js"></script>
+  <script src="site-fx.js"></script>
+</body>
+</html>

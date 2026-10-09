@@ -52,6 +52,270 @@
 })();
 
 /* =========================================================
+   NEW PAGES (blog.html, about.html) — compatibility + page code, placed near the top (like the block above)
+   so it still runs. Nothing in your existing code is changed.
+   script.js expects some home-page elements (treatments list, before/after, reviews, booking form).
+   On the two new pages those are not present, so empty hidden stand-ins are added first; this stops
+   script.js from stopping early and lets the preloader counter and heading animations run as on the other pages.
+   ========================================================= */
+(() => {
+  const b = document.body;
+  if (!b || !(b.classList.contains("jn-page") || b.classList.contains("abx-page"))) return;
+  const box = document.createElement("div");
+  box.hidden = true; box.setAttribute("aria-hidden", "true");
+  box.innerHTML = '<div id="txList"></div><div id="ba"></div><div id="baHandle"></div><button id="nextRev" type="button"></button><button id="prevRev" type="button"></button>' +
+    '<div id="revStage"><blockquote class="rev is-active"></blockquote></div><span id="revNow"></span>' +
+    '<form id="bookForm" novalidate><div class="bk__treat"><select id="fTreat"></select></div><fieldset class="bk__slots"></fieldset>' +
+    '<div class="field"><input id="fName"><label for="fName"></label></div><div class="field"><input id="fEmail"><label for="fEmail"></label></div>' +
+    '<button type="submit" class="form__submit"></button><p id="formStatus"></p></form>';
+  b.appendChild(box);
+})();
+
+/* =========================================================
+   NEW PAGES (blog.html, about.html) — image fallback. Appended; nothing above is changed.
+   An <img data-fb="..."> shows its stand-in until the real file with the final name is added.
+   ========================================================= */
+(() => {
+  const fix = (img) => { const fb = img.getAttribute("data-fb"); if (fb && img.src.indexOf(fb) === -1) { img.removeAttribute("data-fb"); img.src = fb; } };
+  const scan = () => document.querySelectorAll("img[data-fb]").forEach((img) => {
+    img.addEventListener("error", () => fix(img), { once: true });
+    if (img.complete && img.naturalWidth === 0) fix(img);
+  });
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", scan); else scan();
+})();
+
+/* =========================================================
+   BLOG PAGE (blog.html) — runs only when <body class="jn-page">. Appended; nothing above is changed.
+   ========================================================= */
+(() => {
+  "use strict";
+  if (!document.body.classList.contains("jn-page")) return;
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  /* ---------- reveal on scroll ---------- */
+  const targets = $$("[data-jn]");
+  if ("IntersectionObserver" in window && !reduce) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+    targets.forEach((t) => io.observe(t));
+    setTimeout(() => targets.forEach((t) => { const r = t.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) t.classList.add("is-in"); }), 5000);
+  } else targets.forEach((t) => t.classList.add("is-in"));
+
+  /* ---------- hero: title drips in letter by letter once the preloader is gone ---------- */
+  const hero = $(".jn-hero");
+  const title = $(".jn-hero__title");
+  if (title) {
+    let n = 0;
+    title.setAttribute("aria-label", title.textContent.replace(/\s+/g, " ").trim());
+    title.innerHTML = title.textContent.trim().split(/\s+/).map((w) => '<span class="jn-wd" aria-hidden="true">' + Array.from(w).map((c) => '<span class="jn-ch" style="--i:' + (n++) + '">' + c + "</span>").join("") + "</span>").join(" ");
+  }
+  if (hero) {
+    let go = false;
+    const start = () => { if (go) return; go = true; hero.classList.add("is-go"); };
+    const pre = $("#preloader");
+    if (reduce || !pre) start();
+    else { window.addEventListener("load", () => setTimeout(start, 1900)); setTimeout(start, 5200); }
+    /* soft parallax on the background */
+    const bg = $(".jn-hero__bg", hero);
+    if (bg && !reduce) {
+      let t = false;
+      addEventListener("scroll", () => { if (t) return; t = true; requestAnimationFrame(() => { bg.style.setProperty("--py", Math.min(scrollY, innerHeight) * 0.18 + "px"); t = false; }); }, { passive: true });
+    }
+  }
+
+  /* ---------- article cards: 3D tilt + moving glare ---------- */
+  if (fine && !reduce) $$(".jn-card").forEach((c) => {
+    const inner = $(".jn-card__in", c);
+    c.addEventListener("pointermove", (e) => {
+      const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      inner.style.setProperty("--ry", (x - 0.5) * 12 + "deg"); inner.style.setProperty("--rx", (0.5 - y) * 10 + "deg");
+      inner.style.setProperty("--gx", x * 100 + "%"); inner.style.setProperty("--gy", y * 100 + "%");
+    });
+    c.addEventListener("pointerleave", () => { inner.style.setProperty("--ry", "0deg"); inner.style.setProperty("--rx", "0deg"); });
+  });
+
+  /* ---------- tips: sliding filter pill + cards shuffle into place (FLIP) ---------- */
+  const filter = $("#jnFilter"), grid = $("#jnTips"), ink = $(".jn-filter__ink");
+  if (filter && grid) {
+    const btns = $$("button", filter), tips = $$(".jn-tip", grid), cnt = $("#jnCount");
+    const moveInk = (b) => { if (!ink) return; ink.style.width = b.offsetWidth + "px"; ink.style.height = b.offsetHeight + "px"; ink.style.transform = "translate(" + b.offsetLeft + "px," + b.offsetTop + "px)"; };
+    const apply = (cat) => {
+      const first = new Map(tips.filter((t) => !t.classList.contains("is-out")).map((t) => [t, t.getBoundingClientRect()]));
+      let shown = 0;
+      tips.forEach((t) => { const ok = cat === "all" || t.dataset.cat === cat; t.classList.toggle("is-out", !ok); if (ok) shown++; });
+      if (cnt) cnt.textContent = shown;
+      if (reduce || !grid.animate) return;
+      tips.forEach((t, i) => {
+        if (t.classList.contains("is-out")) return;
+        const r = t.getBoundingClientRect(), f = first.get(t);
+        const kf = f ? [{ transform: "translate(" + (f.left - r.left) + "px," + (f.top - r.top) + "px)" }, { transform: "none" }]
+          : [{ opacity: 0, transform: "translateY(26px) rotate(-3deg) scale(.92)" }, { opacity: 1, transform: "none" }];
+        t.animate(kf, { duration: 650, delay: f ? 0 : i * 70, easing: "cubic-bezier(.2,.9,.25,1.15)", fill: "backwards" });
+      });
+    };
+    btns.forEach((b) => b.addEventListener("click", () => {
+      btns.forEach((x) => { x.classList.toggle("is-on", x === b); x.setAttribute("aria-pressed", x === b); });
+      moveInk(b); apply(b.dataset.f);
+    }));
+    const on = () => moveInk($("button.is-on", filter) || btns[0]);
+    on(); addEventListener("resize", on); addEventListener("load", on);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(on);
+  }
+
+  /* ---------- specialists: quote rewrites itself, auto-plays, pauses on hover ---------- */
+  const xp = $("#jnXp");
+  if (xp) {
+    const sp = $$(".jn-sp button", xp), q = $("#jnQuote"), role = $("#jnRole");
+    const T = 7000; let cur = 0, timer = null;
+    xp.style.setProperty("--t", T + "ms");
+    const write = (txt) => { q.innerHTML = txt.split(" ").map((w, i) => '<span class="jn-qw" style="--i:' + i + '">' + w + "</span>").join(" "); };
+    const show = (i) => {
+      cur = (i + sp.length) % sp.length;
+      sp.forEach((b, k) => { b.classList.remove("is-on"); if (k === cur) { void b.offsetWidth; b.classList.add("is-on"); } b.setAttribute("aria-pressed", k === cur); });
+      const b = sp[cur]; write(b.dataset.q); role.textContent = b.dataset.role;
+    };
+    const play = () => { clearTimeout(timer); if (reduce) return; timer = setTimeout(() => { show(cur + 1); play(); }, T); };
+    sp.forEach((b, i) => b.addEventListener("click", () => { show(i); play(); }));
+    xp.addEventListener("pointerenter", () => { xp.classList.add("is-paused"); clearTimeout(timer); });
+    xp.addEventListener("pointerleave", () => { xp.classList.remove("is-paused"); show(cur); play(); });
+    xp.addEventListener("focusin", () => { xp.classList.add("is-paused"); clearTimeout(timer); });
+    show(0); play();
+  }
+})();
+
+/* =========================================================
+   NEW ABOUT PAGE (about.html) — runs only when <body class="abx-page">. Appended; nothing above is changed.
+   ========================================================= */
+(() => {
+  "use strict";
+  if (!document.body.classList.contains("abx-page")) return;
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  /* ---------- reveal on scroll ---------- */
+  const targets = $$("[data-abx]");
+  if ("IntersectionObserver" in window && !reduce) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+    targets.forEach((t) => io.observe(t));
+    setTimeout(() => targets.forEach((t) => { const r = t.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) t.classList.add("is-in"); }), 5000);
+  } else targets.forEach((t) => t.classList.add("is-in"));
+
+  /* ---------- 1. hero: water ripple on click + chips drift away from the pointer ---------- */
+  const vis = $("#abxVis");
+  if (vis) {
+    const blob = $(".abx-blob", vis);
+    blob.addEventListener("pointerdown", (e) => {
+      const r = blob.getBoundingClientRect(), d = document.createElement("span");
+      d.className = "abx-rip"; d.style.left = e.clientX - r.left + "px"; d.style.top = e.clientY - r.top + "px";
+      blob.appendChild(d); setTimeout(() => d.remove(), 1200);
+    });
+    if (fine && !reduce) vis.addEventListener("pointermove", (e) => {
+      const r = vis.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      $$(".abx-chip", vis).forEach((c, i) => { c.style.transform = "translate(" + x * (i ? -30 : 30) + "px," + y * (i ? -24 : 24) + "px)"; c.style.transition = "transform .6s cubic-bezier(.2,.8,.2,1)"; });
+    });
+  }
+
+  /* ---------- 2. story: odometer year follows the card in the middle; drag to scroll ---------- */
+  const tl = $("#abxTl");
+  if (tl) {
+    const ms = $$(".abx-ms", tl), od = $("#abxOd"), bar = $("#abxBar");
+    const years = ms.map((m) => m.dataset.y);
+    od.innerHTML = years[0].split("").map(() => '<div class="abx-od__d"><span>' + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => "<b>" + n + "</b>").join("") + "</span></div>").join("");
+    od.setAttribute("aria-label", "Year");
+    const cols = $$(".abx-od__d span", od);
+    let cur = -1;
+    const set = (i) => {
+      if (i === cur) return; cur = i;
+      years[i].split("").forEach((d, k) => { cols[k].style.transitionDelay = k * 90 + "ms"; cols[k].style.transform = "translateY(-" + d + "em)"; });
+      ms.forEach((m, k) => m.classList.toggle("is-on", k === i));
+      bar.style.transform = "scaleX(" + (i + 1) / ms.length + ")";
+    };
+    const pick = () => {
+      const mid = tl.scrollLeft + tl.clientWidth / 2; let best = 0, bd = 1e9;
+      ms.forEach((m, i) => { const d = Math.abs(m.offsetLeft + m.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = i; } });
+      set(best);
+    };
+    tl.addEventListener("scroll", () => requestAnimationFrame(pick), { passive: true });
+    addEventListener("resize", pick); set(0); setTimeout(pick, 300);
+    const go = (dir) => { const i = clamp(cur + dir, 0, ms.length - 1); tl.scrollTo({ left: ms[i].offsetLeft - (tl.clientWidth - ms[i].offsetWidth) / 2, behavior: reduce ? "auto" : "smooth" }); };
+    $("#abxPrev").addEventListener("click", () => go(-1)); $("#abxNext").addEventListener("click", () => go(1));
+    let down = false, sx = 0, sl = 0;
+    tl.addEventListener("pointerdown", (e) => { if (e.pointerType !== "mouse") return; down = true; sx = e.clientX; sl = tl.scrollLeft; tl.classList.add("is-drag"); });
+    addEventListener("pointermove", (e) => { if (down) tl.scrollLeft = sl - (e.clientX - sx); });
+    addEventListener("pointerup", () => { if (!down) return; down = false; tl.classList.remove("is-drag"); pick(); });
+  }
+
+  /* ---------- 3. founder note: words light up with scroll ---------- */
+  const q = $("#abxQuote");
+  if (q) {
+    const words = q.textContent.trim().split(/\s+/);
+    q.setAttribute("aria-label", words.join(" "));
+    q.innerHTML = words.map((w) => '<span class="abx-sw" aria-hidden="true">' + w + "</span>").join(" ");
+    const sw = $$(".abx-sw", q); let tick = false;
+    const lit = () => { tick = false; const r = q.getBoundingClientRect(); const p = clamp((innerHeight * 0.88 - r.top) / (innerHeight * 0.55 + r.height * 0.6), 0, 1); const n = Math.round(p * sw.length); sw.forEach((s, i) => s.classList.toggle("is-lit", i < n)); };
+    addEventListener("scroll", () => { if (!tick) { tick = true; requestAnimationFrame(lit); } }, { passive: true }); lit();
+  }
+
+  /* ---------- 4. lens: a magnifier that follows the pointer (and roams by itself when idle) ---------- */
+  const st = $("#abxStage");
+  if (st) {
+    const reads = { h: $("#abxH"), t: $("#abxT"), c: $("#abxC") }, tag = $(".abx-tag", st);
+    let idle = true, t0 = 0, visible = false;
+    const put = (x, y) => {
+      st.style.setProperty("--lx", x * 100 + "%"); st.style.setProperty("--ly", y * 100 + "%");
+      const h = Math.round(58 + x * 36), tx = Math.round(52 + (1 - y) * 40), cl = Math.round(60 + Math.abs(0.5 - x) * 50 + (1 - y) * 10);
+      [["h", h], ["t", tx], ["c", clamp(cl, 0, 99)]].forEach(([k, v]) => { reads[k].textContent = v + "%"; reads[k].closest("li").style.setProperty("--v", v + "%"); });
+      st.classList.toggle("is-up", y > 0.68); tag.textContent = h > 80 ? "Well hydrated" : tx > 78 ? "Smooth texture" : "Calm, even tone";
+    };
+    const pt = (e) => { const r = st.getBoundingClientRect(); idle = false; st.classList.remove("is-auto"); put(clamp((e.clientX - r.left) / r.width, 0.06, 0.94), clamp((e.clientY - r.top) / r.height, 0.06, 0.94)); };
+    st.addEventListener("pointermove", pt); st.addEventListener("pointerdown", pt);
+    st.addEventListener("pointerleave", () => { idle = true; st.classList.add("is-auto"); });
+    new IntersectionObserver((es) => { visible = es[0].isIntersecting; }, { threshold: 0.2 }).observe(st);
+    st.classList.add("is-auto"); put(0.5, 0.5);
+    if (!reduce) { const loop = (t) => { if (idle && visible) { t0 = t / 1000; put(0.5 + Math.sin(t0 * 0.7) * 0.28, 0.5 + Math.sin(t0 * 1.1 + 1) * 0.26); } requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+  }
+
+  /* ---------- 5. promises: tap to peel on touch screens ---------- */
+  $$(".abx-pr").forEach((c) => c.addEventListener("click", () => { if (!fine) { const o = c.classList.contains("is-open"); $$(".abx-pr").forEach((x) => x.classList.remove("is-open")); c.classList.toggle("is-open", !o); } }));
+
+  /* ---------- 7. numbers: liquid rises while the number counts up ---------- */
+  const liq = $$(".abx-liq");
+  if (liq.length) {
+    const run = (el) => {
+      const n = $(".abx-liq__n b", el), to = parseFloat(n.dataset.n), w = $(".abx-liq__w", el);
+      w.style.setProperty("--lv", el.dataset.lv + "%");
+      if (reduce) { n.textContent = to.toLocaleString("en-IN"); return; }
+      const s = performance.now(), d = 2400;
+      const f = (t) => { const p = clamp((t - s) / d, 0, 1), e = 1 - Math.pow(1 - p, 3); n.textContent = Math.round(to * e).toLocaleString("en-IN"); if (p < 1) requestAnimationFrame(f); };
+      requestAnimationFrame(f);
+    };
+    if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } }), { threshold: 0.4 }); liq.forEach((l) => io.observe(l)); }
+    else liq.forEach(run);
+  }
+
+  /* ---------- 8. clinic: cards sink back and dim as the next one slides over ---------- */
+  const sc = $$(".abx-sc");
+  if (sc.length && !reduce) {
+    let tick = false;
+    const upd = () => {
+      tick = false;
+      sc.forEach((c, i) => {
+        const nx = sc[i + 1], img = $(".abx-sc__img img", c);
+        if (nx) { const stick = parseFloat(getComputedStyle(nx).top) || 0; const p = clamp(1 - (nx.getBoundingClientRect().top - stick) / (innerHeight * 0.75), 0, 1); c.style.setProperty("--s", (1 - p * 0.07).toFixed(3)); c.style.setProperty("--b", (1 - p * 0.28).toFixed(3)); }
+        const r = c.getBoundingClientRect(); img.style.setProperty("--z", (1.08 + clamp(1 - r.top / innerHeight, 0, 1) * 0.1).toFixed(3));
+      });
+    };
+    addEventListener("scroll", () => { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true }); addEventListener("resize", upd); upd();
+  }
+})();
+
+
+/* =========================================================
    STACKLY SKINCARE CLINIC — script.js
    GSAP + ScrollTrigger + AOS, with graceful fallbacks
    ========================================================= */
@@ -2086,4 +2350,167 @@
   window.addEventListener("pageshow", () => { resetAll(); setTimeout(resetAll, 120); });
   window.addEventListener("load", () => setTimeout(resetAll, 150));
   resetAll();
+})();
+
+/* =========================================================
+   BLOG PAGE — NEW SECTIONS 6 & 7 (add at the END of script.js)
+   Own reveal (data-jx / data-jxs), expanding ingredient cards, flip cards.
+   ========================================================= */
+(() => {
+  "use strict";
+  if (!document.body.classList.contains("jn-page")) return;
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  /* ---------- reveal (wipe for headings / ingredient cards, turn-over for the myth cards) ----------
+     Uses plain position checks on scroll (not IntersectionObserver): the hidden elements are
+     clipped, and a clipped element can report "not visible" forever. */
+  const reveal = $$("[data-jx],[data-jxs]");
+  const show = (t) => t.classList.add("is-in");
+  const onScreen = (el, f) => { const r = el.getBoundingClientRect(); return r.top < innerHeight * f && r.bottom > 0; };
+  let pending = reveal.slice();
+  const tickers = [];
+  const check = () => {
+    pending = pending.filter((t) => { if (reduce || onScreen(t, 0.92)) { show(t); return false; } return true; });
+    tickers.forEach((fn) => fn());
+  };
+  ["scroll", "resize", "load", "touchmove"].forEach((ev) => window.addEventListener(ev, check, { passive: true }));
+  setInterval(check, 300);
+  check();
+
+  /* ---------- 6. ingredient spotlight: one card open at a time ---------- */
+  const acc = $("#jxAcc");
+  if (acc) {
+    const pans = $$(".jx-pan", acc);
+    const bar = $("#jxBar");
+    const dots = bar ? $$("i", bar) : [];
+    let cur = 0, timer = null, still = false, seen = false;
+
+    const open = (i) => {
+      cur = i;
+      pans.forEach((p, k) => {
+        const on = k === i;
+        p.classList.toggle("is-open", on);
+        p.setAttribute("aria-expanded", on ? "true" : "false");
+        const img = $(".jx-pan__img", p);
+        if (img) img.classList.toggle("is-float", on);
+      });
+      dots.forEach((d, k) => { d.classList.remove("is-on"); if (k === i) { void d.offsetWidth; d.classList.add("is-on"); } });
+    };
+    const stop = () => { still = true; clearInterval(timer); if (bar) bar.classList.add("is-still"); };
+    const play = () => { if (reduce || still) return; clearInterval(timer); timer = setInterval(() => open((cur + 1) % pans.length), 4800); };
+
+    pans.forEach((p, i) => {
+      p.addEventListener("click", () => { stop(); open(i); });
+      if (fine) p.addEventListener("mouseenter", () => { if (cur !== i) { stop(); open(i); } });
+      p.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); stop(); open(i); }
+        else if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); stop(); const n = (i + 1) % pans.length; open(n); pans[n].focus(); }
+        else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); stop(); const n = (i - 1 + pans.length) % pans.length; open(n); pans[n].focus(); }
+      });
+    });
+    open(0);
+    /* gentle auto-tour while the block is on screen; any touch / hover / key press stops it */
+    let playing = false;
+    tickers.push(() => {
+      const r = acc.getBoundingClientRect();
+      const vis = r.top < innerHeight * 0.55 && r.bottom > innerHeight * 0.3;
+      if (vis && !playing) { playing = true; if (!seen) { seen = true; open(0); } play(); }
+      else if (!vis && playing) { playing = false; clearInterval(timer); }
+    });
+  }
+
+  /* ---------- 7. myth or fact: tap / Enter flips a card (hover also flips on desktop via CSS) ---------- */
+  $$(".jx-card").forEach((c) => {
+    c.addEventListener("click", () => {
+      if (fine) return; /* desktop: hover / keyboard focus flips it via CSS */
+      const on = c.classList.toggle("is-flip");
+      c.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  });
+})();
+
+/* =========================================================
+   BLOG PAGE — NEW SECTIONS 8 & 9 (add at the END of script.js, after sections 6 & 7)
+   Daily ritual (scroll-linked), count-up numbers, tilt photo, magnetic button, cursor glow.
+   ========================================================= */
+(() => {
+  "use strict";
+  if (!document.body.classList.contains("jn-page")) return;
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+  /* ---------- 8. daily ritual: the line fills and the photo changes as you scroll ---------- */
+  const rt = $("#jxRt");
+  if (rt) {
+    const list = $(".jx-rt__list", rt), steps = $$(".jx-step", rt), imgs = $$(".jx-rt__frame img", rt);
+    const badge = $(".jx-rt__badge", rt), num = $("b", badge), fill = $(".jx-rt__fill", rt);
+    let cur = -1, locked = 0;
+    const set = (i) => {
+      if (i === cur) return;
+      cur = i;
+      steps.forEach((s, k) => s.classList.toggle("is-on", k === i));
+      imgs.forEach((m, k) => m.classList.toggle("is-on", k === i));
+      num.textContent = String(i + 1).padStart(2, "0");
+    };
+    const update = () => {
+      const mid = innerHeight * 0.5, lr = list.getBoundingClientRect();
+      const p = clamp((mid - lr.top) / lr.height, 0, 1);
+      list.style.setProperty("--p", p.toFixed(3));
+      badge.style.setProperty("--p", p.toFixed(3));
+      if (Date.now() < locked) return;              /* a tap on a step wins for a moment */
+      let best = 0, d = 1e9;
+      steps.forEach((s, k) => { const r = s.getBoundingClientRect(); const dd = Math.abs(r.top + r.height / 2 - mid); if (dd < d) { d = dd; best = k; } });
+      set(best);
+    };
+    steps.forEach((s, i) => {
+      s.addEventListener("click", () => { locked = Date.now() + 1200; set(i); });
+      s.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); locked = Date.now() + 1200; set(i); } });
+    });
+    ["scroll", "resize", "load"].forEach((ev) => window.addEventListener(ev, update, { passive: true }));
+    setInterval(update, 250);
+    set(0); update();
+  }
+
+  /* ---------- 9. consultation ---------- */
+  const cta = $("#jxCta");
+  if (cta) {
+    /* count-up numbers, once, when they are on screen */
+    const nums = $$("[data-count]", cta);
+    const fmt = (v) => Math.round(v).toLocaleString("en-IN");
+    const run = (el) => {
+      const end = +el.dataset.count, suf = el.dataset.suffix || "";
+      if (reduce) { el.textContent = fmt(end) + suf; return; }
+      const t0 = performance.now(), dur = 1700;
+      const tick = (t) => { const k = clamp((t - t0) / dur, 0, 1), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt(end * e) + suf; if (k < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    };
+    let waiting = nums.slice();
+    const watch = () => { waiting = waiting.filter((el) => { const r = el.getBoundingClientRect(); if (r.top < innerHeight * 0.92 && r.bottom > 0) { run(el); return false; } return true; }); };
+    ["scroll", "resize", "load"].forEach((ev) => window.addEventListener(ev, watch, { passive: true }));
+    setInterval(watch, 300);
+    watch();
+
+    if (fine && !reduce) {
+      /* cursor glow across the section */
+      cta.addEventListener("mousemove", (e) => { const r = cta.getBoundingClientRect(); cta.style.setProperty("--mx", e.clientX - r.left + "px"); cta.style.setProperty("--my", e.clientY - r.top + "px"); });
+      /* tilting photo */
+      const vis = $(".jx-cta__vis", cta), card = $(".jx-cta__card", cta);
+      if (vis && card) {
+        vis.addEventListener("mousemove", (e) => { const r = vis.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5; card.style.setProperty("--ry", (x * 10).toFixed(2) + "deg"); card.style.setProperty("--rx", (-y * 8).toFixed(2) + "deg"); });
+        vis.addEventListener("mouseleave", () => { card.style.setProperty("--ry", "0deg"); card.style.setProperty("--rx", "0deg"); });
+      }
+      /* magnetic button */
+      const btn = $(".jx-btn", cta);
+      if (btn) {
+        btn.addEventListener("mousemove", (e) => { const r = btn.getBoundingClientRect(); btn.style.setProperty("--tx", ((e.clientX - r.left - r.width / 2) * 0.22).toFixed(1) + "px"); btn.style.setProperty("--ty", ((e.clientY - r.top - r.height / 2) * 0.32).toFixed(1) + "px"); });
+        btn.addEventListener("mouseleave", () => { btn.style.setProperty("--tx", "0px"); btn.style.setProperty("--ty", "0px"); });
+      }
+    }
+  }
 })();
