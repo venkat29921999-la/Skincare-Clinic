@@ -6717,3 +6717,24 @@ html .jn-hero {
 /* date and link sit at the bottom of every card, on the same row */
 .jn-card__meta { margin-top: auto; }
 .jn-card .link-arrow { margin-top: 0; }
+
+
+/* =========================================================
+   about-overlap-fix (appended; nothing above is changed)
+   "Our philosophy": the heading's 3rd line ("It is about confidence.")
+   was overlapping the paragraph. This reserves the full height of the
+   heading and keeps the paragraph clearly below it.
+   ========================================================= */
+/* ROOT CAUSE: a script adds inline  transform: translate(0, 186px)  to the heading, which pushes it down onto the paragraph.
+   An !important rule beats an inline style, so the heading stays in its normal place. */
+.ap__title { transform: none !important; translate: none !important; height: auto; overflow: visible; }
+.ap__p { position: relative; z-index: 0; margin-top: clamp(32px, 4vw, 56px); }
+
+@media (min-width: 601px) {
+  .ap__title { max-width: none; width: 100%; min-height: calc(3 * 1.22em + .4em); }  /* 2 lines + 1 line */
+  .ap__l1 { max-width: 16ch; margin-inline: auto; }
+  .ap__l2 { max-width: none; white-space: nowrap; }
+}
+@media (max-width: 600px) {
+  .ap__title { min-height: calc(4 * 1.22em); }
+}
