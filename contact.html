@@ -13,6 +13,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Stackly address card on the map */
+    .ct-map__card { position: absolute; left: 12px; bottom: 12px; z-index: 2; max-width: min(78%, 300px);
+      background: #fff; border-radius: 14px; padding: 12px 14px; box-shadow: 0 10px 28px rgba(0,0,0,.22);
+      font-family: "Josefin Sans", sans-serif; pointer-events: none; }
+    .ct-map__card b { display: block; font-size: 15px; letter-spacing: .06em; color: #1d3a30; }
+    .ct-map__card span { display: block; margin-top: 3px; font-size: 12.5px; line-height: 1.45; color: #3c3c3c; }
+  </style>
 </head>
 <body class="contact-page">
 
@@ -161,10 +169,14 @@
           <h2 class="title title--lg ct-support__t">Global Skincare<br>Support Network</h2>
           <p class="ct-support__p">Our team supports clients with personalised guidance, trusted formulas and professional care, wherever you are.</p>
           <div class="ct-map" id="ctMap">
-            <iframe title="Stackly clinic location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=4517+Washington+Ave,+Manchester,+Kentucky&amp;output=embed"></iframe>
+            <iframe title="Stackly Salem branch location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Stackly+MMR+Complex,+Chinna+Thirupathi,+Salem,+Tamil+Nadu+636008&amp;z=16&amp;output=embed"></iframe>
+            <div class="ct-map__card">
+              <b>Stackly</b>
+              <span>Stackly MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</span>
+            </div>
           </div>
-          <a class="btn btn--outline-light ct-dir" href="404.html" target="_blank" rel="noopener">Get directions <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <a class="btn btn--outline-light ct-dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=Stackly+MMR+Complex,+Chinna+Thirupathi,+Salem,+Tamil+Nadu+636008" target="_blank" rel="noopener">Get directions <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </div>
       </div>
     </section>

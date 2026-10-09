@@ -6,6 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Lobster+Two:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="auth.css">
 <title>Sign up · Stackly Skincare Clinic</title>
@@ -26,13 +27,18 @@
         <label><input type="radio" name="role" value="user" checked><span>Client</span></label>
         <label><input type="radio" name="role" value="admin"><span>Admin</span></label>
       </div>
+      <div class="au-grp">
       <div class="au-fld"><input type="text" name="name" placeholder="Full Name" aria-label="Full name" autocomplete="name"></div>
       <div class="au-fld"><input type="email" name="email" placeholder="Email Address" aria-label="Email address" autocomplete="email"></div>
       <div class="au-fld"><input type="password" name="pwd" placeholder="Password" aria-label="Password" autocomplete="new-password"><button type="button" class="au-eye">Show</button></div>
       <div class="au-fld"><input type="password" name="pwd2" placeholder="Confirm Password" aria-label="Confirm password" autocomplete="new-password"><button type="button" class="au-eye">Show</button></div>
+      </div>
+
+      <div class="au-grp">
       <p class="au-msg" id="msg" role="status" aria-live="polite"></p>
       <button class="au-btn" type="submit">Sign Up</button>
-      <a class="au-back" href="index.html">← Back to Home</a>
+      <a class="au-back" href="index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Home</a>
+      </div>
       <p class="au-alt">Already registered? <a href="login.html">Login</a></p>
     </form>
   </div>
