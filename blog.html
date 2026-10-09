@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="style.css">
+  <!-- added: hero buttons lifted + equal-size "Latest articles" cards -->
+  <link rel="stylesheet" href="blog-hero-fix.css">
+  <link rel="stylesheet" href="blog-cards-fix.css">
   <script>document.documentElement.classList.add('jn-js')</script>
 </head>
 <body class="jn-page">
@@ -121,26 +124,26 @@
       </div>
     </section>
 
-    <!-- ============ 3. LATEST ARTICLES ============ -->
+    <!-- ============ 3. LATEST ARTICLES (all 4 cards: 2-line title + 2-line text) ============ -->
     <section class="jn-latest" id="latest">
       <div class="container">
         <div class="jn-head" data-jn><span class="jn-pill">Latest articles</span><h2 class="title">Fresh from the clinic</h2></div>
         <div class="jn-cards">
           <article class="jn-card" data-jn style="--i:0"><div class="jn-card__in">
             <a href="404.html" class="jn-card__img" tabindex="-1" aria-hidden="true"><img src="Assests/sc27.webp" alt="Ingredient label and botanical ingredients" width="600" height="490" loading="lazy"></a>
-            <div class="jn-card__txt"><span class="jn-pill">Ingredients</span><h3>How to Read an Ingredient Label Without a Chemistry Degree</h3><p>What the order means and which words to trust.</p><span class="jn-card__meta">5 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+            <div class="jn-card__txt"><span class="jn-pill">Ingredients</span><h3>How to Read an Ingredient Label Without a Chemistry Degree</h3><p>What the order means, which words to trust and which claims to skip.</p><span class="jn-card__meta">5 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
           </div></article>
           <article class="jn-card" data-jn style="--i:1"><div class="jn-card__in">
             <a href="404.html" class="jn-card__img" tabindex="-1" aria-hidden="true"><img src="Assests/detail-shadow.webp" alt="Sun-kissed skin" width="600" height="490" loading="lazy"></a>
-            <div class="jn-card__txt"><span class="jn-pill">Sun care</span><h3>SPF in Winter: Yes, Really</h3><p>Why UV doesn’t take the season off.</p><span class="jn-card__meta">23 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+            <div class="jn-card__txt"><span class="jn-pill">Sun care</span><h3>SPF in Winter: Yes, Really. Here’s Why Your Skin Needs It</h3><p>Why UV doesn’t take the season off, and how to stay protected every day.</p><span class="jn-card__meta">23 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
           </div></article>
           <article class="jn-card" data-jn style="--i:2"><div class="jn-card__in">
             <a href="404.html" class="jn-card__img" tabindex="-1" aria-hidden="true"><img src="Assests/sc6.webp" alt="Glowing, even skin" width="600" height="490" loading="lazy"></a>
-            <div class="jn-card__txt"><span class="jn-pill">Ingredients</span><h3>Retinol, Slowly: A Four-Week Starter Plan</h3><p>A gentle schedule that keeps irritation low.</p><span class="jn-card__meta">29 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+            <div class="jn-card__txt"><span class="jn-pill">Ingredients</span><h3>Retinol, Slowly: A Four-Week Starter Plan</h3><p>A gentle weekly schedule that builds tolerance and keeps irritation low.</p><span class="jn-card__meta">29 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
           </div></article>
           <article class="jn-card" data-jn style="--i:3"><div class="jn-card__in">
             <a href="404.html" class="jn-card__img" tabindex="-1" aria-hidden="true"><img src="Assests/sc1.webp" alt="Client receiving a facial" width="600" height="490" loading="lazy"></a>
-            <div class="jn-card__txt"><span class="jn-pill">Treatments</span><h3>Your First Facial: What Actually Happens</h3><p>From consultation to aftercare, step by step.</p><span class="jn-card__meta">19 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
+            <div class="jn-card__txt"><span class="jn-pill">Treatments</span><h3>Your First Facial: What Actually Happens</h3><p>From consultation to aftercare, a simple step-by-step walkthrough.</p><span class="jn-card__meta">19 Oct · 6 min</span><a href="404.html" class="link-arrow link-arrow--sm">Read Article <i class="fa-solid fa-arrow-right-long"></i></a></div>
           </div></article>
         </div>
       </div>
@@ -224,7 +227,7 @@
             <span class="jx-card__b"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><h3>Fewer, simpler steps win.</h3><p>Protect the barrier first and add one new product at a time. Judge it after four to six weeks.</p><small>Fact</small></span>
           </span></button>
           <button class="jx-card" type="button" aria-pressed="false" style="--i:1"><span class="jx-card__in">
-            <span class="jx-card__f"><img src="Assests/blog-myth-2.webp" alt="" width="375" height="365" loading="lazy"><span class="jx-stamp">Myth</span><b>Oily skin doesn’t need moisturiser.</b><small><i class="fa-solid fa-arrow-right-long"></i> Flip for the fact</small></span>
+            <span class="jx-card__f"><img src="Assests/blog-step-3.webp" alt="" width="375" height="365" loading="lazy"><span class="jx-stamp">Myth</span><b>Oily skin doesn’t need moisturiser.</b><small><i class="fa-solid fa-arrow-right-long"></i> Flip for the fact</small></span>
             <span class="jx-card__b"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><h3>Every skin type needs hydration.</h3><p>Skipping moisturiser can leave skin dehydrated and shiny. A light gel formula does the job.</p><small>Fact</small></span>
           </span></button>
           <button class="jx-card" type="button" aria-pressed="false" style="--i:2"><span class="jx-card__in">
@@ -276,7 +279,7 @@
               <div class="jx-stat"><b data-count="96" data-suffix="%">0</b><span>Patients happy with results</span></div>
               <div class="jx-stat"><b data-count="15">0</b><span>Skin specialists</span></div>
             </div>
-            <a href="contact.html" class="jx-btn" data-jx><span>Book a consultation</span><i class="fa-solid fa-arrow-right-long"></i></a>
+            <a href="404.html" class="jx-btn" data-jx><span>Book a consultation</span><i class="fa-solid fa-arrow-right-long"></i></a>
           </div>
           <div class="jx-cta__vis" data-jx>
             <span class="jx-cta__badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Free first assessment</span>

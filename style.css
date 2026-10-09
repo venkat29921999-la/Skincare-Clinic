@@ -6438,3 +6438,282 @@ html .jn-tips .jn-filter button.is-on{color:var(--green)}
 html .jn-tips .jn-filter__ink{background:var(--mist)}
 /* all cards one soft green-mist tone */
 html .jn-tip,html .jn-tip[data-cat]{--c:var(--mist)}
+
+
+/* =========================================================
+   THIN GREEN SCROLLBAR (add at the END of style.css; nothing above is changed)
+   Width: change 6px below to make it thinner / thicker.
+   ========================================================= */
+
+/* Chrome, Edge, Safari, Opera */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--mist); }
+::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--green-3); }
+::-webkit-scrollbar-corner { background: var(--mist); }
+
+/* Firefox (and any browser without ::-webkit-scrollbar) */
+@supports not selector(::-webkit-scrollbar) {
+  html { scrollbar-width: thin; scrollbar-color: var(--green) var(--mist); }
+}
+
+
+
+
+/* =========================================================
+   about-fix.css
+   Load AFTER style.css. Does not modify any existing file.
+   Fixes the "Our philosophy" section on about.html:
+   1) "confidence." was invisible (gradient clipped to text had
+      no solid colour under it, so it only showed the last "." )
+   2) heading / paragraph overlap and awkward wrapping
+   ========================================================= */
+
+/* 1) Heading: stable layout, balanced lines, never overlaps the paragraph */
+.ap__in { display: flex; flex-direction: column; align-items: center; }
+
+.ap__title {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  max-width: 16ch;
+  margin-inline: auto;
+  line-height: 1.22;               /* script font has tall swashes */
+  text-wrap: balance;              /* "Healthy skin is not / about perfection." */
+}
+.ap__l1, .ap__l2 {
+  display: block;
+  text-wrap: balance;
+  padding-block: .04em;            /* room for Lobster ascenders/descenders */
+}
+.ap__l2 { margin-top: .08em; }
+
+/* 2) Paragraph always sits clearly below the heading */
+.ap__p {
+  position: relative;
+  z-index: 0;
+  clear: both;
+  margin-top: clamp(28px, 4vw, 48px);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* 3) "confidence." stays solid peach, the shine sweeps over it */
+.ap__shine {
+  display: inline-block;
+  padding-inline: .04em;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background:
+    linear-gradient(100deg, transparent 38%, rgba(255, 255, 255, .95) 50%, transparent 62%) 160% 0 / 260% 100% no-repeat,
+    linear-gradient(var(--peach), var(--peach)) 0 0 / 100% 100% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  .ap__title { max-width: 12ch; font-size: clamp(2rem, 9vw, 2.8rem); }
+}
+
+/* Respect reduced motion: show everything immediately */
+@media (prefers-reduced-motion: reduce) {
+  .ap__title .ap__l1, .ap__title .ap__l2, .ap__p { opacity: 1 !important; transform: none !important; }
+  .ap__strike::after { transform: none !important; }
+}
+
+
+/* service-fix.css - load AFTER style.css. Existing files stay untouched.
+   Makes the 3 facial cards the same size with aligned content. */
+.svc-arches { align-items: stretch; }
+.svc-arch { height: 100%; }
+.svc-arch h3 { min-height: 1.3em; }
+.svc-arch > p { min-height: 4.8em; line-height: 1.6; }          /* same text block height in all 3 */
+.svc-arch > ul { flex: 1 1 auto; min-height: 5.6em; display: grid; align-content: start; gap: 4px; }
+.svc-arch > span { margin-top: auto; padding-top: 6px; }         /* duration sits on the same line */
+.svc-arch .btn { margin-top: 10px; }                             /* Book button aligned at the bottom */
+
+
+
+/* =========================================================
+   service-pg-fix.css  (load AFTER style.css and service-fix.css)
+   "Brightening & pigmentation" accordion: smooth + sharp.
+   Existing files are NOT modified.
+
+   Why it lagged:
+   - the cards animated `flex` while a big photo was re-scaled,
+     re-filtered and re-blurred (backdrop-filter) on every frame
+   - the photo changed size with the card, so the browser kept
+     re-sampling it (this is also what made it look soft)
+   Fix: the photo keeps ONE fixed size (card only reveals more of it),
+   no filter / backdrop-blur animation, shorter snappier timing,
+   everything moving is GPU-friendly (transform / opacity).
+   ========================================================= */
+
+.svc-pg__row { contain: layout; }
+
+/* snappy open/close: fast start, soft landing */
+.svc-pg__t {
+  --pg-ease: cubic-bezier(.22, .9, .28, 1);
+  transition:
+    flex .5s var(--pg-ease),
+    border-radius .5s var(--pg-ease),
+    box-shadow .4s ease;
+  will-change: flex;
+  contain: layout paint;
+  transform: translateZ(0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* PHOTO: fixed render size, centred; the card just masks it.
+   No resizing while animating = no re-sampling = no blur, no lag. */
+.svc-pg__t > img {
+  inset: 0 auto 0 50%;
+  width: max(100%, 680px);
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: none;                         /* was animated: very expensive */
+  transform: translate3d(-50%, 0, 0) scale(1.05);
+  transition: transform .8s var(--pg-ease);
+  will-change: transform;
+  backface-visibility: hidden;
+  image-rendering: auto;
+}
+.svc-pg__t.is-act > img { filter: none; transform: translate3d(-50%, 0, 0) scale(1); }
+
+/* dimming of inactive cards done with a cheap opacity overlay instead of filter */
+.svc-pg__t::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 1;
+  background: rgba(14, 40, 31, .30);
+  opacity: 1;
+  transition: opacity .45s ease;
+  pointer-events: none;
+}
+.svc-pg__t.is-act::before { opacity: 0; }
+
+/* glass panel: no backdrop-filter (re-blurred every frame while resizing) */
+.svc-pg__panel {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: color-mix(in srgb, var(--green) 80%, transparent);
+}
+
+/* details open faster, nothing waits */
+.svc-pg__more { transition: grid-template-rows .4s var(--pg-ease, ease), opacity .3s ease; }
+.svc-pg__t.is-act .svc-pg__more { transition-delay: .05s; }
+.svc-pg__spots { transition: opacity .5s ease, transform .5s ease; }
+.svc-pg__chip { -webkit-backdrop-filter: none; backdrop-filter: none; }
+
+/* keep the whole accordion on its own layer so the rest of the page isn't repainted */
+#svcPg { isolation: isolate; }
+
+/* phones / tablets: stacked cards, keep it light */
+@media (max-width: 900px) {
+  .svc-pg__t > img { inset: 0; width: 100%; transform: none; }
+  .svc-pg__t.is-act > img { transform: none; }
+  .svc-pg__t::before { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-pg__t, .svc-pg__t > img, .svc-pg__more, .svc-pg__t::before { transition: none; }
+}
+
+
+
+/* =========================================================
+   service-mobile-fix.css  (load AFTER style.css / service-pg-fix.css)
+   Fixes the overlap on phones in "Brightening & pigmentation".
+
+   Cause: on small screens the 3 cards are stacked (3 x 320px) but the
+   row still had a fixed height (about 400px) from an older rule, so the
+   cards spilled out, covering the chips and the next section.
+   Fix: let the row grow to fit its stacked cards.
+   ========================================================= */
+@media (max-width: 900px) {
+  .svc-pg__row,
+  .svc-page .svc-pg__row {
+    height: auto !important;
+    contain: none;
+  }
+  .svc-pg__t,
+  .svc-pg__t.is-act {
+    height: 360px;     /* enough room for the text panel */
+    flex: none;
+  }
+}
+
+/* =========================================================
+   service-steps-fix.css  (load AFTER style.css)
+   "How your treatment works": on desktop the step label and the title
+   sat on the same line (STEP 1 · CONSULTATION  Assess).
+   Now they stack on every screen size, like on mobile:
+       STEP 1 · CONSULTATION
+       Assess
+       description
+   ========================================================= */
+.svc-jr__tag {
+  display: block;            /* was inline-block: shared a line with the title */
+  margin-bottom: 2px;
+}
+.svc-jr__in h3 {
+  display: block;            /* title goes on its own line */
+  width: fit-content;        /* peach underline still only as wide as the word */
+  margin-top: 4px;
+}
+.svc-jr__in p { margin-top: 8px; }
+
+
+/* =========================================================
+   blog-hero-fix.css  (load AFTER style.css)
+   Blog hero: lifts the 4 category buttons (Skincare tips, Acne &
+   pigmentation, Anti-aging & wellness, Expert advice) a little higher
+   so they no longer sit tight against the bottom edge of the screen.
+   Nothing in your existing code is changed.
+   ========================================================= */
+html .jn-cats {
+  padding-bottom: clamp(60px, 11vh, 100px);   /* was 28px: this is what lifts the buttons */
+}
+
+/* keep the headline block clear of the raised buttons */
+html .jn-hero {
+  padding-bottom: clamp(150px, 22vh, 210px);
+}
+
+@media (max-width: 700px) {
+  html .jn-cats { padding-bottom: 56px; }
+  html .jn-hero { padding-bottom: 200px; }
+}
+
+/* =========================================================
+   blog-cards-fix.css  (load AFTER style.css)
+   "Fresh from the clinic" cards: every description is exactly 2 lines,
+   so all 4 cards have the same size and the date + "Read Article"
+   link line up on the same row. Existing code is not changed.
+   ========================================================= */
+.jn-card__txt { gap: 8px; }
+
+/* title: reserve the same room in every card */
+.jn-card h3 {
+  min-height: calc(1.35em * 2);
+}
+
+/* description: always 2 lines (extra text is cut with "...") */
+.jn-card p {
+  min-height: calc(1.55em * 2);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* date and link sit at the bottom of every card, on the same row */
+.jn-card__meta { margin-top: auto; }
+.jn-card .link-arrow { margin-top: 0; }
