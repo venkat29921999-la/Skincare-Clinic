@@ -28,7 +28,6 @@ document.querySelectorAll(".au-eye").forEach(b=>b.addEventListener("click",()=>{
 if(f.dataset.mode==="login"){
   const r=localStorage.getItem("glowRemember");
   if(r){f.email.value=r;f.remember.checked=true}
-  $("#forgot").addEventListener("click",e=>{e.preventDefault();say("Password reset is not available yet. Please contact the clinic.")});
 }
 
 /* social buttons (placeholder) */
