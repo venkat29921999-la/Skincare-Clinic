@@ -240,3 +240,26 @@ html.lenis, html.lenis body { height: auto; }
 .lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
 .lenis [data-lenis-prevent], .lenis [data-lenis-prevent-wheel], .lenis [data-lenis-prevent-touch] { overscroll-behavior: contain; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* Dashboard header: reduce the empty space above, below, left and right of the dashboard content (desktop) - appended */
+@media(min-width:901px){
+.top{padding-top:10px;padding-bottom:4px;margin-bottom:4px}
+.main{padding-left:14px;padding-right:14px}
+}
+
+/* Sidebar: remove the scrollbars (scrolling still works with wheel/touch) - appended */
+.side,.nav{overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none}
+.side::-webkit-scrollbar,.nav::-webkit-scrollbar{display:none;width:0;height:0}
+
+/* THIN GREEN SCROLLBAR - same as the main website (appended; width: change 6px) */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #e5ece9; }
+::-webkit-scrollbar-thumb { background: #1a3a30; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #3e9479; }
+::-webkit-scrollbar-corner { background: #e5ece9; }
+@supports not selector(::-webkit-scrollbar) {
+  html { scrollbar-width: thin; scrollbar-color: #1a3a30 #e5ece9; }
+}
+
+/* Page scrollbar: shorter bar - starts below the header and stops above the bottom edge (appended) */
+html::-webkit-scrollbar-track { margin-top: 76px; margin-bottom: 24px; }
